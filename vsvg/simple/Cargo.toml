@@ -1,0 +1,10 @@
+[package]
+name = "plotter_sketches_vsg_simple"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+whiskers = { git = "https://github.com/abey79/vsvg.git" }
+vsvg = { git = "https://github.com/abey79/vsvg.git" }
