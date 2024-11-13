@@ -1,0 +1,198 @@
+	HP-GL	GP-GL	DMP/DL	DXY-GL (I)	RD-GL I	RD-GL II	RD-GL III	CAMM-GL II mode1	CAMM-GL II mode2
+Main manufacturer	HP	Graphtec	Houston instrument	Roland	Roland	Roland			
+Known plotters		MP4000		DXY-1350A, DXY-1150A,DXY-880	DXY-1350A, DXY-1150A	DXY-1350A, DXY-1150A, DPX-3700A, DPX-2700A	DPX-3700A,DPX-2700A		
+Reference material								CAMM-GL II programmer’s manual	CAMM-GL II programmer’s manual
+Based on				GP-GL	HP-GL	HP-GL	HP-GL	DXY-GL, CAMM-GL III mode 1, CAMM-GL mode 1	RDL-GL I, CAMM-GL III mode 2, CAMM-GL I
+Some compatibility									
+Notes					Accepts fractions	Most (maybe) parameters accept only integers, has a few more commands than RD-GL I, symetric coordinates configurable	0, 0 always in bottom left unlike 	Has some engraving sturctions	
+Command separator/terminator		ETX			;	;		\r\n	;
+---------------------------- Basic movement  --------------------------------------------------------------------------------------									
+Move/Pen up		M x1, y1, ...		M x1, y1, ...	PU x1,y1,...;	PU x1,y1,...;	PU x1,y1,...;	M x1, y1, ...	PU x1,y1,...;
+Relative move		O dx,dy		R dx1, dy1	PU/PR	PU/PR	PU/PR	R dx1, dy1	PU/PR
+Draw absolute		D x1, y1, ...		D x1, y1, ...	PA/PD	PA/PD	PA/PD	D x1, y1, ...	PA/PD
+Relative draw		E dx1,dy1, ...		I dx1,dy1, ...	PR/PD x1,y1,...;	PR/PD x1,y1,...;	PR/PD x1,y1,...;	I dx1,dy1, ...	PR/PD x1,y1,...;
+Move polar		MP r,o,[t]							
+Draw polar		DP r1,o1,r2,o2,rn,on							
+Relative draw polar		EP							
+Relative move polar		OP							
+Radius plot		RP							
+???							PE		
+Advance full page					(ignored)AF;	(ignored)AF;			
+Page feed					PG[ n];	PG[ n];	PG[ n];		
+---------------------------- Circle stuff  --------------------------------------------------------------------------------------									
+Circle center				A x,y				A x,y	
+Circle		W x0,y0,r1,r2,o1,o2[,d][,t]		C x,y,r,o1,o2,(od)	AA x,y,oc,od;	AA x,y,oc,od	AA x,y,oc,od;	C x,y,r,o1,o2,(od)	AA x,y,oc,od;
+Relative circle				E r,o1,o2,od	AR dx,dy,oc,od	AR dx,dy,oc,od	AR dx,dy,oc,od	E r,o1,o2,od	AR dx,dy,oc,od
+A+Circle				G r,o1,o2				G r,o1,o2	
+Circle here		]r1,r2,o1,o2[,d][,t]			CI r, od	CI r,od	CI r,od		CI r,od
+??? absolute circle stuff						AT ???			
+??? relative circle stuff						RT			
+Sector %				A+ K n,l1,l2				A+ K n,l1,l2	
+3 point circle		WP x1,y1,x2,y2,x3,y3							
+Ellipse		)a,x0,y0,r1,r2,o1,o2,o3							
+---------------------------- ????????????  --------------------------------------------------------------------------------------									
+Curve		Y a,x0,y0,...		Y m,x1,y1,x2,y2...				Y m,x1,y1,x2,y2...	
+Relative curve		_ a,dx0,dy0,...		_ m,dx1,dy1,...					
+Bezier curve		BZ a,x1,y1,x2,y3,x4,y4							
+Axis (draw axis with tickmarks)		X		X p,q,r				X p,q,r	
+Tick length					TL lp, ln;	TL lp, ln;			
+X tick					XT;	XT;			XT;
+Y tick					YT;	YT;			YT;
+---------------------------- Text  --------------------------------------------------------------------------------------									
+Print text		P		P c1c2cn...	LB c1,c2,cn [terminator]	LB c1,c2,cn [terminator]	LB c1,c2,cn [terminator]	P c1c2cn...	LB c1,c2,cn [terminator]
+Kana,Greek		K							
+Engraves special symbols		N		N n				N n	
+Alpha rotate		R		Q [0-3]				Q [0-3]	
+Alpha scale		S		S [0-127]				S [0-127]	
+???							AD		
+Altrnate character set					CA[ n];	CA[ n];			CA[ n];
+Standard character set					CS[ n];	CS[ n];			CS[ n];
+Activate  standard character set					SS;	SS;	SS;		SS;
+Activate alternate set					SA;	SA;	SA;		SA;
+Move by character size					CP nx,ny;	CP nx,ny;	CP nx,ny;		CP nx,ny;
+Character Cord Angle (curved character quality)						CC oc			CC oc
+Font		$n[,m]							
+							(unsuported)CF		
+Absolute direction(text)					DI[a,b];	DI[a,b];	DI[a,b];		DI[a,b];
+Relative direction(text)					DR[a,b];	DR[a,b];	DR[a,b];		DR[a,b];
+Define label terminator??					DT t;	DT t;	DT t;		DT t;
+DV??						(ignored)DV [0 or 1]	DV path[0,1,2,3] line[0, 1]		
+Extra text spacing		Q				ES w,h;	ES w,h;		ES w,h;
+???						LO[ n];	LO[ n];		
+????							SD??		
+absolute characer size					SI w,h;	SI w,h; (cm) how are fractions handled?	SI w,h;		SI w,h; (0.4 cm)
+Character slant					SL[ tanO];	SL[ tanO];	SL[ tanO];		SL[ tanO];
+Alpha italic		I							
+Label position		LP							
+Alpha reset		A							
+Replot character		RC c,x1,y1,[P],...							
+Symbol mode -> draws character in everyy position spciefied by PA,PR or PD until exiting symbol mode		SP			SM s;	SM s;	SM s;		SM s;
+Relative character size					SR w,h;	SR w,h;	SR w,h;		
+????							TD i; 		
+User defined character		(P			UC c,x1,y1, ...;	UC c,x1,y1, ...;			
+Select point mark		SP							
+User’s pattern		(							
+---------------------------- Area ,fill and polygons  --------------------------------------------------------------------------------------									
+Pen change		Jn[,m]		J n	SP n;	SP n;	SP n;		
+Line type		L p		L p	LT n,l			L p	
+Line scale		B l		B l				B l	
+Hatch rectangle		% (also for non rectangle)		T n,x,y,d,t				T n,x,y,d,t	
+Polygon mode						PM [0,1,2]	PM [0, 1, 2]		
+Shade rectangle absolute					RA x,y;	RA x,y;	RA x,y;		RA x,y;
+Shade rectangle relative					RR dx,dy;	RR dx,dy;	RR dx,dy;		RR dx,dy;
+Shade wedge					WG r,o1,oc,od	WG r,o1,oc,od	WG r,o1,oc,od		WG r,o1,oc,od
+Fill type					FT n[,d[,o]]	FT n[,d[,o]]	FT n[,d[,o]]		FT n[,d[,o]]
+??? line,fill,limit something							AC ???		
+Line fill something							LA		
+Line type						LT n[,l]	LT ???		LT n[,l]
+??? line fill ??							PW		
+???							(ignoded)RW index,width,height, pen number		
+???							UL		
+???							WU		
+Edge rectangle absolute					EA x,y;	EA x,y;	EA x,y;		EA x,y;
+Edge rectangle relative					ER dx,dy	ER dx,dy	ER dx,dy		ER dx,dy
+Edge wedge					EW r,o1,oc,od	EW r,o1,oc,od	EW r,o1,oc,od		EW r,o1,oc,od
+Hatching spacing partition ratio						UF d1,(d2, ...d20);			
+Pen thickness					PT[ d];	PT[ d]; 0.1 --- 5.0(mm)			PT[ d]; (multiple of 0.4 mm)
+---------------------------- Techincal   --------------------------------------------------------------------------------------									
+Initialize					IN;	IN[ n];	IN[ n];		IN;
+Default settings					DF;	DF;	DF;		DF;
+Clear (init and reset settings)		:							
+Interface clear		;							
+Home(go, or find)		H		H				H	
+????							BP i i??		
+CT??						CT[ n];	CT[ 0, 1];		
+DL???						DL n,pc,x1,y1,			
+EC??						(ignored)EC n;	(ignored)EC n;		
+???						(ignored)FR;	(ignored)FR;		
+???							(ignored)MC		
+???							(ignored)MR		
+??? material type?							MT [0,1,2,3,4,5]		
+Not ready??, wait for user					NR;	NR;	NR [timeout];		
+Activate pause unti l butto nis pressed									!NR
+						PS l,(w);	PS l,w		
+Quality level ??							QL [0..100]		
+???							ST [-1, 0, 1, 2]		
+Velocity		! (multiple input modes)			VS s;	VS s,(n); cm/s	VS [1-72] (n[1-8])		VS s;
+Acceleration, force		*							
+Cutter offset		FC							
+Blade rotational control		FD							
+Show message on display									WD
+Set buffer sizes						GM pl,dl,(r1,r2,r3)			
+Buzzer/alert indicator		T n							
+Chart feed		F l[t]							
+Set terminator character		=							
+---------------------------- Scaling  and dimensions--------------------------------------------------------------------------------------									
+Paper size					PS s;				
+Roatete coordiante system		/			RO [0,90];	RO [0,90];	RO [0,90, 180, 270];		
+Scaling					SC xmin,xmax,ymin,ymax	SC xmin,xmax,ymin,ymax(,type,left,bottom); SC Xmin, X,Xfactro,Ymin,Yfactor,type;	SC Xmin,Xmax,Ymin,ymax,Xfactor,yFactro,tpye, left, bottom		SC xmin,xmax,ymin,ymax
+Input mask					IM[ e];	IM[ e];			IM[ e];
+Input p1 p2					IP p1x,p1y(p2x,p2y)	IP p1x,p1y(p2x,p2y)	IP p1x,p1y(p2x,p2y)		IP p1x,p1y(p2x,p2y)
+Input p1 p2 relative							IR p1x,p1y,p2x,p2y %		
+Write lower left (set?)		\x,y							
+Write upper right		Zx,y							
+Input window					IW Llx,Lly,Urx,Ury	IW Llx,Lly,Urx,Ury	IW Llx,Lly,Urx,Ury		IW Llx,Lly,Urx,Ury
+Clipping (blocked area)		>							
+????							RP [1-99]		
+Offset		↑x,y(up arrow in what encoding?)							
+Offset polar		^P							
+Factor		&p,q,r							
+Set origin		SO n							
+---------------------------- State query  --------------------------------------------------------------------------------------									
+Output actual position					OA;	OA;			OA;
+Output commanded position					OC;	OC;  (unlike most other RD-GL II commands outputs fraction number)			OC;
+GIN		G							
+call GIN		C							
+Output digitize					(ignored)OD;	(ignored)OD;	OD;		
+Output error					OE;	OE;	OE;		OE
+Output factor					OF; (40 or 10 depending on 0.025mm or 0.1mm mode)	OF; (->40 )			OF
+Output hard clip limits					OH;	OH;	OH;		OH;
+Output identification					OI; (->1350, 1150)	OI; (->1350, 1150)	OI;		OI;
+						(ignored)OK;			
+						OL;			
+Output option parameter					OO; (->0,1,00,1,0,00)	OO; (->0,1,00,1,0,00)			OO; (->0,1,00,1,0,00)
+Output p1,p2					OP;	OP;	OP;		OP;
+Read lower left		[							
+Read upper right		U							
+Output offset		?							
+						OT;			
+Output status		V			OS;	OS;	OS;		OS;
+Output status 2		@							
+Output status 3		#							
+									
+Output window					OW;	OW;			OW;
+Error mask		“							
+Buffer size		BS s1,s2,s3,s4							
+---------------------------- Pallette  --------------------------------------------------------------------------------------									
+???							(unsupported)CR		
+???							NP [2,4,8,16, 32]		
+???							(unsupported)PC		
+???							(unsupported)SV		
+???							(unsupported)TR		
+---------------------------- ????  --------------------------------------------------------------------------------------									
+Call RD-GL I command				^cmd [;]				^cmd [;]	
+AH??						(ignored)AH;			
+Automatic pen features						AP n;			
+Text???						BL c1c2cn;			
+CM??						CM n1, n2;			
+Digitize clear					(ignored)DC;	DC;			
+Digitize point					(ignored)DP;				
+DP???						(ignored)DP;			
+DS??						DS s,n;			
+EP??						EP;	EP;		
+???						FP;	FP;		
+???						(ignored)FS f,n;			
+??? something with pen groups						(ignored)GP g,h,ij			
+???						IV s,t			
+						(ignored)KY k,f;			
+??? something with buffer						PB;			
+						(ignored)SG[ g];			
+motor control									!MC
+Cutting depth, tool up position									!PZ z1, c2
+Drill down velocity									!VZ
+							(unsupported)ESC %#A		
+							(unsupported)ESC  E		
+							(unsupported)FI		
+							(unsupported)FN		
+							(unsupported)SB		
+Control codes TODO					ESC ... 	ESC ... 			
