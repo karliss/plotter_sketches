@@ -1,16 +1,32 @@
 
-|                            | HP-GL           | GP-GL         |  DMP/PL                                          | GCode                    |
-| :------------------------- | :-------------- | ------------- |  ----------------------------------------------- | ------------------------ |
-| Main or initial user       | HP              | Graphtec      |  Houston instrument                              |                          |
-| units                      | 0.025mm + scale | 0.1mm/0.025mm | EC1 0.001in, EC5 0.005in ECM 0.1mm, ECN 0.025mm | G20 inch, G21 metric(mm) |
-| pen lift/down              | PU/PD           | M/D           | M/D                                             | machine specific         |
-| special control characters |                 | ETX           |                                                 |                          |
+|                      | HP-GL        | GP-GL          | DMP/PL                                          | DXG-GL, CAMM-GL mode 1      | RD-GL, CAMM-GL mode 2 | GCode                    |
+| :------------------- | :----------- | -------------- | ----------------------------------------------- | --------------------------- | --------------------- | ------------------------ |
+| Main or initial user | HP           | Graphtec       | Houston instrument                              | Roland                      | Roland                |                          |
+| units                | 0.025mm, 0.02488mm* | 0.1mm/0.025mm  | EC1 0.001in, EC5 0.005in, ECM 0.1mm, ECN 0.025mm | 0.025mm, some mills  0.01mm | 0.025mm               | G20 inch, G21 metric(mm) |
+| pen lift/down        | PU/PD        | M/D            | M/D                                             | M/D                         | PU/PD                 | machine specific         |
+| absolute/relative    | PA/PR        | M/O (down D/E) | A/R                                             | M/R (down D/I)              | PA/PR                 | G90/G91                  |
 
 
 # HP-GL (and HP-GL/2)
 
+Some materials mention HP-GL/2 and HP RTL, what are those?
+
+HP RTL is protocol for raster printers, not relevant for pen plotters
+The HP-GL/2 looks very similar to HP-GL, but it seemed to be described in context of device that support raster printing and other printing protocols. It's unclear if 
+
+Exact scaling factor HP-GL devices is unclear. Many manuals say simply 0.025mm, some device manuals say "0.02488mm or 0.00098in", but there are also some that say "0.00098in 0.025mm". Does the real value vary between device models, are some of those simply inacurate rounding? It almost sounds like 0.02488mm is bad double conversation roundtrip. And that's just the HP docs, who knows what the other manufacturers implementing HP-GL do.
+
+* 0.025mm = 40steps/mm = 1016steps/in (exact) ~= 0.00098425197in  | 100%
+* 0.00098in=0.024892mm ~= 1020.408163 step/in ~= 40.173549 step/mm | 99.6%
+* 1021step/in ~= 0.0009794319in ~= 0.024877571mm | 99.5%
+
+Rounding error between 0.02488 and 0.025 might seem insignificant, but that's 1.5mm for A4 page or 3mm for A3 which can be easily measured and seen with naked eye.
+
+
 ## Available references
-* CHAPTER 9 HP-GL Graphics Language
+* HP DraftPro Plotter Programmer's Reference
+* CHAPTER 9 HP-GL Graphics Language - not the offcial docs from HP 
+* The HP-GL/2 and HP RTL Reference Guide A Handbook for Program Developers
 
 ## Secondary references (for confirming dialects supported by other manufacturer devices)
 * DMP-60 SERIES PLOTTERS OPERATION MANUAL
@@ -31,18 +47,27 @@ Roland DG Corp. and with CAMM-GL III for the CAMM-1 Series of cutting machines
 (mode1), as well as with CAMM-GL I for the CAMM-3 Series of compact modeling
 machines (mode1).
 
-Many Roland plotters support two command modes, one similar to HP-GL and other similar to GP-GL bet there are also some significant differences between real HP-GL, GP-GL and Roland flavors of them.
+Many Roland plotters support two command modes, one slightly similar to GP-Gl and other quite similar to HP-GL.
 
-* DXG-GL - GP-GL like
-* RD-GL I, II, III - based on HP-GL, later versions support wider range of commands
-* CAMM-GL I, II, III mode 1 (more or less same as DXG-GL)
-* CAMM-GL I, II, III mode 2 (more or less same as RDL-GL)
 
-The differences between CAMM-GL I, II, III is that they are targeted at different device categories: CAMM-3 (milling machines), CAMM-2 (engravers), CAMM-1 (plotters).
+| name               | device series | similar roland protocol | similar protocol | device type     | notes                                                                                                                                                                                                     |
+| :----------------- | :------------ | :---------------------- | :--------------- | :-------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| DXG-GL             | DXY           |                         | GP-GL*           | pen plotter     | *many of the more advanced commands differ from GP-GL                                                                                                                                                     |
+| RD-GL I, II, III   | DXY,DPX       |                         | HP-GL            | pen plotter     | Roman number roughly means protocol version, with higher version meaning more commands. But III isn't a strict superset, some commands are removed or argument meaning changed.                           |
+| CAMM-GL III mode 1 | CAMM-1        | DXG-GL                  | GP-GL*           | cutting plotter |                                                                                                                                                                                                           |
+| CAMM-GL II mode 1  | CAMM-2        | DXG-GL                  | GP-GL*           | engraver        | Additional commands for spindle motor control and engraving depth                                                                                                                                         |
+| CAMM-GL I mode 1   | CAMM-3        | DXG-GL                  | GP-GL*           | mill            | Adds additional commands for 3axis movement and spindle control. Some mills are using 0.01 instead of 0.025 step size. Recommended to use CAM software meant for CNC mills instead of plotters/engravers. |
+| CAMM-GL III mode 2 | CAMM-1        | RD-GL                   | HP-GL            | cutting plotter | The Roman number based numbering scheme for RD-GL and CAMM-GL has completely different meaning,                                                                                                           |
+| CAMM-GL II mode 2  | CAMM-2        | RD-GL                   | HP-GL            | engraver        |                                                                                                                                                                                                           |
+| CAMM-GL I mode 2   | CAMM-3        | RD-GL                   | HP-GL            | mill            | Recommended to use CAM software meant for CNC mills instead of plotters/engravers.                                                                                                                        |
+
+DXG-GL, CAMM-GL mode 1 uses only 1 character commands while the GP-GL has some 2 character commands.
+
+CAMM-GL devices have some 3 character commands prefixed by !, which can be used in both mode 1 and mode 2. These are usually Roland specific config commands which differ from GP-GL and HP-GL.
 
 
 ## Available references
-* CAMM-GL II Programmer's Manual (CAM-GL II mode 1, mode 2)
+* CAMM-GL II Programmer's Manual (CAMM-GL II mode 1, mode 2)
 
 * DXY-880 operation manual (DXG-GL, RD-GL)
 * DXY-1350A manual (DXG-GL)
@@ -82,3 +107,10 @@ When possible check the documentation of relevant controller manufacturer or fir
 
 ## Other DIY friendly GCode interpreters
 * [Klipper](https://www.klipper3d.org/G-Codes.html) - high performance gcode interpreter. Primarily targeted at 3d printers, non 3d printer functionality limited. Good support for wide range 
+
+# EBB board protocol
+
+Used by AxiDraw and iDraw machines.
+
+## Available references
+* [EBBB command set Firmware V3.0+](http://evil-mad.github.io/EggBot/ebb.html)
