@@ -15,7 +15,7 @@ When plotting **disable** any **optimizations** which reorder the paths! Certain
 5) Concentric circles. The middle one is using alternating directions. Pay attention whether circles are concentric, round (not oval) and evenly spaced.
 6) Grid of lines
 7) Text size, size of capital letters in mm
-8) Grid made of rectangles with 1mm and 2mm spacing. Unlike 6 the rectangles cause liens to go in alternating directions.
+8) Grid made of rectangles with 1mm and 2mm spacing. Unlike 6 the rectangles cause lines to go in alternating directions.
 9) Grid of rectangles, same as 8. but rotated 45°. 
 10) Grid made of squares drawn in randomized order.
 11) Backlash test. 1mm gaps are intentional. To do the test - place a piece of paper (or other flat straight material) along each square edge and check if the line segment from corner piece is aligned with the square edge.
