@@ -5,7 +5,7 @@
 | Vintage pen plotter | $$ - $$$ | + | 0 | ++++ |
 | DIY | $ - $$$ | + | ++++ | +/+++ |
 | Modern pen plotters | $$$ | ++ | ++ | ++ |
-| Cheap kits | $/$$ | + | ++ | ++ |
+| Cheap kits | $-$$ | + | ++ | ++ |
 | Toy plotters | $ | +++ | - | - |
 | Hobby vinyl cutters/plotters | $$ | +++ | ++ | ++ |
 | Vinyl cutters | $$ - $$$$ | +++ | + | ++ |
@@ -44,6 +44,7 @@ The small market means there is not enough money to make serious engineering eff
 
 If you compare the pen plotters to similar price medium/high end hobby 3d printer or low end CNC machines. Pen plotter by the requirements is already much simpler machine. But even with that advantage the modern pen plotters are much closer to DIY machines than they are to machines of other types or plotters from 40 years ago. This isn't meant to be an insult for the creators of those machines, more of an observation about reality of market and what happens when economies of scale and competition do not apply.
 
+For some people slightly smoother overall experience might 
 
 ## Toy plotters
 
@@ -58,7 +59,7 @@ If you want to save money and are ready for little bit of DIY instead of buying 
 
 The ones costing $100-$150 aren't a bad deal, if you tried to source exactly the same parts yourself it's not hard to end up with slightly higher cost especially considering shipping cost when ordering from multiple vendors.
 
-Cheap price doesn't come without downsides (which might not be a problem depending on your skill set).
+Cheap price comes with it's downsides (which might not be a problem depending on your skill set).
 
 There is a bit of lottery factor with these sellers. Not so much that you won't receive anything at all, but you might not receive exactly the same thing as in pictures. 
 
@@ -72,10 +73,11 @@ One more related category is cheap non enclosed laser engravers, sometimes also 
 My recommendation is stay away from these or at least immediately throw the laser module part into a bin. They are recipe for permanent eye damage to you and everyone around you. And you need proper ventilation. Laser cutters are not something to be used in your living room with children or pets running around.
 From the perspective of modifying one for pen plotting, a lot these have X axis high above desk surface. This is both due to height of laser module and also to support engraving various physical objects not just sheet material. It leads to significant stickout for the z axis and tool, which is fine for a laser engraver that has no side loads, but not optimal for pen plotting. You want the pen to be held as low as possible to minimize deflection.
 
-
+* DBU21
+* ly drawbot
 
 ## DIY builds
-For more information read [DIY plotters](./diy_plotters)
+For more information read [DIY plotters](./diy_plotters.md)
 
 DIY builds is the category which can vary the most. You can make something very cheap, or you can make something with decent performance which compares to modern pen plotters at half the price.
 
@@ -83,21 +85,7 @@ The existing ecosystems of DIY CNC machines and more lately 3d printers means th
 
 Some of the cheapest builds will likely be wallbot/polargraph style or scara type. 
 
-If you are looking for inspiration or an existing design to build checkout websites with models for 3d printing, and posting diy projects. Recommended keywords for search "plotter", "pen plotter", "drawingbot". The later two will have more projects which are using mix of different techniques not just 3d printing.
 
-3d printing
-* [Printables](https://www.printables.com/search/models?q=plotter)
-   * [drawingmachines](https://www.printables.com/search/models?q=tag%3Adrawingmachine)
-   * [penplotter](https://www.printables.com/search/models?q=tag%3Apenplotter)
-   * [plotter](https://www.printables.com/search/models?q=tag%3Aplotter)
-* [Thingiverse](https://www.thingiverse.com/search?q=plotter)
-* [Makerworld](https://makerworld.com/en/search/models?keyword=plotter)
-* [Makerworld](https://makerworld.com/en/search/models?keyword=plotter)
-* [Thagns](https://thangs.com/search/pen%20plotter?scope=all)
-
-All kind of DIY projects:
-* [hackaday.io](https://hackaday.io/search?term=pen+plotter)
-* [instructables](https://www.instructables.com/search/?q=plotter&projects=all)
 
 ## Tabletop hobby plotters/vinyl cutters 
 Compared to alternatives small format vinyl cutters meant for crafts and arts can be cheap option. These type of machines are meant not just for vinyl-cutting but also various crafts and arts projects like various paper crafts, making fancy greeting cards, scrapbooking, lightweight cloth cutting for quilting.
@@ -202,11 +190,17 @@ Not all roller based plotters fully utilize the space saving benefits of roller 
 
 Also be aware that many roller based devices support only very specifc paper widths due to limited positions of top and bottom rollers.
 
-Roller based design is less common for DIY machines, as it's tricky to get it working right and reliably especially for bigger paper sizes. Something like A4 is not so bad. Even commercial machines occasionaly hav notes like about position not being reliable for plots longer than 1-2m assuming it's even supported. I don't recommend trying to make a roller based machine, unless you are up for a serious challange and are more interested in mechanical tinkering than getting a functioning pen plotter at the end.
+Roller based design is less common for DIY machines, as it's tricky to get it working right and reliably especially for bigger paper sizes. Something like A4 is not so bad. Even commercial machines occasionaly have notes like about position not being reliable for plots longer than 1-2m assuming it's even supported. I don't recommend trying to make a roller based machine, unless you are up for a serious challange and are more interested in mechanical tinkering than getting a functioning pen plotter at the end.
 
-* 
+Many of the DIY roller based plotters directly or inspired on design done by "IV projects".
+
+* https://www.youtube.com/watch?v=wX90X4rVUr8
+* https://www.youtube.com/watch?v=DeLeu5LkZCo
 * https://www.thingiverse.com/thing:3789969
+* https://www.youtube.com/watch?v=AuwU73lvwYM
 
+
+* https://github.com/BenjaminPoilve/Liplo
 
 ## Wallbot/polargraph/ ...
 
@@ -258,11 +252,13 @@ Some examples
 * https://www.youtube.com/watch?v=a46DMy_3xc4
 * [Mechpen](https://tinkerlog.com/2019/08/27/mechpen/)
 
+## Uncommon designs
+
+*  https://github.com/bdring/Polar-Coaster
+
 ## Rolling plotter
-One of the more unusual designs is having plotter driving itself around.
 
-https://builds.openbuilds.com/builds/a-rolling-plotter.9207/
-
+* https://builds.openbuilds.com/builds/a-rolling-plotter.9207/
 
 # Z axis
 Requirements of pen plotters compared to other CNC machines have some unique challenges, but it also opens doors for solutions which wouldn't be suitable in other devices.
@@ -283,6 +279,8 @@ Software and firmware setup could require more customization than usual since bo
 
 ## String/Stepper belt pulling up
 A string or a belt can only apply force in tension, it can't push things. Usually that's a limitation, but in this case it's a feature. Belt can be used to pull the pen up, while leaving downward motion to gravity or a spring.
+
+Unlike the stepper belt ring approach, this doesn't need a belt tensioning mechanism.
 
 A slightly more complicated version of this can be seen in UUNA TEK iDraw machines. 
 
