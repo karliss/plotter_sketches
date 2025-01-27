@@ -35,3 +35,5 @@ If you are looking for inspiration or an existing design to build checkout websi
 All kind of DIY projects:
 * [hackaday.io](https://hackaday.io/search?term=pen+plotter)
 * [instructables](https://www.instructables.com/search/?q=plotter&projects=all)
+
+* https://www.instructables.com/CNC-Plotter-1/  (lingib)

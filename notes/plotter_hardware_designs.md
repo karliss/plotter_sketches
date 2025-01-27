@@ -5,7 +5,7 @@
 | Vintage pen plotter | $$ - $$$ | + | 0 | ++++ |
 | DIY | $ - $$$ | + | ++++ | +/+++ |
 | Modern pen plotters | $$$ | ++ | ++ | ++ |
-| Cheap kits | $-$$ | + | ++ | ++ |
+| Cheap kits | $ - $$ | + | ++ | ++ |
 | Toy plotters | $ | +++ | - | - |
 | Hobby vinyl cutters/plotters | $$ | +++ | ++ | ++ |
 | Vinyl cutters | $$ - $$$$ | +++ | + | ++ |
@@ -267,8 +267,28 @@ Pen plotters don't really need arbitrary z axis movement. It's only necessary to
 
 
 
-## Hobby servo
+## RC servo
 
+One of the cheapest and simplest option is using a RC servo.
+
+Good parts:
+* doesn't need a separate motor driver
+* doesn't need homing
+* (smaller ones) can be very light
+
+Dowsnides:
+* Limited motion range
+* Cheaper ones will wear out after a while
+* Noisy and not the fastest
+
+## Solenoid
+
+Good parts:
+* very fast
+
+Dowsnides:
+* noisy
+* very limited motion range
 
 ## Stepper belt ring
 An interesting approach using a stepper motor for Z axis is used by [LumenPnP](https://www.opulo.io/products/lumenpnp) machine. A single vertically mounted belt loop with 2 toolheads attached, one on each side. This gives movement of 2 tools for the cost 1 stepper motor.
