@@ -22,7 +22,7 @@ One thing that might slightly held them back is limited computing power and data
 Two major subcategories are flatbed plotters and roller based ones. For the flatbed ones paper stands still and the pen moves along x and y axes. This means that plotter needs to be bigger than the paper sheet you are drawing on and it takes a lot of space on the table. Some of them where designed to allow standing at angle, not quite vertically.
 Roller based ones use rollers to move paper back and forth along Y axis, with X axis being stationary, similar to how modern printers work. This approach was used both for desktop sized plotters, also large ones supporting up to A1 or A2 size paper.
 
-Depending on how well it's preserved you can find deals in $200-$600, broken ones sold as parts only in $50-$150 range. Since it's not that easy to run them with modern computer not all sellers can easily test if the plotter is in working state, so you can occasionally be lucky and find a working one sold as "parts only". 
+Depending on how well it's preserved you can find deals for $200-$600, broken ones sold as parts only in $50-$150 range. Since it's not that easy to run them with modern computer not all sellers can easily test if the plotter is in working state, so you can occasionally be lucky and find a working one sold as "parts only". 
 
 As with any vintage device availability is of spare parts and consumables is limited. It will likely need some tinkering to keep it running. Some plastic parts might be broken, rubber deteriorated. 
 If you are lucky someone has already designed and shared models for 3d printable replacements. 
@@ -44,7 +44,7 @@ The small market means there is not enough money to make serious engineering eff
 
 If you compare the pen plotters to similar price medium/high end hobby 3d printer or low end CNC machines. Pen plotter by the requirements is already much simpler machine. But even with that advantage the modern pen plotters are much closer to DIY machines than they are to machines of other types or plotters from 40 years ago. This isn't meant to be an insult for the creators of those machines, more of an observation about reality of market and what happens when economies of scale and competition do not apply.
 
-For some people slightly smoother overall experience might 
+For some people slightly smoother overall experience might be worth it.
 
 ## Toy plotters
 
@@ -68,8 +68,9 @@ Small changes like that might cause parts to interfere during assembly. Or selle
 
 Don't expect high quality, accurate instructions and be ready to figure out things yourself.
 
+One more potential upgrade for these is replacing the controller board. Many of these plotters use same controller board as axidraw to allow using with axidraw software. It's a <10years old board with underpowered microcontroller and custom protocol supported supported almost exclusively by axidraw sofware. See [Diy plotters](./diy-plotters.md) for alternative choices. You can now get much more powerful controller boards, with better feature set and supported by wider set of software for 1/3 the price of EBB board.
 
-One more related category is cheap non enclosed laser engravers, sometimes also sold as laser engravers/plotters. The movement part of these are very similar to previous, but maybe slightly higher quality with more custom parts. Makes sense since the laser engraves have significantly bigger market for making customized gifts and merchandise and wooden trinkets, and it's not something which can be easily substituted by other technique.
+Related category of machines is cheap non enclosed laser engravers, sometimes also sold as laser engravers/plotters. The movement part of these are very similar to previous, but maybe slightly higher quality with more custom parts. Makes sense since the laser engraves have significantly bigger market for making customized gifts and merchandise and wooden trinkets, and it's not something which can be easily substituted by other technique.
 My recommendation is stay away from these or at least immediately throw the laser module part into a bin. They are recipe for permanent eye damage to you and everyone around you. And you need proper ventilation. Laser cutters are not something to be used in your living room with children or pets running around.
 From the perspective of modifying one for pen plotting, a lot these have X axis high above desk surface. This is both due to height of laser module and also to support engraving various physical objects not just sheet material. It leads to significant stickout for the z axis and tool, which is fine for a laser engraver that has no side loads, but not optimal for pen plotting. You want the pen to be held as low as possible to minimize deflection.
 
@@ -83,7 +84,7 @@ DIY builds is the category which can vary the most. You can make something very 
 
 The existing ecosystems of DIY CNC machines and more lately 3d printers means that there is wide availability of mechanical parts, electronic parts, controller boards and software. 
 
-Some of the cheapest builds will likely be wallbot/polargraph style or scara type. 
+Some of the cheapest builds will likely be wallbot/polargraph style or hobby servo based scara type. 
 
 
 
@@ -112,6 +113,7 @@ Don't forget that the pen mount needs to be spring loaded (rubber bands can be u
 
 The downside to this approach is that Z axis in most 3d printers isn't very fast, since during normal usage there is barely any Z movement. It's not problem for small simple drawings, but for larger ones with more than 10k-100k pen lifts this can be a major bottleneck. If you finetune everything so that you only need to lift the pen <1mm, it might not be so bad, but that will be hard to combine with reliable pen pressure.
 
+You can find existing models designed specifically for many of the most popular 3d printers https://www.printables.com/@Kabacis_332837/collections/1870430 .
 
 # Pen plotter types
 
@@ -131,7 +133,7 @@ Downsides:
 ## H-bot
 (See [T-bot](#t-bot) as simpler version of this if you want to understand how this work)
 
-H-bot has it's name from the shape of it's belt path. Instead of having separate motors controlling each axis, there two motors connected to single loop of belt. Both motors are responsible for X and Y movement. Depending on whether they are spinning in same or opposite directions you will get the movement along either X or Y axis. Spinning just one them will result in diagonal movement. While this might sound complicated all decent controller firmwares should have a builtin mode for this type of kinematics, so you don't need to worry too much about it.
+H-bot has it's name from the shape of it's belt path. The frame also has H shape, but not every ploter with H shape is H-bot. Instead of having separate motors controlling each axis, there two motors connected to single loop of belt. Both motors are responsible for X and Y movement. Depending on whether they are spinning in same or opposite directions you will get the movement along either X or Y axis. Spinning just one them will result in diagonal movement. While this might sound complicated all decent controller firmwares should have a builtin mode for this type of kinematics, so you don't need to worry too much about it.
 
 Downsides:
 * belt path introduces twisting force for the x axis
@@ -143,7 +145,7 @@ Benefits:
 
 
 ## Core-xy
-One of recent trends among 3d printer builds is having core-xy kinematics. It shares many of the properties with H-bot, but solves some of it's downsides at the cost of slight increase in complexity. 
+One of recent trends among 3d printer builds is having core-xy kinematics. It shares many of the properties with H-bot, but solves some of it's downsides at the cost of slight increase in complexity.
 
 Note that there is large amount of seriously flawed core-xy designs out there. Before designing your own, or making someone's else design I would recommend reading some articles so that you are aware of potential pitfalls and how to avoid them.
 
@@ -192,10 +194,12 @@ Also be aware that many roller based devices support only very specifc paper wid
 
 Roller based design is less common for DIY machines, as it's tricky to get it working right and reliably especially for bigger paper sizes. Something like A4 is not so bad. Even commercial machines occasionaly have notes like about position not being reliable for plots longer than 1-2m assuming it's even supported. I don't recommend trying to make a roller based machine, unless you are up for a serious challange and are more interested in mechanical tinkering than getting a functioning pen plotter at the end.
 
-Many of the DIY roller based plotters directly or inspired on design done by "IV projects".
+Many of the DIY roller plotters are either inspired or directly based on design done by "IV projects".
 
 * https://www.youtube.com/watch?v=wX90X4rVUr8
 * https://www.youtube.com/watch?v=DeLeu5LkZCo
+* https://github.com/IVProjects/Engineering_Projects/tree/main/ProjectFiles/Pen%20PlotterV2
+* https://github.com/IVProjects/Engineering_Projects/tree/main/ProjectFiles/High-Speed%20Pen%20Plotter
 * https://www.thingiverse.com/thing:3789969
 * https://www.youtube.com/watch?v=AuwU73lvwYM
 
@@ -225,15 +229,15 @@ The precision and speed will likely not be very good.
 * [Makelangelo](http://www.makelangelo.com/)
 
 ## SCARA/5-bar linkage
-Technically SCARA and 5-bar linkage mean slightly different things, but many of the plotters discussed are both, so it helps searching if you try both names. A serial SCARA robot wouln't be using a 5-bar linkage.
+Technically SCARA and 5-bar linkage mean slightly different things, but many of the plotters discussed are both, so it helps searching if you try both names. A serial SCARA robot wouldn't be using a 5-bar linkage.
 
 In theory SCARA robots can be very fast, and have relatively large working area which is bigger than their footprint. The main industrial application is picking up and moving around small parts, similar to delta robots.
 
 The potential for speed comes from lightweight arms and having all actuators being placed in main pillar and not having to move around.
 
-In practice most pen plotters using type of mechanism are very slow, with small working area and quite imprecise. 
+In practice most pen plotters using this type of mechanism are very slow, with small working area and quite imprecise. 
 
-Most common categories are either toy robots described at the end of [Modern pen plotters](#modern-pen-plotters) section, or DIY builds also using 2-3 hobby servos. This is one of the cheapest/simplest pen plotters you can make. In the most minimal case you need
+Most common categories are either toy robots described in [Toy plotters](#toy-plotters) section, or DIY builds also using 2-3 hobby servos. This is one of the cheapest/simplest pen plotters you can make. In the most minimal case you need
 * 2-3 hobby-servos
 * any microcontroller board
 * power source
@@ -243,7 +247,7 @@ It is possible to make less floppy and fast SCARA plotter, and you can find some
 
 The lack of precision comes in typical DIY builds comes from multiple factors:
 * Extended arms have a lot of leverage on the joints which makes everything flex a lot more than comparable Cartesian design
-* A hobby servo will likely have no more than 10-14bits for full motion range of ~90-180°. A stepper motor without microstepping has 200steps (<8bits) for 360° and microsteps might add up to 8 more bits. Any easily accessible angle sensor will also likely have no more than 10-14bits of resolution. By very rough estimates that gives ~0.1mm resolution which doesn't sound so bad. But as the area increases angle accuracy doesn't improve. All the movement range comes from angle accuracy of less than single motor turn. In most other robot designs single motor turn is responsible for a small range of motion, and for longer moves you perform multiple turns of motor. For comparison typical Cartesian design with stepper motors will likely have resolution of 0.16-0.2mm without microstepping, once you add microstepping you get resolution of 0.0008-0.0125mm.
+* A hobby servo will likely have no more than 10-14bits for full motion range of ~90-180°. A stepper motor without microstepping has 200steps (<8bits) for 360° and microsteps might add up to 8 more bits. Any easily accessible angle sensor will also likely have no more than 10-14bits of resolution. By very rough estimates with 5 cm arms that gives ~0.1mm resolution which doesn't sound so bad. But as the area increases angle accuracy doesn't improve. All the movement range comes from angle accuracy of less than single motor turn. In most other robot designs single motor turn is responsible for a small range of motion, and for longer moves you perform multiple turns of motor. For comparison typical Cartesian design with stepper motors will likely have resolution of 0.16-0.2mm without microstepping, once you add microstepping you get resolution of 0.0008-0.0125mm.
 * One more source of bad precision and jerky movement comes from the math required to transform the x y coordinates to motor angles. It requires moderate moderate amount of trigonometric calculations. Even worse you can't just calculate angles for endpoints of movement and linearly interpolate between the two, you need to do full calculations for all the intermediate points. Doing this thousands of times per second on a microcontroller which might not even a have a floating point unit can be a problem.
 
 
@@ -256,7 +260,7 @@ Some examples
 
 *  https://github.com/bdring/Polar-Coaster
 
-## Rolling plotter
+### Rolling plotter
 
 * https://builds.openbuilds.com/builds/a-rolling-plotter.9207/
 
@@ -312,6 +316,8 @@ Rack and pinion mechanism lifts the silver color metal plate. But the pen holder
 
 ![UUNA TEK 3 rack_pinion](./pictures/plotter-hardware/pinion.jpg)
 
+* https://www.printables.com/model/868919-generative-pen-plotter-art-cnc-arduino-vinyl-cutte
+
 ## (not recommended) Lead screw
 Many DIY CNC machines use some kind of lead screw mechanism for lifting and lowering Z axis.
 
@@ -352,4 +358,16 @@ Downsides:
 
 ## Rotary pen changer
 
+Used by many of roller based vintage plotters. Requires only single motor for spinning the carousel of pens and clever latching mechanism allowing to take and return the pen by bumping the pen holder against carousel. Usually holds ~6-8 pens.
+
 ## Linear pen changers
+
+Mostly used by flatbed vintage plotters, but there is at least one case of linear pen changer being used in roller plotter.
+
+Consists of pens being placed at the edge of drawing area and a latching mechanism similar to rotary pen changer. This allows pen changer to be fully passive without any additional actuator beside the ones used to do x/y motion.
+
+Sometimes also used by DIY machines, tricky part is having a mechanism which allows reliably grabbing and releasing the pen but holds it rigidly without wobble while drawing.
+
+## Multiple pens in tool head
+
+There are a few similar receipt printer size pen plotters using small metal capsule shaped pens. They have a rotating pen changer mechanism holding 4 pens built into the toolhead. That way there is no need to grab or release a pen during change. It only needs to rotate which was also done by bumping the mechanism against end of x axis.

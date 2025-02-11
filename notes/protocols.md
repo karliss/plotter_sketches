@@ -112,5 +112,7 @@ When possible check the documentation of relevant controller manufacturer or fir
 
 Used by AxiDraw and iDraw machines.
 
+* http://evil-mad.github.io/EggBot/ebb.html
+
 ## Available references
 * [EBBB command set Firmware V3.0+](http://evil-mad.github.io/EggBot/ebb.html)

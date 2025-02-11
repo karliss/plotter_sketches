@@ -17,6 +17,8 @@ TODO:
 * Linear rails
 * Linear bearings common size LM8UU
 * Aluminum extrusion (for frame) commonly used 2020 series. There are variations 2x1, 3x1 and other variations which are 40x20 and 60x20 mm accordingly. Usually used together with matching angle brackets and t-nuts. Notes. Note that there are various other similar looking aluminum extrusion systems which have incompatible dimensions. Also 80/20 extrusions often instead referring to 4x1 2020 series profile (which have dimensions of 80x20mm), instead means one of the aluminum extrusions made by company called "80/20" which have multiple extrusion systems including some that are based on inches instead of metric units.
+* V-wheels for matching aluminum extrusions. You can also buy ready mount plates with 3-4 wheels, with builtin mechanism for adjusting tension.
+
 ## Source of inspiration/existing models
 
 If you are looking for inspiration or an existing design to build checkout websites with models for 3d printing, and posting diy projects. Recommended keywords for search "plotter", "pen plotter", "drawingbot". The later two will have more projects which are using mix of different techniques not just 3d printing.
@@ -37,3 +39,4 @@ All kind of DIY projects:
 * [instructables](https://www.instructables.com/search/?q=plotter&projects=all)
 
 * https://www.instructables.com/CNC-Plotter-1/  (lingib)
+* https://howtomechatronics.com/projects/diy-pen-plotter-with-automatic-tool-changer-cnc-drawing-machine/ 
