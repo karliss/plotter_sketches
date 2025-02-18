@@ -254,7 +254,7 @@ The lack of precision comes in typical DIY builds comes from multiple factors:
 Some examples
 * https://www.brachiograph.art/
 * https://www.youtube.com/watch?v=a46DMy_3xc4
-* [Mechpen](https://tinkerlog.com/2019/08/27/mechpen/)
+* [Mechpen](https://tinkerlog.com/2019/08/27/mechpen/) (large one)
 
 ## Uncommon designs
 
@@ -360,6 +360,8 @@ Downsides:
 
 Used by many of roller based vintage plotters. Requires only single motor for spinning the carousel of pens and clever latching mechanism allowing to take and return the pen by bumping the pen holder against carousel. Usually holds ~6-8 pens.
 
+Examples: HP 7475a, HP7440a
+
 ## Linear pen changers
 
 Mostly used by flatbed vintage plotters, but there is at least one case of linear pen changer being used in roller plotter.
@@ -367,7 +369,11 @@ Mostly used by flatbed vintage plotters, but there is at least one case of linea
 Consists of pens being placed at the edge of drawing area and a latching mechanism similar to rotary pen changer. This allows pen changer to be fully passive without any additional actuator beside the ones used to do x/y motion.
 
 Sometimes also used by DIY machines, tricky part is having a mechanism which allows reliably grabbing and releasing the pen but holds it rigidly without wobble while drawing.
+Typical example - Roland DXY series.
+
+* DMP-161 - unusual case of roller plotter with linear pen changer https://www.youtube.com/watch?v=JGgGQGiP4As
 
 ## Multiple pens in tool head
 
 There are a few similar receipt printer size pen plotters using small metal capsule shaped pens. They have a rotating pen changer mechanism holding 4 pens built into the toolhead. That way there is no need to grab or release a pen during change. It only needs to rotate which was also done by bumping the mechanism against end of x axis.
+    * https://homecomputerguy.de/en/2021/12/26/commodore-vc-1520-plotter/

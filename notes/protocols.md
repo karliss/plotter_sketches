@@ -2,7 +2,7 @@
 |                      | HP-GL        | GP-GL          | DMP/PL                                          | DXG-GL, CAMM-GL mode 1      | RD-GL, CAMM-GL mode 2 | GCode                    |
 | :------------------- | :----------- | -------------- | ----------------------------------------------- | --------------------------- | --------------------- | ------------------------ |
 | Main or initial user | HP           | Graphtec       | Houston instrument                              | Roland                      | Roland                |                          |
-| units                | 0.025mm, 0.02488mm* | 0.1mm/0.025mm  | EC1 0.001in, EC5 0.005in, ECM 0.1mm, ECN 0.025mm | 0.025mm, some mills  0.01mm | 0.025mm               | G20 inch, G21 metric(mm) |
+| units                | 0.025mm, 0.02488mm* | 0.1mm/0.025mm  | EC1 0.001in, EC5 0.005in, ECM 0.1mm, ECN 0.025mm | 0.025mm, some mills  0.01mm, 0.1mm | 0.025mm               | G20 inch, G21 metric(mm) |
 | pen lift/down        | PU/PD        | M/D            | M/D                                             | M/D                         | PU/PD                 | machine specific         |
 | absolute/relative    | PA/PR        | M/O (down D/E) | A/R                                             | M/R (down D/I)              | PA/PR                 | G90/G91                  |
 
@@ -94,7 +94,7 @@ While basic commands are similar almost major manufacturer or firmware uses thei
 ## Available references
 When possible check the documentation of relevant controller manufacturer or firmware.
 
-* https://www.linuxcnc.org/documents/ the GCode dialect is based on RS274/NGC
+* https://www.linuxcnc.org/documents/ the GCode dialect is based on RS274/NGC . LinuxCNC rarely used for pen plotters
 * RS274/NGC - not to be confused with various RS274 standards, describes the NIST reference GCode interpreters (with actual source code not an abstract specification)
 * RS274 - common name for various standards made by NIST and other standards organizations describing the GCode. As far as I am aware the text can be only obtained by paying like many other standards. Limited relevance for hobbyists since most controller firmwares follow it very loosely. 
 * https://reprap.org/wiki/G-code - covers differences between various 3d printer firmwares
