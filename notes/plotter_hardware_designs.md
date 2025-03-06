@@ -29,13 +29,16 @@ If you are lucky someone has already designed and shared models for 3d printable
 These types of pen plotters are usually meant to be used with specially shaped stubby pens. You can find some old stock in the various marketplaces, but if you are going to do a lot of plots that can become costly. So you will also likely make an adapter for pens. 
 One more problem with using modern pens is that the original pens were very short and rest of machine designed with that in mind. This is mostly a problem for roller based plotter with pen changers or a plastic cover over the moving parts. Flatbed plotters are more likely to be compatible with longer pens without any modifications except the mounting adapter.
 
-One bright side in terms of repeatability is that at the time these plotters where made, manufacturers providing a service manual with full schematics and detailed troubleshooting steps was still common.
+One bright side in terms of repairability is that at the time these plotters where made, manufacturers providing a service manual with full schematics and detailed troubleshooting steps was still common.
 
 The optimized design comes at the cost of versatility. Loading an arbitrary pen or paper can be problematic. Again flatbed plotters are slightly better as you can more or less place any paper or flat material smaller than maximum size, but the roller based ones will likely expect very specific paper sizes and fail to feed anything which isn't normal thickness office paper. Rollers can also be problematic if they go over any wet ink smudging it. You would at least hope that roller based plotters have infinite Y axis, that isn't always the case. Plenty of roller based plotters only support specific standard paper sheet sizes, and even if paper rolls are supported accuracy over for plots bigger than 1-2 meters isn't guaranteed.
 Well optimized design means limited Z axis movement range and pen pressure, so using anything which isn't a normal pen will likely not work.
 
 Other major drawback is related to ease of use of use, connection and software setup. It's not exactly a plug and play process. You will likely need a some kind special adapter for connecting to modern PC. And not every adapter will properly function with every device. After electrical connection, next challenge is connection parameters. Serial port has half dozen parameters which need to be configured exactly the same on the plotter and the software running on your computer. Consult the documentation of your plotter to find out correct values, don't attempt to guess randomly there are way too many different combinations. Often these can be changed on the plotter using dip switches on the back of plotter. 
 Third step is the actual printing. Instead of trying to get drivers and configured like regular printer (with exception of drivers for adapter if needed) treat it like generic serial port like device. There is a bunch of software meant for either directly interfacing with such plotters, or converting svg to the language plotter understands and then you send the file using some other software. You can also write your own script which directly generates the drawing in language understood by your plotter. The languages used by plotters were very simple but somewhat high level at the same time compared to modern formats so it's not too difficult if you have some programming knowledge. Usually it's either HPGL or GPGL or something based on those two, but there can also be a bunch subtle differences between each machine. So check the manual especially if you are planning to use anything more advanced the move to position, draw straight line.
+
+While the speed for straight lines and pen lifting/lowering is quite good, CPUs in these plotters are somewhat slow. Drawing circles or other curves can be much slower compared to straight lines. Stepper driver technology also has advanced over the years. Modern stepper drivers like those made by Trinamics can be much quiter compared to vintage pen plotters.
+
 
 ## Modern pen plotters
 For most practical use cases pen plotters have been replaced by other printing technologies. Modern "Plotters" that you might find in architecture firms are just large size inkjet printers. This means that new commercial plotters is a very small niche, with few manufacturers. 
@@ -172,21 +175,21 @@ Due to simple and cheap design this is common design used both by commercial mac
 Benefits:
 * small part count -> cheap
 * fixed motor mounts -> less moving weight
-* While not being used
+* While not being used, doesn't take too much space
 
 Downsides:
-* Working area is less than half of space taken by machine while active. Can't be placed next to a wall.
+* Takes alot ot space while being used. Working area is less than half of space taken by machine while active. Can't be placed next to a wall. 
 * Cantilever design causes a lot of force in the central connection, can result in unsupported end drooping and variance in vertical position depending on X position.
 
 
-* https://www.youtube.com/watch?v=Ww2grGsl3Dk
+* https://www.youtube.com/watch?v=Ww2grGsl3Dk (video explaining how T-bot works)
 
 
 ## Roller based plotters
 Roller based plotters move the paper along Y axis using rollers. This has an advantage of being more compact and avoid the need for Y axis to move whole X axis assembly thus resulting in overall lighter and simpler design. 
 This is an approach used by many of vintage plotters and modern vinyl cutters. This design also allows handling rolls of paper, which can be more convenient and cheaper to handle compared to individual paper sheets. 
 
-But not that not all roller based plotters support paper in in rolls, some plotter models have variants with and without paper roll support. 
+But not all roller based plotters support paper in in rolls, some plotter models have variants with and without paper roll support. 
 
 Not all roller based plotters fully utilize the space saving benefits of roller system. HP 7470A has a shelf for the paper end in front and back of roller system, making the plotter depth almost as big as the paper length it's using.
 
@@ -247,7 +250,7 @@ It is possible to make less floppy and fast SCARA plotter, and you can find some
 
 The lack of precision comes in typical DIY builds comes from multiple factors:
 * Extended arms have a lot of leverage on the joints which makes everything flex a lot more than comparable Cartesian design
-* A hobby servo will likely have no more than 10-14bits for full motion range of ~90-180°. A stepper motor without microstepping has 200steps (<8bits) for 360° and microsteps might add up to 8 more bits. Any easily accessible angle sensor will also likely have no more than 10-14bits of resolution. By very rough estimates with 5 cm arms that gives ~0.1mm resolution which doesn't sound so bad. But as the area increases angle accuracy doesn't improve. All the movement range comes from angle accuracy of less than single motor turn. In most other robot designs single motor turn is responsible for a small range of motion, and for longer moves you perform multiple turns of motor. For comparison typical Cartesian design with stepper motors will likely have resolution of 0.16-0.2mm without microstepping, once you add microstepping you get resolution of 0.0008-0.0125mm.
+* A hobby servo will likely have no more than 10-14bits for full motion range of ~90-180°. A stepper motor without microstepping has 200steps (<8bits) for 360° and microsteps might add up to 8 more bits. Any easily accessible angle sensor will also likely have no more than 10-14bits of resolution. By very rough estimates with 5 cm arms that gives ~0.1mm resolution which doesn't sound so bad. But as the area increases angle accuracy doesn't improve. All the movement range comes from angle accuracy of less than single motor turn. In most other robot designs single motor turn is responsible for a small range of motion, and for longer moves you perform multiple turns of motor. For comparison typical Cartesian design with stepper motors will likely have resolution of 0.16-0.2mm without microstepping, once you add microstepping you get resolution of 0.0008-0.0125mm and it isn't affect by working area size.
 * One more source of bad precision and jerky movement comes from the math required to transform the x y coordinates to motor angles. It requires moderate moderate amount of trigonometric calculations. Even worse you can't just calculate angles for endpoints of movement and linearly interpolate between the two, you need to do full calculations for all the intermediate points. Doing this thousands of times per second on a microcontroller which might not even a have a floating point unit can be a problem.
 
 

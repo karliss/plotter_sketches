@@ -44,3 +44,17 @@ All kind of DIY projects:
 
 * https://www.instructables.com/CNC-Plotter-1/  (lingib)
 * https://howtomechatronics.com/projects/diy-pen-plotter-with-automatic-tool-changer-cnc-drawing-machine/ 
+
+
+## Lifter designs
+
+
+* https://www.printables.com/model/868919-generative-pen-plotter-art-cnc-arduino-vinyl-cutte#preview.80Yeb (string stepper)
+* https://discord.com/channels/929089222118359100/1133548294925209814/1188035146457284668 (idraw clone)
+* https://discord.com/channels/499297341472505858/499298106035273770/1323441263625638039 (belt string)
+* https://discord.com/channels/929089222118359100/1191870618187087992/1331014811848413265 (belt loop, 2 sliders on one rail)
+
+
+# Various builds
+* https://github.com/DanniDesign/Ploxy/tree/main
+* https://github.com/jamescarruthers/PlotteRXY

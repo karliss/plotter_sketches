@@ -6,3 +6,6 @@
 * roland DXY-1200 https://www.elektroda.pl/rtvforum/topic1192751.html
 
 * https://plotterstation.osp.kitchen/catalogue.html
+* https://www.hpmuseum.net/exhibit.php?class=4&cat=24
+
+* HP replacement carousel https://www.thingiverse.com/thing:6961560
