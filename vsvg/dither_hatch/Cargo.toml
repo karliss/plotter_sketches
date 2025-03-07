@@ -1,0 +1,10 @@
+[package]
+name = "dither_hatch"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+whiskers = { git = "https://github.com/abey79/vsvg.git" }
+vsvg = { git = "https://github.com/abey79/vsvg.git" }
+image = "0.25"
+nalgebra = "0.33"
