@@ -22,6 +22,7 @@ Historical, closed or doesn't produce technical pens anymore
 * Kern Prontograph (Swiss company, closed factory in 1991) https://www.kern-aarau.ch/kern/willkommen.html
 * Centropen centrograph (Czech Republic, still making various writing tools the technical pen not listed on website or latest catalog)
 * MECANORMA mg1 (France, looks very similar to Aristo MG1)
+* reform refograph (Germany)
 
 Other resources:
 * https://www.reddit.com/r/Stylographs/
