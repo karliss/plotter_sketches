@@ -12,7 +12,8 @@ use whiskers::prelude::*;
 enum DitherMode {
     #[default]
     Ordered8Dot,
-    HV1
+    HV1,
+    BayerXJoin
 }
 
 #[sketch_app]
@@ -134,17 +135,16 @@ fn dither_a(state: &mut DitherSketch, sketch: &mut Sketch)
         .rows(state.h as usize);
 
 
-    let mina = [
-        [ 0, 8, 2,10,  0, 8, 2,10],
-        [12, 4,14, 6, 12, 4,14, 6],
-        [ 3,11, 1, 9,  3,11, 1, 9],
-        [15, 7,13, 5, 15, 7,13, 5],
 
-        [ 0, 8, 2,10,  0, 8, 2,10],
-        [12, 4,14, 6, 12, 4,14, 6],
-        [ 3,11, 1, 9,  3,11, 1, 9],
-        [15, 7,13, 5, 15, 7,13, 5],
+
+    let mina = [
+        [0, 8, 2,10],
+        [12, 4,14, 6],
+        [ 3,11, 1, 9],
+
+        [15, 7, 13, 5]
     ];
+
 
 
     /*grid.build(sketch, |sketch, cell| {
@@ -167,7 +167,9 @@ fn dither_a(state: &mut DitherSketch, sketch: &mut Sketch)
         let a = mina[cell.row % mina.len()][cell.column % mina[0].len()];
 
 
-        if mg < ((443) * (a+1)) / 17 {
+        //if mg < ((443) * (a+1)) / 17 
+        if 443-mg > ((443) * (a+1)) / 17 
+        {
             sketch.line(p1.x(), p1.y(), p2.x(), p2.y());
         }
     });
@@ -284,7 +286,7 @@ fn dither_b(state: &mut DitherSketch, sketch: &mut Sketch)
             }
             let v1 = first as f64;
             let mut v2 = last_need as f64;
-            if (first == last_need) {
+            if first == last_need {
                 v2 += 0.01;
             }
             sketch.line(v1 * gs, y as f64 * gs, v2 * gs, y as f64 * gs);
@@ -300,20 +302,145 @@ fn dither_b(state: &mut DitherSketch, sketch: &mut Sketch)
             let first = y;
             let mut last_need = first;
             while y < (state.h as u32) && flags.get_pixel(x, y)[0] > 0 {
-                if (flags.get_pixel(x, y)[0] == 1) {
+                if flags.get_pixel(x, y)[0] == 1 {
                     last_need = y;
                 }
                 y += 1;
             }
             let v1 = first as f64;
             let mut v2 = last_need as f64;
-            if (first == last_need) {
+            if first == last_need {
                 v2 += 0.01;
             }
             sketch.line(x as f64 * gs, v1 * gs, x as f64 * gs, v2 * gs);
         }
     }
 }
+
+
+
+fn dither_ax(state: &mut DitherSketch, sketch: &mut Sketch)
+{
+    let image = &state.dstate.image;
+    let gs = state.line_size * state.grid_mul;
+
+    let grid = Grid::from_cell_size([gs, gs])
+        .columns(state.w as usize)
+        .rows(state.h as usize);
+
+
+    let mina = [
+        [0, 8, 2,10],
+        [12, 4,14, 6],
+        [ 3,11, 1, 9],
+        [15, 7, 13, 5]
+    ];
+
+
+    let mut flags = ImageBuffer::from_fn(image.width(), image.height(), |_x, _y| {
+        image::Luma([0u8])
+    });
+
+
+
+    grid.build(sketch, |sketch, cell| {
+        let p1 = cell.position;
+        let p2 = p1 + Point::new(cell.size[0]*0.1, 0);
+        
+        let c1 = image.get_pixel(cell.column as u32, cell.row as u32);
+        let mg = pixel_magnitude2(*c1).isqrt();
+        
+        let W = mina.len();
+        let a: i32 = mina[cell.row % W][cell.column % W];
+
+
+        if 443-mg > ((443) * (a+1)) / 17 {
+            *flags.get_pixel_mut(cell.column as u32, cell.row as u32) = Luma([1 as u8; 1]);
+            //sketch.line(p1.x(), p1.y(), p2.x(), p2.y());
+        }
+    });
+    for y in 0..(state.h) {
+        for x in 0..state.w {
+            if flags.get_pixel(x, y)[0] == 0 {
+                continue;
+            }
+            let mut f2:u8 = 1;
+            if let Some(v) = flags.get_pixel_checked(x.wrapping_sub(1), y.wrapping_sub(1)) {
+                if v[0] > 0 {
+                    f2 |= 2;
+                }
+            }
+            if let Some(v) = flags.get_pixel_checked(x+1, y+1) {
+                if v[0] > 0 {
+                f2 |= 2;
+                }
+            }
+            if let Some(v) = flags.get_pixel_checked(x.wrapping_sub(1), y+1) {
+                if v[0] > 0 {
+                f2 |= 4;
+                }
+            }
+            if let Some(v) = flags.get_pixel_checked(x+1, y.wrapping_sub(1)) {
+                if v[0] > 0 {
+                f2 |= 4;
+                }
+            }
+            *flags.get_pixel_mut(x, y) = Luma([f2; 1]);
+        }
+    }
+    for x0 in (-(state.h as i32))+1..(state.w as i32) {
+        let (y0, x0) = if x0 < 0 {
+            ((-x0) as u32, 0)
+        } else {
+            (0, (x0 as u32))
+        };
+        let mut x = x0;
+        let mut y=y0;
+        while x < state.w && y < state.h {
+            let f0 = flags.get_pixel(x, y)[0];
+            if f0 == 0 {
+                x += 1;
+                y += 1;
+            } else {
+                let p0 = (x, y);
+                while x < state.w && y < state.h && flags.get_pixel(x, y)[0] > 0 {
+                    x += 1;
+                    y += 1;
+                }
+                if (x - p0.0) > 1 || (f0 & 4 == 0) {
+                    sketch.line(gs * p0.0 as f64, gs * p0.1 as f64, gs * (x as f64 - 0.99), gs * (y as f64 - 0.99));
+                }
+            }
+        }
+    }
+    for x0 in 0..state.w + state.h - 1 {
+        let (y0, x0) = if x0 >= state.w {
+            (x0 - state.w + 1, state.w - 1)
+        } else {
+            (0, (x0 as u32))
+        };
+        let x0 = x0 as u32;
+        let mut x = x0 as i32;
+        let mut y= y0;
+        while x >= 0 && y < state.h {
+            let f0 = flags.get_pixel(x as u32, y)[0];
+            if f0 == 0 {
+                x -= 1;
+                y += 1;
+            } else {
+                let p0 = (x, y);
+                while x >= 0 && y < state.h && flags.get_pixel(x as u32, y)[0] > 0 {
+                    x -= 1;
+                    y += 1;
+                }
+                if y - p0.1 > 1  {
+                    sketch.line(gs * p0.0 as f64, gs * p0.1 as f64, gs * (x as f64 + 0.99), gs * (y as f64 - 0.99));
+                }
+            }
+        }
+    }
+}
+
 
 impl App for DitherSketch {
     fn update(&mut self, sketch: &mut Sketch, _ctx: &mut Context) -> anyhow::Result<()> {
@@ -345,13 +472,10 @@ impl App for DitherSketch {
             DitherMode::HV1 => {
                 dither_b(self,  sketch);
             }
+            DitherMode::BayerXJoin => {
+                dither_ax(self, sketch);
+            }
         }
-/*
-      
-*/
-
-        
-
         Ok(())
     }
 }
