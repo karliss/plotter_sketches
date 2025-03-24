@@ -8,8 +8,19 @@
 
 # Software
  
+# generative/node based editors
+
 * [Kinogaki](https://app.kinogaki.com/) 
-* [Graphite](https://graphite.rs/)
+
+## general purpose SVG editors
+
+* [Inkscape](https://inkscape.org/)
+* [Graphite](https://graphite.rs/) (general purpose but also supports node based workflow and even mixing them)
+* [BoxySVG](https://boxy-svg.com/)
+
+## Other software for plotter drawing creation
+
+* [DrawingbotV3](https://drawingbotv3.com/) Provides of various effects for converting bitmaps to plotter friendly drawings
 
 
 # Other collections of resources
@@ -24,11 +35,3 @@
 
 * https://hannahilea.com/blog/ly-drawbot-setup/
 
-# Pen adapters (for vintage plotters)
-
-* https://github.com/juliendorra/3D-printable-plotter-adapters-for-pens-and-refills (HP)
-* https://www.thingiverse.com/thing:1261805/files (HP)
-* https://github.com/aaronbot3000/hp7550-things/tree/master/pen_holders (more HP)
-* https://softsolder.com/2015/04/21/hp-7475a-plotter-oem-pen-body-model/ (HP measurements)
-* https://github.com/mmuman/ALPS-plotter-pen-replacement/tree/main (Small capsule thingies)
-* https://github.com/aaronbot3000/hp7550-things/tree/master/pen_holders

@@ -34,7 +34,8 @@ If you are looking for inspiration or an existing design to build checkout websi
    * [penplotter](https://www.printables.com/search/models?q=tag%3Apenplotter)
    * [plotter](https://www.printables.com/search/models?q=tag%3Aplotter)
 * [Thingiverse](https://www.thingiverse.com/search?q=plotter)
-* [Makerworld](https://makerworld.com/en/search/models?keyword=plotter)
+   * [various pen plotters](https://www.thingiverse.com/karliss/collections/43091126/things)
+   * [subassemblies](https://www.thingiverse.com/karliss/collections/43091129/things)
 * [Makerworld](https://makerworld.com/en/search/models?keyword=plotter)
 * [Thagns](https://thangs.com/search/pen%20plotter?scope=all)
 
@@ -58,3 +59,16 @@ All kind of DIY projects:
 # Various builds
 * https://github.com/DanniDesign/Ploxy/tree/main
 * https://github.com/jamescarruthers/PlotteRXY
+* https://www.thingiverse.com/thing:6841321
+
+# Pen changer builds
+
+* https://www.youtube.com/watch?v=GGtdwYdZWi8
+* https://howtomechatronics.com/projects/diy-pen-plotter-with-automatic-tool-changer-cnc-drawing-machine/ 
+
+* https://www.youtube.com/watch?v=qAdHhoz2k2I
+
+* https://www.youtube.com/watch?v=JuZ5lk2J5p4
+* https://www.youtube.com/watch?v=CpA98QtHj4s
+
+* https://patents.google.com/patent/US4417258A/en

@@ -1,6 +1,8 @@
 
 | model     | manufacturer | type     | protocols                | connection    | max size                 | scale                         | axis                                | notes                                                                                                                                      |
 | :-------- | :----------- | -------- | ------------------------ | --- | ------------------------ | ----------------------------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| HP7221 | HP | flatbead | custom binary | RS232 serial | | | | S and T have roller feed, C and T 8 pens
+| HP7220 | HP | flatbead | HPGL |
 | HP7475A   | HP           | roller   | HPGL                     |     | A3, ANSI A               | 0.02488mm                     | XRYU(A4) / XDYR(A3)                 | Paper size chosen with switches in back and front. Axis direction changes depending on if it's A4 or A3                                    |
 | HP7470A   | HP           | roller   | HPGL                     |     | A4, Letter               | 0.025mm                       | XDYR                                |                                                                                                                                            |
 | HP7585B   | HP           | roller   | HPGL                     |     | A4/A - A0/E 927x1190mm   | 0.025mm                       |                                     |                                                                                                                                            |

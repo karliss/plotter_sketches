@@ -244,6 +244,7 @@ Most common categories are either toy robots described in [Toy plotters](#toy-pl
 * 2-3 hobby-servos
 * any microcontroller board
 * power source
+
 The arms can be built from any junk, it's not going to be precise or very fast anyway. These types of cheap plotters DIY plotters are more of robotics learning projects with the build process and programming them being more important than using final result as practical pen plotter. This means that use of a well known CNC controller firmware is less useful allowing to use almost any microcontroller instead of purpose built 3d printer or CNC controller board. Another simplification comes from using only hobby servos which thus removing need for stepper motor drivers.
 
 It is possible to make less floppy and fast SCARA plotter, and you can find some DIY projects doing that. Although those are mostly non plotter robot arms used as medium/high complexity robotics learning exercise. A high performance SCARA arm will likely need somewhat beefy mechanical design and powerful motors. 
