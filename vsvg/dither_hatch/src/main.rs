@@ -7,14 +7,21 @@ use std::result::Result;
 use vsvg::UNITS;
 use whiskers::prelude::*;
 
+
 #[sketch_widget]
 #[derive(Default)]
 enum DitherMode {
     #[default]
     Ordered8Dot,
     HV1,
-    BayerXJoin
+    BayerXJoin,
+    XJoinOpt1,
+    XJoinOpt2,
+    XJoinOpt3,
+    Random,
 }
+
+
 
 #[sketch_app]
 struct DitherSketch {
@@ -28,6 +35,7 @@ struct DitherSketch {
     w: u32,
     h: u32,
     mode: DitherMode,
+    pattern: Vec<i32>,
 
 
     #[skip]
@@ -52,6 +60,7 @@ impl Default for DitherSketch {
             w: 0,
             h: 0,
             mode: DitherMode::default(),
+            pattern: Vec::default(),
             dstate: DynamicState::default(),
         }
     }
@@ -279,7 +288,7 @@ fn dither_b(state: &mut DitherSketch, sketch: &mut Sketch)
             let first = x;
             let mut last_need = x;
             while x < (state.w as u32) && flags.get_pixel(x, y)[0] > 0 {
-                if (flags.get_pixel(x, y)[0] == 2) {
+                if flags.get_pixel(x, y)[0] == 2 {
                     last_need = x;
                 }
                 x += 1;
@@ -318,47 +327,9 @@ fn dither_b(state: &mut DitherSketch, sketch: &mut Sketch)
 }
 
 
-
-fn dither_ax(state: &mut DitherSketch, sketch: &mut Sketch)
+fn join_xpattern(state: &mut DitherSketch, sketch: &mut Sketch, flags: &mut ImageBuffer<Luma<u8>, Vec<u8>>)
 {
-    let image = &state.dstate.image;
     let gs = state.line_size * state.grid_mul;
-
-    let grid = Grid::from_cell_size([gs, gs])
-        .columns(state.w as usize)
-        .rows(state.h as usize);
-
-
-    let mina = [
-        [0, 8, 2,10],
-        [12, 4,14, 6],
-        [ 3,11, 1, 9],
-        [15, 7, 13, 5]
-    ];
-
-
-    let mut flags = ImageBuffer::from_fn(image.width(), image.height(), |_x, _y| {
-        image::Luma([0u8])
-    });
-
-
-
-    grid.build(sketch, |sketch, cell| {
-        let p1 = cell.position;
-        let p2 = p1 + Point::new(cell.size[0]*0.1, 0);
-        
-        let c1 = image.get_pixel(cell.column as u32, cell.row as u32);
-        let mg = pixel_magnitude2(*c1).isqrt();
-        
-        let W = mina.len();
-        let a: i32 = mina[cell.row % W][cell.column % W];
-
-
-        if 443-mg > ((443) * (a+1)) / 17 {
-            *flags.get_pixel_mut(cell.column as u32, cell.row as u32) = Luma([1 as u8; 1]);
-            //sketch.line(p1.x(), p1.y(), p2.x(), p2.y());
-        }
-    });
     for y in 0..(state.h) {
         for x in 0..state.w {
             if flags.get_pixel(x, y)[0] == 0 {
@@ -442,6 +413,151 @@ fn dither_ax(state: &mut DitherSketch, sketch: &mut Sketch)
 }
 
 
+fn dither_ax(state: &mut DitherSketch, sketch: &mut Sketch)
+{
+    let image = &state.dstate.image;
+    let gs = state.line_size * state.grid_mul;
+
+    let grid = Grid::from_cell_size([gs, gs])
+        .columns(state.w as usize)
+        .rows(state.h as usize);
+
+
+    let mina = [
+        [0, 8, 2,10],
+        [12, 4,14, 6],
+        [ 3,11, 1, 9],
+        [15, 7, 13, 5]
+    ];
+
+
+    let mut flags = ImageBuffer::from_fn(image.width(), image.height(), |_x, _y| {
+        image::Luma([0u8])
+    });
+
+
+
+    grid.build(sketch, |sketch, cell| {
+        let p1 = cell.position;
+        let p2 = p1 + Point::new(cell.size[0]*0.1, 0);
+        
+        let c1 = image.get_pixel(cell.column as u32, cell.row as u32);
+        let mg = pixel_magnitude2(*c1).isqrt();
+        
+        let W = mina.len();
+        let a: i32 = mina[cell.row % W][cell.column % W];
+
+
+        if 443-mg > ((443) * (a+1)) / 17 {
+            *flags.get_pixel_mut(cell.column as u32, cell.row as u32) = Luma([1 as u8; 1]);
+            //sketch.line(p1.x(), p1.y(), p2.x(), p2.y());
+        }
+    });
+    join_xpattern(state, sketch, &mut flags);
+}
+
+fn dither_randx(state: &mut DitherSketch, sketch: &mut Sketch, ctx: &mut Context)
+{
+    let image = &state.dstate.image;
+    let gs = state.line_size * state.grid_mul;
+
+    let grid = Grid::from_cell_size([gs, gs])
+        .columns(state.w as usize)
+        .rows(state.h as usize);
+
+
+    let mina = [
+        [0, 8, 2,10],
+        [12, 4,14, 6],
+        [ 3,11, 1, 9],
+        [15, 7, 13, 5]
+    ];
+
+
+    let mut flags = ImageBuffer::from_fn(image.width(), image.height(), |_x, _y| {
+        image::Luma([0u8])
+    });
+
+
+
+    grid.build(sketch, |sketch, cell| {
+        let p1 = cell.position;
+        let p2 = p1 + Point::new(cell.size[0]*0.1, 0);
+        
+        let c1 = image.get_pixel(cell.column as u32, cell.row as u32);
+        let mg = pixel_magnitude2(*c1).isqrt();
+        
+        let W = mina.len();
+        let a: i32 = mina[cell.row % W][cell.column % W];
+
+
+        if 443-mg > ctx.rng_range(0..443) {
+            *flags.get_pixel_mut(cell.column as u32, cell.row as u32) = Luma([1 as u8; 1]);
+            //sketch.line(p1.x(), p1.y(), p2.x(), p2.y());
+        }
+    });
+    join_xpattern(state, sketch, &mut flags);
+}
+
+
+fn dither_xpat(state: &mut DitherSketch, sketch: &mut Sketch, mina: &[[i32; 4]; 4])
+{
+    let image = &state.dstate.image;
+    let gs = state.line_size * state.grid_mul;
+
+    let grid = Grid::from_cell_size([gs, gs])
+        .columns(state.w as usize)
+        .rows(state.h as usize);
+
+
+    let mut flags = ImageBuffer::from_fn(image.width(), image.height(), |_x, _y| {
+        image::Luma([0u8])
+    });
+
+
+    grid.build(sketch, |sketch, cell| {
+        let p1 = cell.position;
+        let p2 = p1 + Point::new(cell.size[0]*0.1, 0);
+        
+        let c1 = image.get_pixel(cell.column as u32, cell.row as u32);
+        let mg = pixel_magnitude2(*c1).isqrt();
+        
+        let W = mina.len();
+        let a: i32 = mina[cell.row % W][cell.column % W];
+
+
+        if 443-mg > ((443) * (a+1)) / 17 {
+            *flags.get_pixel_mut(cell.column as u32, cell.row as u32) = Luma([1 as u8; 1]);
+            //sketch.line(p1.x(), p1.y(), p2.x(), p2.y());
+        }
+    });
+    join_xpattern(state, sketch, &mut flags);
+}
+
+
+fn dither_xopt1(state: &mut DitherSketch, sketch: &mut Sketch)
+{
+    let mina = [
+        [12, 7, 8, 0],
+        [ 5,13, 1,10],
+        [11, 2,14, 6],
+        [ 3, 9, 4,14]
+    ];
+    return dither_xpat(state, sketch, &mina);
+}
+
+fn dither_xopt2(state: &mut DitherSketch, sketch: &mut Sketch)
+{
+    let mina = [
+        [15, 5,11, 0],
+        [ 6,12, 1,10],
+        [13, 2, 9, 4],
+        [ 7 ,8, 3,14]
+    ];
+    return dither_xpat(state, sketch, &mina);
+}
+
+
 impl App for DitherSketch {
     fn update(&mut self, sketch: &mut Sketch, _ctx: &mut Context) -> anyhow::Result<()> {
         if self.path != self.dstate.path_loaded {
@@ -474,6 +590,24 @@ impl App for DitherSketch {
             }
             DitherMode::BayerXJoin => {
                 dither_ax(self, sketch);
+            }
+            DitherMode::XJoinOpt1 => {
+                dither_xopt1(self, sketch);
+            }
+            DitherMode::XJoinOpt2 => {
+                dither_xopt2(self, sketch);
+            }
+            DitherMode::XJoinOpt3 => {
+                let mut pat  = [[0; 4]; 4];
+                for (i, v) in self.pattern.iter().enumerate() {
+                    if i < 16 {
+                        pat[i/4][i % 4] = *v;
+                    }
+                }
+                dither_xpat(self, sketch, &pat);
+            }
+            DitherMode::Random => {
+                dither_randx(self, sketch, _ctx);
             }
         }
         Ok(())
