@@ -284,7 +284,7 @@ Good parts:
 * doesn't need homing
 * (smaller ones) can be very light
 
-Dowsnides:
+Downsides:
 * Limited motion range
 * Cheaper ones will wear out after a while
 * Noisy and not the fastest
@@ -292,11 +292,15 @@ Dowsnides:
 ## Solenoid
 
 Good parts:
-* very fast
+* very fast (up to 10 dots per second or better)
 
-Dowsnides:
+Downsides:
 * noisy
-* very limited motion range
+* very limited motion range (1-3mm)
+
+Note that while the theoretical movement range of many solenoids might be 10-20mm, the force drastically falls outside the sweet spot. A solenoid might have >500g of force at one end of movement, but after just 1mm of travel it will likely be halved, with next mm halving it again. On the other end of 10mm travel you might get less than 5g of force barely enough to overcome the return spring. 
+
+So if you design a z axis expecting 20mm of travel from solenoid, it will likely be way too strong and weak at the same time.
 
 ## Stepper belt ring
 An interesting approach using a stepper motor for Z axis is used by [LumenPnP](https://www.opulo.io/products/lumenpnp) machine. A single vertically mounted belt loop with 2 toolheads attached, one on each side. This gives movement of 2 tools for the cost 1 stepper motor.

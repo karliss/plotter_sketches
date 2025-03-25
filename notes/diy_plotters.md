@@ -71,4 +71,6 @@ All kind of DIY projects:
 * https://www.youtube.com/watch?v=JuZ5lk2J5p4
 * https://www.youtube.com/watch?v=CpA98QtHj4s
 
+* https://www.doublejumpelectric.com/projects/toolchanging_pen_plotter/2019-03-17-toolchanging_pen_plotter/
+
 * https://patents.google.com/patent/US4417258A/en

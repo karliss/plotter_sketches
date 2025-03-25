@@ -41,3 +41,8 @@ Other resources:
 * https://www.kalligraphie.com/store/index.php/cat/c54_Inks.html?x84ff7=5i3jf57a9ot5ivpudspmeqbk41
 * https://www.octopus-fluids.de/en/write-draw-inks
 * https://www.de-atramentis.com/en/document-ink--84/
+
+
+# pens
+
+* Piano 2121 -> splotchy in corners and start/end of line, inconsistent between pens, 2/2 blocked by air buble
