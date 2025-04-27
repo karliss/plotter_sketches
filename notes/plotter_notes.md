@@ -12,15 +12,18 @@
 | DMP-161   | HI           | roller   | DMPL,HPGL,HP-GL/2        |     | <=24in (specific widths) | 0.001in 0.005in 0.1mm 0.025mm | varies                              | axis direction varies depending on size, but might be possible to configure fixed corner.                                                  |
 | DMP-162   | HI           |          | DMPL,HPGL,HP-GL/2        |     | 36in                     |                               | varies                              |                                                                                                                                            |
 | DMP-162R  | HI           |          | DMPL,HPGL,HP-GL/2        |     | 36in +rolls              |                               | varies                              | Supports paper rolls.                                                                                                                      |
-| DXY-1150A | Roland       | flatbead | RD-GL II, RD-GL I,DXY-GL | parallel(centronics)+serial(db25) | A3,B,431.8x297mm         | 0.025mm,0.1mm                 | TODO, centered 0 in RD-GL II mode   | Magnetic paper holder.                                                                                                                     |
+| DXY-1150A | Roland       | flatbead | RD-GL II, RD-GL I,DXY-GL | parallel(centronics)+serial(db25) | A3,B,431.8x297mm         | 0.025mm,0.1mm                 | TODO, centered 0 in RD-GL II mode   | Magnetic paper holder. round buttons, holes for pen storage |
 | DXY-1350A | Roland       | flatbead |                          |     |                          |                               |                                     | Electrostatic paper holder. Otherwise same as 1150A.                                                                                        |
-| DXY-1150 | Roland | flatbead
-| DXY-1350 | Roland | flatbead
-| DXY-1250 | Roland | flatbead | | | | | | electrostatic holder, 7segment position indicator
-| DXY-1100 | Roland | flatbead
-| DXY-1200 | Roland | flatbead | | | | | | electrostatic holder, 7segment position indicator
-| DXY-1300 | Roland | flatbead
+| DXY-1150 | Roland | flatbead | | | | | | round buttons, holes for pen storage
+| DXY-1350 | Roland | flatbead | | | | | | round buttons, electrostatic holder,
+| DXY-1250 | Roland | flatbead | | | | | | round buttons, electrostatic holder, 7segment position indicator
+| DXY-1100 | Roland | flatbead | RD-GL I, DXG-GL | | | DXY-GL(0.025mm, 0.1mm), RD-GL I(0.025mm) | XRYU | square buttons
+| DXY-1200 | Roland | flatbead | RD-GL I, DXG-GL | | | DXY-GL(0.025mm, 0.1mm), RD-GL I(0.025mm)| | square buttons,electrostatic holder, 7segment position indicator
+| DXY-1300 | Roland | flatbead | RD-GL I, DXG-GL | | | DXY-GL(0.025mm, 0.1mm), RD-GL I(0.025mm) | | square buttons
 | DXY-880 | Roland | flatbead | DXY-GL,RD_GL | parallel(centronics)+serial(db25) | A3 (with unreachable padding),380x270mm | 0.1mm DXY, 0.025mm RD-GL | XRYU | Magnetic holder
-| DXY-980 | Roland | flatbead | DXY-GL,RD_GL | parallel(centronics)+serial(db25) | A3 (with unreachable padding),380x270mm | 0.1mm DXY, 0.025mm RD-GL | XRYU  | Electrostatic holder, 7segment XY position indicator |
+| DXY-980(A?) | Roland | flatbead | DXY-GL,RD_GL | parallel(centronics)+serial(db25) | A3 (with unreachable padding),380x270mm | 1) 0.1mm DXY, 0.025mm RD-GL | XRYU  | Electrostatic holder, 7segment XY position indicator |
 | DXY-990 | Roland | flatbead |
 | DXY-885 | Roland | flatbead |
+
+
+1) need to verify
