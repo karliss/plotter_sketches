@@ -103,7 +103,7 @@ Software is one of the strongest and weakest parts of these machines. One hand i
 In terms of versatility while they can partially limit your paper and pen choices that is somewhat compensated by being able to do various non drawing projects. They are also designed to be used with cutting mats and potentially thick materials, so while they are roller based, paper limitations aren't as bad as other roller based machines.
 
 ## Vinyl cutters
-Commercial larger format vinyl cutter from well known brands like Roland or Graphtec can quite pricey up to few thousands. But there are also some options from less known Chinese brands like Vevor which have models in $300-$1000 range.
+Commercial larger format vinyl cutter from well known brands like Roland or Graphtec can be quite pricey up to few thousands. But there are also some options from less known Chinese brands like Vevor which have models in $300-$1000 range.
 
 Almost all the vinyl cutters are using roller system. This and all it's associated problems is one of the biggest downside using one as a pen plotter.
 

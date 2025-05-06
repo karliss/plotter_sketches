@@ -45,6 +45,8 @@ Historical, closed or doesn't produce technical pens anymore
 * Herlitz Technoliner (Germany)
     * brand got sold to Pelikan () -> Hamelin (2023)
 * Unitech (Germany)
+* Ален Мак, попово (Bulgaria?)
+* GG01 Harkov (USSR)
 
 
 

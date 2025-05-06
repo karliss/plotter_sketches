@@ -25,7 +25,7 @@
 | DXY-880A | Roland | flatbead | | | | | | | Magnetic holder |
 | DXY-880 | Roland | flatbead | DXY-GL,RD_GL | parallel(centronics)+serial(db25) | | A3 (with unreachable padding),380x270mm | 0.1mm DXY, 0.025mm RD-GL | XRYU | Magnetic holder |
 | DXY-980 | Roland | flatbead | DXY-GL,RD_GL | parallel(centronics)+serial(db25) | | A3 (with unreachable padding),380x270mm | 1) 0.1mm DXY, 0.025mm RD-GL | XRYU | Electrostatic holder, 7segment XY position indicator |
-| DXY-990 | Roland | flatbead | | parallel(centronics)+serial(db25) | | | | | electrostatic+7segment position+pen buttons |
+| DXY-990 | Roland | flatbead | RD-GL I | parallel(centronics)+serial(db25) | 300mm/s | A3, B (unreachable padding) | | | electrostatic+7segment position+pen buttons |
 | DXY-885 | Roland | flatbead | RD-GL I | parallel(centronics)+serial(db25) | 300mm/s | 416mmx259mm (ANSI B), 403mmx276mm (A3) | | | magnetic
 | DXY-800 | Roland | flatbead | DXY-GL | parallel(centronics)+serial(db25) | 180mm/s | 350x260mm | 0.1mm | | 8 pens |
 | DXY-101 | Roland | flatbead | DXY-GL | parallel(centronics)+serial(db25) | 180mm/s | 370x260mm | 0.1mm | | 1 pen |
