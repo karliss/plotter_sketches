@@ -13,6 +13,11 @@
 * https://github.com/LingDong- (procedural genration)
 * https://chocographix.net/ (vectorart)
 
+# Blogs
+
+* https://newsletter.revdancatt.com/
+* https://penplotter.art/
+
 # Software
 
 
