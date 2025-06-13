@@ -2,9 +2,12 @@
 # Autofeed mechanical pencils
 
 * Penac Non-Stop 0.5
+* Sun-Star Nocfree
 * Faber-Castell Grip Matic $
 * Orez Nero $$
 * Uni Kuru Toga Dive $$$
+
+https://forum.knockology.com/t/comprehensive-list-of-auto-advance-pencils/1391
 
 # Techincal pens
 
@@ -45,6 +48,7 @@ Historical, closed or doesn't produce technical pens anymore
     * reform refograph (Germany)
         * reform toz
     * Pelikan E-Technik
+    * Lyragraph?
 * ALVIN (US writing tool importer/distributor) has sold under it's brand relabeled technical pens made by various manufacturers
     * Mutschler/reform refograph
     * Rystor
@@ -71,89 +75,104 @@ Useful links
 * Comparison diagram with major types of rotring technical pens https://unofficialrotring.wordpress.com/2015/03/19/rotrings-tubular-point-drawing-pens/
 
 * https://www.rotring.ro/cataloage
-
+* https://github.com/cameradactyl/Koh-I-Noor_Rapidograph_Nib_Key
 
 ## Nib sizes and shapes
 
 ISO sizes have ratio of √2 ≅ 1.4 . Drawings are supposed to have line thickness proportions of 1:2:4 for thin, normal and thick lines. Ratio of √2 allows easily getting this proprtion by skiping every other size, for example [0.13, 0.25, 0.5] , [0.18, 0.35. 0.7] or [0.25, 0.5. 1.0]
 
+Nibs following the ISO specificiation are often laballed with m̲̅ (m with horizontal lines above and under). More precisely the earlier DIN 6775 standard (which also defined the m letter), the ISO 9175 standard defined later in 1988 did not include the "m̲̅" symbol. Also related standards DIN 15 (technical drawings), DIN 16 and DIN 6776 (technical drawing typeface) .
+
+
 Newer Statedler marsmatic 750 ISO nibs follow the common color scheme well, but older ones even ISO sizes are all over the place.
 
-Nibs following the ISO specificiation are often laballed with m̲̅ (m with horizontal lines above and under).
-
-| mm     | ISO    | inch  | color(ISO)  | color rotring | koh-i-noor      | FC TG**      | Staedtler(1)* | Staedtler(2)* |
-| ------ | ------ | ----- | ----------- | ------------- | --------------- | -------------- | -------------- | ------------ |
-|        |        |       |             |               |                 |                | 5x0 MF ochre   |              |
-|        |        |       |             |               |                 |                | 4x0 UF brown   |              |
-| 0.1mm  |        | 0.004 |             | redish brown  |                 |                | 3x0 violet     |              |
-| 0.13mm | ISO(0) | 0.005 | purple      | purple        | 6x0 teal        |                |                |              |
-| 0.18mm | ISO(1) | 0.007 | red         | red           | 4x0 pink        | 000 red        |                | 4x0 red      |
-| 0.20mm |        | 0.008 |             | yellow        |                 |                | 00 red         |              |
-| 0.25mm | ISO(2) | 0.010 | white       | white         | 3x0 beige       | 00 white       |                | 3x0 purple   |
-| 0.30mm |        | 0.012 |             | olive         | 00 yellow       |                | 0 blue         | 00 red       |
-| 0.35mm | ISO(3) | 0.014 | yellow      | yellow        | 0 dark gray     | 0 yellow       |                | 0 blue       |
-| 0.40mm |        | 0.016 |             | orange        |                 | 1 green        | 1 dark green   |              |
-| 0.45mm |        |       |             |               |                 |                |                | 1 green      |
-| 0.50mm | ISO(4) | 0.020 | black/brown | brown         | 1 brown         | 2 brown/orange | 2 yellow       |              |
-| 0.60mm |        | 0.024 |             | grayish blue  | 2 red           | 2.25 beige     | 2.5 white      |              |
-| 0.70mm | ISO(5) | 0.028 | blue        | blue          | 2.5 blue        | 2.5 blue       |                |              |
-| 0.80mm |        | 0.031 |             | white         | 3 green         | 3 white        | 3 light gray   |              |
-| 1.0mm  | ISO(6) | 0.039 | orange      | orange        | 3.5 light green | 4 orange       | 3.5 black      |              |
-| 1.2mm  |        | 0.047 |             |               | 4 orange        | 5 white        | 4 orange       |              |
-| 1.4mm  | ISO(7) | 0.055 | blue/green  | blue          | 6 red           | 6              | 5 light green  |              |
-| 2.0mm  | ISO(8) | 0.079 | gray        | gray          | 7 red           | 7 gray         | 6 dark grey    |              |
+| mm     | ISO    | inch  | color(ISO) *3 | color rotring | koh-i-noor      | FC TG**        | Staedtler(1)* | Staedtler(2)* |
+| ------ | ------ | ----- | ------------- | ------------- | --------------- | -------------- | ------------- | ------------- |
+|        |        |       |               |               |                 |                | 5x0 MF ochre  |               |
+|        |        |       |               |               |                 |                | 4x0 UF brown  |               |
+| 0.1mm  |        | 0.004 |               | redish brown  |                 |                | 3x0 violet    |               |
+| 0.13mm | ISO(0) | 0.005 | violet        | violet        | 6x0 teal        |                |               |               |
+| 0.18mm | ISO(1) | 0.007 | red           | red           | 4x0 pink        | 000 red        |               | 4x0 red       |
+| 0.20mm |        | 0.008 |               | yellow        |                 |                | 00 red        |               |
+| 0.25mm | ISO(2) | 0.010 | white         | white         | 3x0 beige       | 00 white       |               | 3x0 purple    |
+| 0.30mm |        | 0.012 |               | olive         | 00 yellow       |                | 0 blue        | 00 red        |
+| 0.35mm | ISO(3) | 0.014 | yellow        | yellow        | 0 dark gray     | 0 yellow       |               | 0 blue        |
+| 0.40mm |        | 0.016 |               | orange        |                 | 1 green        | 1 dark green  |               |
+| 0.45mm |        |       |               |               |                 |                |               | 1 green       |
+| 0.50mm | ISO(4) | 0.020 | brown         | brown         | 1 brown         | 2 brown/orange | 2 yellow      |               |
+| 0.60mm |        | 0.024 |               | grayish blue  | 2 red           | 2.25 beige     | 2.5 white     |               |
+| 0.70mm | ISO(5) | 0.028 | blue          | blue          | 2.5 blue        | 2.5 blue       |               |               |
+| 0.80mm |        | 0.031 |               | white         | 3 green         | 3 white        | 3 light gray  |               |
+| 1.0mm  | ISO(6) | 0.039 | orange        | orange        | 3.5 light green | 4 orange       | 3.5 black     |               |
+| 1.2mm  |        | 0.047 |               |               | 4 orange        | 5 white        | 4 orange      |               |
+| 1.4mm  | ISO(7) | 0.055 | green         | blue          | 6 red           | 6              | 5 light green |               |
+| 2.0mm  | ISO(8) | 0.079 | gray          | gray          | 7 red           | 7 gray         | 6 dark grey   |               |
 
 
 *) Color and number varies between generations
-**) Color and number varies between generations. Size color accents are only on nib packaging and the pen body not the nib itself. Color of nib is based on type: S yellow, H(tungsten) green, J(jewel) red. 
-
+**) Color and number varies between generations. Size color accents are only on nib packaging and the pen body not the nib itself. Color of partially transparent nib plastic is based on type: S yellow, H(tungsten) green, J(jewel) red. 
 
 
 Group refers to the interface between the nib and body maybe the ink reservoir, not the body and cap or body and holder(barell). Barell and cap compatibility can differ.
 
 In case of long mounting thread, any air grove usually overlaps with mounting thread.
 
-| manufacturer/model                 | grp | tip shape | nib unscrew    | mounting                     | air trap                                                       | notes                                                    |
-| ---------------------------------- | --- | --------- | -------------- | ---------------------------- | -------------------------------------------------------------- | -------------------------------------------------------- |
-| Rotring, (old)Rapidograph          | A   | conical   | round          | long thread                  | grove across mounting thread                                   |                                                          |
-| Rotring Variant                    | A   | conical   | 2 flats        | long thread                  | grove across mounting thread  opposite direction               | black with colored ring                                  |
-| Rotring Variant B                  | A   | cylinders | 2 flats        | long thread                  | grove across mounting thread, opposite direction               | black with colored ring                                  |
-| Rotring Foliograph                 | A   | conical   | 2 flats        | long thread                  | grove across mounting thread, opposite direction               | gray with colored ring                                   |
-| Rotring Varioscript                | A   | conical   | 2 flats        | long thread                  | grove across mounting thread                                   | black, flat cone, weird size rang 2-8mm ***              |
-| Rotring Micronorm                  | A   | conical   | 2 flats        | long thread                  | grove across mounting thread, opposite direction               | brown with colored ring, flat cone after cylinder        |
-| Rotring primus****                 | A?  | conical   | radial slots   | long thread                  | grove across mountingh tread, opposite direction               | tip conical with radial slots, everything colored        |
-| Rotring isograph                   | B   | cylinders | N/A            | unified nib/body             | medium depth spiral in front covered by press fit extra sleeve | 2 metal cylinders *                                      |
-| Rotring isograph                   | B   | cylinders | N/A            | unified nib/body             | medium depth spiral in front covered by press fit extra sleeve | 3mm metal cylinder, 5mm plastic with cone                |
-| Rotring Rapidograph (1983)         | C   | cylinders | with cartridge | short thread in front        | integrated in ink cartridge instead of nib                     | whole nib  colored                                       |
-| Koh-I-Noor                         | A   | conical   | 2 flats        | long thread                  | grove across mounting thread                                   | Similar to Variant, sometimes transparent                |
-| Koh-I-Noor                         | A   | cylinders | 2 flats        | long thread                  | grove across mounting thread                                   | Similar to Variant B , sometimes transparent             |
-| Leroy K&E                          | A   | cylinders | 2flats         | long thread?                 | ??                                                             | Variant B, Made by Koh-I-Noor USA                        |
-| Staedtler marsmatic                | D?  | cylinders | hexagon        | short thread closer to front | shallow spiral grove with step after each turn                 | **                                                       |
-| Staedtler mars                     | E?  | cylinder  | hexagon        | long thread                  | 2x360 groves splitting thread in 3 sections, 2 vertical groves | sometimes first cylinder is made of plastic **           |
-| Staedtler mars plot                | E?  | cylinder  | hexagon        | long thread                  | 2x360 groves splitting thread in 3 sections, 2 vertical groves | stubby tip, spring                                       |
-| Staedtler mars magno               | H   | pl cyl    | hexagon        | short thread closer to front | medium spiral                                                  | flat face after hexagon, no body, nib->cartridge->barrel |
-| Faber castell TG1                  | F   | cylinders | short thread   | press fit?                   | shallow contiguous spiral grove                                | partially transparent                                    |
-| Rystor                             | G   | cylinders | 3 notches      | long thread/airtrap          | medium depth spiral that functions mounting thread             |                                                          |
-| Trident Desegraph                  |     | cylinders | hexagon        | long thread                  | 360 groves + vertical cuts on alternating sides                |                                                          |
-| Reform refograph,Pelikan E-Technik |     | cylinders | hexagon        | short thread on the back     | medium depth compact spiral grove                              |                                                          |
-| Standardgrpah stano, MG1 pro       |     | cylinders | hexagon        | long thread                  | wide spiral grove (2:1 more grove than thread) same direction  |                                                          |
-| Aristo MG1                         |     | cylinders | N/A            | unified nib/body             |                                                                | looks like Mecanorm MG1                                  |
-| Herlitz Technoliner                |     | cylinders | hexagon        |                              |                                                                |                                                          |
-| Kern prontograph                   |     | cylinders | hexagon        | long thread                  | wide spiral grove  (1:1)                                       |                                                          |
-| Polygraph combi                    |     | cylinders | hexagon        | long thread                  | steep grove (more like variant)                                |                                                          |
-| Liquidraw, Isomars technoart       | B?  | cylinders | N/A            | unified nib                  |                                                                | looks like isograph clone                                |
-| Hero 81A                           |     | conical   | octagon        | short thread on the back     | shallow spiral grove (1:1)                                     |                                                          |
-| CLEO SKRIBENT                      |     | conical   | hexagon        | ??                           | ??                                                             |                                                          |
-| GG01 Harkov                        | F?  | cylinders | short thread   | press fit?                   | shallow spiral                                                 |                                                          |
-| Markant Lin                        |     | cylinder  | flat? round?   | short thread closer to front | shallow wide spiral (2grove:1fin)                              |                                                          |
+| manufacturer/model                     | grp  | tip shape | nib unscrew    | mounting                     | air trap                                                       | notes                                                                    |
+| -------------------------------------- | ---- | --------- | -------------- | ---------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| Rotring, (old)Rapidograph              | A    | conical   | round          | long thread                  | grove across mounting thread                                   |                                                                          |
+| Rotring Variant                        | A    | conical   | 2 flats        | long thread                  | grove across mounting thread  opposite direction               | black with colored ring, older VL with metal strip, newer plastic end *6 |
+| Rotring Variant B                      | A    | cylinders | 2 flats        | long thread                  | grove across mounting thread, opposite direction               | black with colored ring                                                  |
+| Rotring Foliograph                     | A    | conical   | 2 flats        | long thread                  | grove across mounting thread, opposite direction               | gray with colored ring                                                   |
+| Rotring Varioscript                    | A    | conical   | 2 flats        | long thread                  | grove across mounting thread                                   | black, flat cone, weird size rang 2-8mm ***   *6                         |
+| Rotring Micronorm                      | A    | conical   | 2 flats        | long thread                  | grove across mounting thread, opposite direction               | brown with colored ring, flat cone after cylinder                        |
+| Rotring primus****                     | A?   | conical   | radial slots   | long thread                  | grove across mountingh tread, opposite direction               | tip conical with radial slots, everything colored                        |
+| Rotring isograph                       | B    | cylinders | N/A            | unified nib/body             | medium depth spiral in front covered by press fit extra sleeve | 2 metal cylinders *                                                      |
+| Rotring isograph                       | B    | cylinders | N/A            | unified nib/body             | medium depth spiral in front covered by press fit extra sleeve | 3mm metal cylinder, 5mm plastic with cone                                |
+| Rotring Rapidograph (1983)             | C    | cylinders | with cartridge | short thread in front        | integrated in ink cartridge instead of nib                     | whole nib  colored                                                       |
+| Koh-I-Noor                             | A    | conical   | 2 flats        | long thread                  | grove across mounting thread                                   | Similar to Variant, sometimes transparent                                |
+| Koh-I-Noor                             | A    | cylinders | 2 flats        | long thread                  | grove across mounting thread                                   | Similar to Variant B , sometimes transparent                             |
+| Leroy K&E                              | A    | cylinders | 2flats         | long thread?                 | ??                                                             | Variant B, Made by Koh-I-Noor USA                                        |
+| Staedtler marsmatic                    | D?   | cylinders | hexagon        | short thread closer to front | shallow spiral grove with step after each turn                 | **                                                                       |
+| Staedtler mars                         | EA*9  | cylinder  | hexagon        | long thread                  | 2x360 groves splitting thread in 3 sections, 2 vertical groves | sometimes first cylinder is made of plastic **                           |
+| Staedtler mars 550                     | EA*9  | conical   | textured       | long thread                  | 2x360                                                          |                                                                          |
+| Staedtler mars plot                    | EA*9  | cylinder  | hexagon        | long thread                  | 2x360 groves splitting thread in 3 sections, 2 vertical groves | stubby tip, spring                                                       |
+| Staedtler mars magno                   | H    | pl cyl    | hexagon        | short thread closer to front | medium spiral                                                  | flat face after hexagon, no body, nib->cartridge->barrel                 |
+| Faber castell TG1                      | F    | cylinders | short thread   | press fit cone               | shallow contiguous spiral grove                                | partially transparent (at least 3 revisions *8)                          |
+| Rystor                                 | G    | cylinders | 3 notches      | long thread/airtrap          | medium depth spiral that functions mounting thread             |                                                                          |
+| Trident Desegraph                      | *7   | cylinders | hexagon        | long thread                  | 360 groves + vertical cuts on alternating sides                |                                                                          |
+| Reform refograph,Pelikan E-Technik     | I    | cylinders | hexagon        | short thread on the back     | medium depth compact spiral grove                              |                                                                          |
+| Lyragraph                              | I?   | cylinders | hexagon        | short thread on the back     | medium depth compact spiral grove                              |                                                                          |
+| Unitech                              | I?   | cylinders | hexagon        | short thread on the back     | medium depth compact spiral grove                              |                                                                          |
+| Standardgrpah stano, stano cs, MG1 pro |      | cylinders | hexagon        | long thread                  | back and forth                                                 |                                                                          |
+| Mecanorma MG1, Aristo MG1              |      | cylinders | N/A            | unified nib/body             |                                                                | Too wide for adapting to HP, Roland plotters.                            |
+| Herlitz Technoliner                    |      | cylinders | hexagon        |                              |                                                                |                                                                          |
+| Kern prontograph                       |      | cylinders | hexagon        | long thread                  | wide spiral grove  (1:1)                                       |                                                                          |
+| Polygraph combi                        |      | cylinders | 2 flats        | long thread                  | steep grove (more like variant)                                |                                                                          |
+| Liquidraw, Isomars technoart           | B?*5 | cylinders | N/A            | unified nib                  |                                                                | looks like isograph clone                                                |
+| Hero 81A                               |      | conical   | octagon        | short thread on the back     | shallow spiral grove (1:1)                                     |                                                                          |
+| CLEO SKRIBENT                          |      | conical   | hexagon        | ??                           | ??                                                             |                                                                          |
+| GG01 Harkov                            | F?   | cylinders | short thread   | press fit?                   | shallow spiral                                                 |                                                                          |
+| Markant Lin                            |      | cylinder  | flat? round?   | short thread closer to front | shallow wide spiral (2grove:1fin)                              |                                                                          |
 
 *) F versions with tungsten tip have the conical metal parts in golden color. J jeweled tip, P for etching inks.
 
 **) 2 special versions 757 duranite (tungsten carbide), 759 jewel tip. Some of tungsten ones have golden cylinder (just like rotring), but there are versions that have metalic ring after hexagon instead.
 
-***) Size is written like: 10 m/m. Some varioscript adds mention DIN 1451, which is a German font standard. Maybe size refers to which size text you can write using the corresponding nib instead of line width.
+***) Size is written like: 10 m/m. Some varioscript ads mention DIN 1451, which is a German font standard. Maybe size refers to which size text you can write using the corresponding nib instead of line width.
 
 ****) Not to be confused with regular isographs that have primus printed on.
+
+*5) General shape is more or less same as isograph. But at least some versions have subtle differences. Cap and barrel threads are longer, the widest part of pen is slightly longer, the length of central plastic part sticking out from removable sleeve varies.
+
+*6) Both variant and varioscript had multiple revisions over the year. Nib endcap (preventing weight from falling out), air groove direction and angle, colored ring have many different versions.
+
+*7) Even though there are many similarities likely not compatible staedtler mars nibs
+
+*8) Early TG had cone instead of cylinder, later TG had plastic cylinder and slightly different airpath compared to TG1.
+
+*9) Staedler old and Rotring variant nibs have same thread pitch and roughly same rest of critical dimensions. In many of the cases it will be possible to screw in Steadler nib in a Rotring pen and vice versa. Within my limited sample size Steadler thread diameter was slightly smaller (7.3mm vs 7.1mm), so the fit might not always be perfect. Hard to tell whether that's a significant difference between manufacturers or is the variance of multiple models/revisions from same manufacturer comparable. Even Rotring nib in a matching Rotring body is somewhat loose until fully screwed in.
+
+![Nibs](./pictures/supplies/combined_b.jpg)
 
 # Plotter pens
 
@@ -329,3 +348,6 @@ While these often focus on drawing/writing tools which you would rarely use with
 * https://www.fountainpennetwork.com/forum/
 * https://stationery.wiki/Main_Page
 * http://dirck.delint.ca/beta/
+* http://www.ruettinger-web.de/e-pelikan-literatur-buecher.html
+* http://www.pencilpages.com/
+* https://cestdelamerdetonstylo.blogspot.com/

@@ -34,6 +34,7 @@
 * [Blender Sverchok](https://github.com/nortikin/sverchok) Blender plugin which provides functionality similar to geometry nodes
 * [Blender geometry nodes+Freestyle SVG exporter](https://www.blender.org/)
 * [Makelangelo software](https://github.com/MarginallyClever/Makelangelo-software)
+* [Paragraphic](https://paragraphic.design/)
 
 
 ## creative coding libraries/frameworks/platforms
