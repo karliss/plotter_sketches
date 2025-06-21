@@ -488,3 +488,17 @@ Nib design revisions
 
 
 Newer ISO sizes use M018 instead of 018 style code.
+
+# Rystor
+| Barcode          | Description         |
+| ---------------- | ------------------- |
+| 5 907548 90001 2 | 0.25mm pen Rystor   |
+| 5 907548 90002 9 | 0.35mm pen Rystor   |
+| 5 907548 90003 6 | 0.5mm pen Rystor    |
+| 5 907548 90004 3 | 0.7mm pen Rystor    |
+| 5 907548 90057 9 | 0.18mm pen Rystor?? |
+| 5 907548 90059 3 | 0.18mm nib Rystor   |
+| 5 907548 90007 4 | 0.35mm nib Rystor   |
+| 5 907548 90008 1 | 0.5mm nib Rystor    |
+| 5 907548 90009 8 | 0.7mm nib Rystor    |
+|                  |                     |

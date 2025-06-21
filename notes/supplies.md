@@ -86,7 +86,7 @@ Nibs following the ISO specificiation are often laballed with m̲̅ (m with hori
 
 Newer Statedler marsmatic 750 ISO nibs follow the common color scheme well, but older ones even ISO sizes are all over the place.
 
-| mm     | ISO    | inch  | color(ISO) *3 | color rotring | koh-i-noor      | FC TG**        | Staedtler(1)* | Staedtler(2)* |
+| mm     | ISO    | inch  | color(ISO)    | color rotring | koh-i-noor      | FC TG**        | Staedtler(1)* | Staedtler(2)* |
 | ------ | ------ | ----- | ------------- | ------------- | --------------- | -------------- | ------------- | ------------- |
 |        |        |       |               |               |                 |                | 5x0 MF ochre  |               |
 |        |        |       |               |               |                 |                | 4x0 UF brown  |               |
@@ -110,6 +110,7 @@ Newer Statedler marsmatic 750 ISO nibs follow the common color scheme well, but 
 
 
 *) Color and number varies between generations
+
 **) Color and number varies between generations. Size color accents are only on nib packaging and the pen body not the nib itself. Color of partially transparent nib plastic is based on type: S yellow, H(tungsten) green, J(jewel) red. 
 
 
@@ -351,3 +352,15 @@ While these often focus on drawing/writing tools which you would rarely use with
 * http://www.ruettinger-web.de/e-pelikan-literatur-buecher.html
 * http://www.pencilpages.com/
 * https://cestdelamerdetonstylo.blogspot.com/
+
+
+# shops
+
+* https://www.stilografica.it/
+* https://www.purepens.co.uk/
+* https://fountainfeder.de/
+* https://www.papierundstift.com/
+* https://noterapapper.se/
+* https://cultpens.com
+* https://penstore.com
+* https://www.penstore.nl/pens/refills
