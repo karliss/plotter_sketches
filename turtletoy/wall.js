@@ -18,14 +18,35 @@ let DIR_SIDES = [
     [0, 1], [3, 4], [2, 3], [5, 0], [4, 5], [1, 2]
 ];
 
+let SIDE_DIRECTIONS = [
+    [0, 1, 3, 4],
+    [0, 1, 3, 4],
+    [0, 2, 3, 5],
+    [0, 2, 3, 5],
+    [1, 5, 4, 2],
+    [1, 5, 4, 2]
+];
+
+let REVERSE_SIDE_DIRECTIONS = [
+    [0, 1, 2, 3, 4, 5],
+    [0, 1,-1, 2, 3,-1],
+    [0, 1,-1, 2, 3,-1],
+    [0,-1, 1, 2,-1, 5],
+    [0,-1, 1, 2,-1, 5],
+    [-1,0, 3,-1, 2, 1],
+    [-1,0, 3,-1, 2, 1],
+]
+
 
 class Tile {
     constructor(d) {
         this.dir = d;
+        /** @type {[Tile]} */
         this.neighbours = [];
         this.neighbours[3] = null;
-        this.rule = -1;
-        this.group = -1;
+        /** @type {Rule} */
+        this.rule = null;
+        this.mirrorVariant = false;
     }
     horizontal() {
         return this.dir < 2;
@@ -39,8 +60,11 @@ class Tile {
         let offset = Tile.OFFSETS[this.dir];
         return V(offset[0], offset[1]);
     }
+    canMirror() {
+        return this.rule && this.rule.dirf == 1;
+    }
     mirrored() {
-        return this.dir >= 4;
+        return this.dir >= 4 || this.mirrorVariant;
     }
 }
 
@@ -59,24 +83,55 @@ class Cell {
     }
 }
 class TR {
-    constructor(horizontal, rule=null, group=null){
+    constructor(horizontal, ruleId=null, group=null){
         this.horizontal = horizontal;
-        this.rule = rule;
+        this.ruleId = ruleId;
         this.group = group;
+    }
+    static contains(ids, idList){
+        let hasNegative = false;
+        let hasPositive = false;
+        for (const v of idList) {
+            if (v < 0) {
+                hasNegative = true;
+            } else {
+                hasPositive = true;
+            }
+        }
+        for (const v of idList) {
+            for (const id of ids) {
+                if (-v == ids) {
+                    return false;
+                }
+            }
+        }
+        for (const v of idList) {
+            if (v == ids) {
+                return true;
+            }
+        }
+        if (hasPositive) {
+            return false;
+        }
+        return true;
     }
     /**
      * 
      * @param {Tile} tile 
      * @returns {boolean}
      */
-    matches(tile) {
+    matches(tile, tileRuleOverride) {
+        let tileRule = tile.rule;
+        if (tileRuleOverride) {
+            tileRule = tileRuleOverride;
+        }
         if (this.horizontal != null && this.horizontal != tile.horizontal()) {
             return false;
         }
-        if (this.rule != null && tile.rule >= 0 && !(tile.rule in this.rule)) {
+        if (this.ruleId != null && tileRule && !(TR.contains([tileRule.id], this.ruleId))) {
             return false;
         }
-        if (this.group != null && tile.group >= 0 && !(tile.group in this.group)) {
+        if (this.group != null && tileRule && !(TR.contains(tileRule.group, this.group))) {
             return false;
         }
         return true;
@@ -91,10 +146,12 @@ class Rule {
      * @param {[TR]} neighbours 
      * @param {string} path 
      */
-    constructor(selfrule, neighbours, group, path) {
+    constructor(id, selfrule, neighbours, group, dirf, path) {
+        this.id = id;
         this.selfrule = selfrule;
         this.neighbours = neighbours;
         this.group = group;
+        this.dirf = dirf;
         /** @type {Ob} */
         this.ob = Ob.fromD(path);
     }
@@ -104,18 +161,19 @@ class Rule {
      * @param {TR} rule 
      * @returns {boolean}
      */
-    checkTile(tile, rule) {
+    checkTile(tile, rule, tileRuleOverride) {
         if (!tile || !rule) {
             return true;
         }
-        return rule.matches(tile);
+        return rule.matches(tile, tileRuleOverride);
     }
     /**
      * 
      * @param {Tile} tile 
+     * @param {[Rule]} allrules
      * @returns {boolean}
      */
-    matches(tile) {
+    matches(tile, allrules, checkNeighbours=true) {
         if (!tile){ 
             return false;
         }
@@ -125,6 +183,23 @@ class Rule {
         if (this.neighbours) {
             for (let i=0; i<4; i++) {
                 if (!this.checkTile(tile.neighbours[i], this.neighbours[i])) {
+                    return false;
+                }
+            }
+        }
+        if (checkNeighbours) {
+            for (let i=0; i<4; i++) {
+                let neighbour = tile.neighbours[i];
+                if (!neighbour || !neighbour.rule) {
+                    continue;
+                }
+                let reverseRule = neighbour.rule;
+                let dirf = SIDE_DIRECTIONS[tile.dir][i];
+                let reverseI = REVERSE_SIDE_DIRECTIONS[neighbour.dir][(dirf+3)%6];
+                if (!reverseRule.neighbours || !reverseRule.neighbours[reverseI]) {
+                    continue;
+                }
+                if (!this.checkTile(tile, reverseRule.neighbours[reverseI], this)) {
                     return false;
                 }
             }
@@ -164,24 +239,29 @@ function init2() {
     }
 
     let RULES =[
-        new Rule(new TR(true), null, 0, "M 0,0 0.866,-0.5 0,-1 -0.866,-0.5 0,0"), // plain h
-        new Rule(new TR(false), null, 0, "m 0,0 -0.866,-0.5 0,1 L 0,1 -0,0"), // plain v
-        new Rule(new TR(false), [null, null, new TR(true), null], 0, "M -0.577,0.667\nV 0\nL -0.289,0.167\nv 0.667\n\nM -0,0\nV 1\nL -0.866,0.5\nv -1\nL -0,0"), // door
-        new Rule(new TR(false), null, 0, "M -0,0 -0,1 -0.866,0.5 -0.866,-0.5 -0,0\n\nM -0.289,0.167 -0.577,0\nv 0.333\nl 0.289,0.167\nz\n\nm -0.144,-0.083 0,0.333"), // window
-        new Rule(new TR(true), null, 0, "M 0,0 0.866,-0.5 0,-1 -0.866,-0.5 0,0\n\nM -0,-1 0,0"), // pointy
-        new Rule(new TR(true), null, 0, "m -0.866,-0.5\nc 0.577,-0.267 1.155,-0.267 1.732,0\n\nM 0,-1 0,0 0.866,-0.5 0,-1 -0.866,-0.5 0,0"), // curved
-        new Rule(new TR(true), [null, null, new TR(false),  new TR(false)], 0, "m -0.866,-0.5 0,-0.2\nL 0,-0.2 0.866,-0.7 0.866,-0.5\n\nM 0,-0.2 0,0 0.866,-0.5 0,-1 -0.866,-0.5 0,0\n\nm -0.693,-0.6\nv 0.2\n\nm 0.173,-0.1\nv 0.2\n\nm 0.173,-0.1 0,0.2\n\nm 0.173,-0.1\nv 0.2\n\nm 0.346,-0.2 0,0.2\n\nm 0.173,-0.3 0,0.2\n\nm 0.173,-0.3\nv 0.2\n\nm 0.173,-0.3 0,0.2"), // rails
-        new Rule(new TR(true),  [null, new TR(null, [2]),  null, null], 0, "M 0,0 0.866,-0.5 0,-1 -0.866,-0.5 0,0\n\nm -0.26,-0.85 0.173,0.1 -0.346,0.2 -0.173,-0.1"), // doormat 1
-        new Rule(new TR(true),  [new TR(null, [2]), null, null,  null], 0, "M -0,0 -0.866,-0.5 -0,-1 0.866,-0.5 -0,0\n\nM 0.26,-0.85\nl -0.173,0.1 0.346,0.2 0.173,-0.1"), // doormat 0
-        new Rule(new TR(false), null, 0, "M -0,0 -0,1 -0.866,0.5 -0.866,-0.5 -0,0\n\nM -0.289,0.167 -0.577,0\nV 0.333\nL -0.289,0.5\nZ\n\nM -0.433,0.083\nV 0.417\n\nM -0.289,0.333 -0.577,0.167"), // windowx
-        new Rule(new TR(false), null, 0, "M -0,0 -0,1 -0.866,0.5 -0.866,-0.5 -0,0\n\nM -0.722,0.283 -0.52,0.4\nV 0\nL -0.722,-0.117\nZ\n\nm 0.577,0.333\nV 0.217\nL -0.346,0.1\nv 0.4\nz"), // window2
-        new Rule(new TR(false), null, 0, "M -0,0 -0,1 -0.866,0.5 -0.866,-0.5 -0,0\n\nM -0.144,0.617\nV 0.217\nL -0.346,0.1\nv 0.4\nz"), // window21
-        new Rule(new TR(false), null, 0, "M -0,0 -0,1 -0.866,0.5 -0.866,-0.5 -0,0\n\nM -0.52,0.4\nV -0\nL -0.722,-0.117\nv 0.4\nz"), // window22
-        new Rule(new TR(false), [null, null, new TR(true), null], 0, "M -0,0 -0,1 -0.866,0.5 -0.866,-0.5 -0,0\n\nM -0.144,0.617\nV 0.217\nL -0.346,0.1\nv 0.4\nz\n\nm -0.346,0.1 -0,-0.667 -0.289,-0.167 0,0.667"), // doors
-        new Rule(new TR(false), [null, null, new TR(true), null], 0, "M -0,0 -0,1 -0.866,0.5 -0.866,-0.5 -0,0\n\nM -0.52,0.4\nV -0\nL -0.722,-0.117\nv 0.4\nz\n\nM -0.087,0.95\nl -0,-0.667 -0.289,-0.167 0,0.667"), // doors2
-        new Rule(new TR(true), null, 0, "m 0.067,-0.36 0.167,0.039\n\nm -0.137,-0.164 0.159,0.048\n\nm -0.134,-0.153 0.193,0.051\n\nM -0,0 0.866,-0.5 -0,-1 -0.866,-0.5 -0,0\n\nM 0.087,-0.15\nc 0.011,-0.015 0.115,-0.415 0.115,-0.415"), // antena
-        new Rule(new TR(true), null, 0, "m -0.087,-0.55\nv -0.3\nl -0.173,0.1\nv 0.3\n\nm 0,0\nv 0.2\n\nm 0.173,0.1\nv -0.2\n\nm 0.173,-0.1\nv 0.2\n\nm -0.346,-0.2 0.173,-0.1 0.173,0.1 -0.173,0.1\nz\n\nM 0,0 0.866,-0.5 0,-1 -0.866,-0.5 0,0"), // chair1
-        new Rule(new TR(true), null, 0, "m 0.346,-0.5 -0.26,-0.15\n\nm -0.087,0.35 -0.087,0.15\n\nm 0.346,-0.3 0.087,0.05\n\nm -0.779,0.05 0.26,0.15 0.52,-0.3 0.087,-0.15 -0.26,-0.15 -0.087,0.15\nz\n\nM 0,-0 0.866,-0.5 0,-1 -0.866,-0.5 0,-0"), // chair_b
+        new Rule(0, new TR(true), null, [], 0, "M 0,0 0.866,-0.5 0,-1 -0.866,-0.5 0,0"), // plain h
+        new Rule(1, new TR(false), null, [], 0, "m 0,0 -0.866,-0.5 0,1 L 0,1 -0,0"), // plain v
+        new Rule(2, new TR(false), [null, null, new TR(true, null, [-1]), null], [], 0, "M -0.577,0.667\nV 0\nL -0.289,0.167\nv 0.667\n\nM -0,0\nV 1\nL -0.866,0.5\nv -1\nL -0,0"), // door
+        new Rule(3, new TR(false), null, [], 0,"M -0,0 -0,1 -0.866,0.5 -0.866,-0.5 -0,0\n\nM -0.289,0.167 -0.577,0\nv 0.333\nl 0.289,0.167\nz\n\nm -0.144,-0.083 0,0.333"), // window
+        new Rule(4, new TR(true), null, [1], 0,"M 0,0 0.866,-0.5 0,-1 -0.866,-0.5 0,0\n\nM -0,-1 0,0"), // pointy
+        new Rule(5, new TR(true), null, [1], 0,"m -0.866,-0.5\nc 0.577,-0.267 1.155,-0.267 1.732,0\n\nM 0,-1 0,0 0.866,-0.5 0,-1 -0.866,-0.5 0,0"), // curved
+        new Rule(6, new TR(true), [null, null, new TR(false),  new TR(false)], [], 0,"m -0.866,-0.5 0,-0.2\nL 0,-0.2 0.866,-0.7 0.866,-0.5\n\nM 0,-0.2 0,0 0.866,-0.5 0,-1 -0.866,-0.5 0,0\n\nm -0.693,-0.6\nv 0.2\n\nm 0.173,-0.1\nv 0.2\n\nm 0.173,-0.1 0,0.2\n\nm 0.173,-0.1\nv 0.2\n\nm 0.346,-0.2 0,0.2\n\nm 0.173,-0.3 0,0.2\n\nm 0.173,-0.3\nv 0.2\n\nm 0.173,-0.3 0,0.2"), // rails
+        new Rule(7, new TR(true),  [null, new TR(false, [2]),  null, null], [], 0, "M 0,0 0.866,-0.5 0,-1 -0.866,-0.5 0,0\n\nm -0.26,-0.85 0.173,0.1 -0.346,0.2 -0.173,-0.1"), // doormat 1
+        new Rule(8, new TR(true),  [new TR(false, [2]), null, null,  null], [], 0, "M -0,0 -0.866,-0.5 -0,-1 0.866,-0.5 -0,0\n\nM 0.26,-0.85\nl -0.173,0.1 0.346,0.2 0.173,-0.1"), // doormat 0
+        new Rule(9, new TR(false), null, [], 0,"M -0,0 -0,1 -0.866,0.5 -0.866,-0.5 -0,0\n\nM -0.289,0.167 -0.577,0\nV 0.333\nL -0.289,0.5\nZ\n\nM -0.433,0.083\nV 0.417\n\nM -0.289,0.333 -0.577,0.167"), // windowx
+        new Rule(10, new TR(false), null, [], 0, "M -0,0 -0,1 -0.866,0.5 -0.866,-0.5 -0,0\n\nM -0.722,0.283 -0.52,0.4\nV 0\nL -0.722,-0.117\nZ\n\nm 0.577,0.333\nV 0.217\nL -0.346,0.1\nv 0.4\nz"), // window2
+        new Rule(11, new TR(false), null, [], 0, "M -0,0 -0,1 -0.866,0.5 -0.866,-0.5 -0,0\n\nM -0.144,0.617\nV 0.217\nL -0.346,0.1\nv 0.4\nz"), // window21
+        new Rule(12, new TR(false), null, [], 0, "M -0,0 -0,1 -0.866,0.5 -0.866,-0.5 -0,0\n\nM -0.52,0.4\nV -0\nL -0.722,-0.117\nv 0.4\nz"), // window22
+        new Rule(13, new TR(false), [null, null, new TR(true, null, [-1]), null], 0, 0, "M -0,0 -0,1 -0.866,0.5 -0.866,-0.5 -0,0\n\nM -0.144,0.617\nV 0.217\nL -0.346,0.1\nv 0.4\nz\n\nm -0.346,0.1 -0,-0.667 -0.289,-0.167 0,0.667"), // doors
+        new Rule(14, new TR(false), [null, null, new TR(true, null, [-1]), null], 0, 0, "M -0,0 -0,1 -0.866,0.5 -0.866,-0.5 -0,0\n\nM -0.52,0.4\nV -0\nL -0.722,-0.117\nv 0.4\nz\n\nM -0.087,0.95\nl -0,-0.667 -0.289,-0.167 0,0.667"), // doors2
+        new Rule(15, new TR(true), null, [], 1, "m 0.067,-0.36 0.167,0.039\n\nm -0.137,-0.164 0.159,0.048\n\nm -0.134,-0.153 0.193,0.051\n\nM -0,0 0.866,-0.5 -0,-1 -0.866,-0.5 -0,0\n\nM 0.087,-0.15\nc 0.011,-0.015 0.115,-0.415 0.115,-0.415"), // antena
+        new Rule(16, new TR(true), null, [], 1, "m -0.087,-0.55\nv -0.3\nl -0.173,0.1\nv 0.3\n\nm 0,0\nv 0.2\n\nm 0.173,0.1\nv -0.2\n\nm 0.173,-0.1\nv 0.2\n\nm -0.346,-0.2 0.173,-0.1 0.173,0.1 -0.173,0.1\nz\n\nM 0,0 0.866,-0.5 0,-1 -0.866,-0.5 0,0"), // chair1
+        new Rule(17, new TR(true), null, [], 1, "m 0.346,-0.5 -0.26,-0.15\n\nm -0.087,0.35 -0.087,0.15\n\nm 0.346,-0.3 0.087,0.05\n\nm -0.779,0.05 0.26,0.15 0.52,-0.3 0.087,-0.15 -0.26,-0.15 -0.087,0.15\nz\n\nM 0,-0 0.866,-0.5 0,-1 -0.866,-0.5 0,-0"), // chair_b
+        new Rule(18, new TR(true), null, [], 1, "M 0,-0.9 -0.52,-0.6 0,-0.3 0.52,-0.6\nZ\n\nm 0,0.8 0.693,-0.4\nv -0.1\nl -0.693,0.4\n\nm -0.693,-0.3\nv -0.1\nL 0,-0.2\nv 0.1\nz\n\nM 0,-0.7 0.173,-0.6 0,-0.5 -0.173,-0.6\nZ\n\nM 0.433,-0.55 0,-0.8 -0.433,-0.55\n\nM 0,-0.8\nv -0.1\n\nm 0,0.9\nL 0.866,-0.5 0,-1 -0.866,-0.5 0,-0"), // hatch
+        new Rule(19, new TR(true), null, [], 0, "m -0,-0.6\nv -0.1\n\nM 0.433,-0.35\nl -0.433,-0.25 -0.433,0.25\n\nm 0.953,-0.05\nL -0,-0.7 -0.52,-0.4\n\nm 1.126,-0.05\nL -0,-0.8 -0.606,-0.45\n\nM -0,-0.9\nv 0.1\n\nm 0,-0.1\nc 0,0 0.693,0.4 0.693,0.4\nL -0,-0.1 -0.693,-0.5\nZ\n\nm -0.866,0.4\nL -0,-0 0.866,-0.5 -0,-1\nZ"), // pit
+        new Rule(20, new TR(true), null, [1], 0, "M 0,0 0.866,-0.5 0,-1 -0.866,-0.5 0,0\n\nM -0.866,-0.5 0,-0.9 0,0\n\nM -0,-1\nl -0,0.1\nL 0.866,-0.5"), // pointy2
+        new Rule(21, new TR(true), [null, null, null, new TR(true, [22])], [1],0, "m 0.866025 -0.5 l -0.866025 -0.5 l -0.866026 0.5 L 4.81963e-07 1.08172e-08 M 4.81963e-07 -1 L -0.173205 -0.8 L -0.866025 -0.5 m 1.47224 0.15 l -0.779423 -0.45"), // gable_tl
+        new Rule(22, new TR(true), [null, new TR(true, [21]), null, null], [1],0, "M -0.866025 -0.5 L 3.14034e-07 -1.20982e-07 L 0.866025 -0.5 L 3.35859e-07 -1 M 2.92209e-07 -4.40957e-07 L 0.173205 -0.6 L 0.866025 -0.5 m -1.12583 -0.35 l 0.433013 0.25"), // gable_br
     ]
 
     /** @type {[[Cell]]} */
@@ -232,7 +312,7 @@ function init2() {
            }
            let neighbours = [];
            for (let k=0; k<6; k++) {
-                let tj = dpos[k][0] + j;   
+                let tj = dpos[k][0] + j;
                 let ti = dpos[k][1] + i;
                 if (tj >= 0 && tj < cols && ti >= 0 && ti < rows) {
                     neighbours[k] = grid[ti][tj];
@@ -262,7 +342,7 @@ function init2() {
     for (let row of grid) {
         for (let cell of row) {
             for (let tile of cell.tiles) {
-                if (tile.rule < 0) {
+                if (!tile.rule ) {
                     let candidates = [];
                     for (let i=0; i<RULES.length; i++) {
                         if (RULES[i].matches(tile)) {
@@ -271,8 +351,11 @@ function init2() {
                     }
                     if (candidates.length > 0) {
                         let k = Math.min(Math.floor(Math.random() * candidates.length), candidates.length - 1);
-                        tile.rule = candidates[k];
+                        tile.rule = RULES[candidates[k]];
                     }
+                }
+                if (tile.canMirror()) {
+                    tile.mirrorVariant = Math.random() > 0.5;
                 }
             }
         }
@@ -281,10 +364,10 @@ function init2() {
     for (let row of grid) {
         for (let cell of row) {
             for (let tile of cell.tiles) {
-                if (tile.rule < 0) {
+                if (!tile.rule ) {
                     for (let i=0; i<RULES.length; i++) {
-                        if (RULES[i].matches(tile)) {
-                            tile.rule = i;
+                        if (RULES[i].matches(tile, RULES, false)) {
+                            tile.rule = RULES[i];
                             break;
                         }
                     }
@@ -298,8 +381,8 @@ function init2() {
             let y = SIZE*(i-rows*0.5)*1.5;
             let pos = V(x, y);
             for (let tile of grid[i][j].tiles) {
-                if (tile.rule >= 0) {
-                    let rule = RULES[tile.rule]
+                if (tile.rule) {
+                    let rule = tile.rule;
                     let transform = new M4();
                     transform = transform.mul(M4.translate(pos)).mul(M4.scale(SIZE));
                     if (tile.mirrored()) {
@@ -770,7 +853,7 @@ class Ob {
      * @returns {V3}
      */
     static parsePoint(text) {
-        let t = text.split(",")
+        let t = text.split(/[, ]/)
         return new V3(Number.parseFloat(t[0]), Number.parseFloat(t[1]));
     }
     /**
@@ -784,12 +867,12 @@ class Ob {
         let pos = new V3(0, 0, 0);
         let p=0;
         data = data.trim();
-        let chunks = data.split(/(?=[a-zA-Z])/);
+        let chunks = data.split(/(?=[a-df-zA-DF-Z])/);
         let drawing = false;
         let start = pos;
         let last_cubic = null;
         let last_quad = null;
-        let POINT_REGEX = /[0-9.eE+\-]+,[0-9.eE+\-]+/g;
+        let POINT_REGEX = /[0-9.eE+\-]+[, ][0-9.eE+\-]+/g;
         let NUMBER_REGEX = /[0-9.eE+\-]+/g;
         for (const chunk of chunks) {
             let t = chunk[0];
