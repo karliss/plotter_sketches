@@ -334,6 +334,7 @@ A/1P Adaptor list (for A-Style pens)
 
 * Piano 2121 -> splotchy in corners and start/end of line, inconsistent between pens, 2/2 blocked by air buble
 * dong-a fine tech -> clean thin line, endpoint dots, makes air bubbles
+* Cello flogel. 0.5mm(label) 0.25mm(real) <10cm/s (otherwise skips)
 
 
 # communities and resources for other writing tools
