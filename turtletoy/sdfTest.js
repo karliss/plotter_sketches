@@ -6,7 +6,7 @@ let cd = 51.9; // min = 0, max=360, step=0.1
 let perspective = 1; // min=0, max=1, step=1,  (off, on)
 let viewSize = 200; // min=10, max=400, step=1
 let fov = 90; // min=10, max=160, step=0.1
-let subdiv = 64; // min=1, max=1024, step=1
+let subdiv = 32; // min=1, max=1024, step=1
 let subdivExtra = 1; // min=0, max=1, step=1
 
 let scene = null;
@@ -37,21 +37,47 @@ function init2() {
 
     let sdf2 = new SDF2();
     let p = new SDF2.Box(V(5, 5, 5));
-    let x = 
+    /*let x = 
         new SDF2.Diff(
             new SDF2.Diff(new SDF2.Box(V(5, 15, 10)),
-                (p).tr(M4.translate(-5, 0, 10)), {textures: [
+                (new SDF2.Box(V(6, 6,5),
+                    {textures: [
+                            {id: "slice_local", step:1, dir:V(0, 0, 1)}
+                    ]})).tr(M4.translate(-5, 0, 10)), {textures: [
                     {id: "slice_local", step:1},
                     //{id: "slice_local", step:1, dir:V(1, 0, 0)},
-                    {id: "slice_local", step:1, dir:V(0, 1, 0)},
+                    //{id: "slice_local", step:1, dir:V(0, 1, 0)},
                 ]})
                 , new SDF2.Sphere(4, {textures:[
                     {id: "slice_local", step:1, dir:V(0, 1, 0)}
                 ]}).tr(M4.translate(-5, 15, 10))
                  ,{line_style: 1, invisible_style: null}
-            );
+            );*/
+
+        let x = new SDF2.Box(V(5, 15, 10))
+            .sub(new SDF2.Box(V(6, 6,5),
+                    {textures: [
+                            {id: "slice_local", step:1, dir:V(0, 0, 1)}
+                    ]}).tr(M4.translate(-5, 0, 10)))
+            .format({textures: [
+                            {id: "slice_local", step:1, dir:V(0, 0, 1)}
+                    ]})
+            .sub(new SDF2.Sphere(4, {textures:[
+                    {id: "slice_local", step:1, dir:V(0, 1, 0)}
+                ]}).tr(M4.translate(-5, 15, 10)))
+            .sub(new SDF2.Cylinder(2, 8)
+                    .tr(M4.euler(0, Math.PI/2, 0))
+                    .format({textures: [{id: "slice_local", step:1, dir:V(0, 0, 1)}]}))
+                ;
+
     sdf2.addObj(x);
     sdf2.addObj((new SDF2.Box(V(2, 2, 20))).tr(M4.translate(0, 0, 0)));
+    sdf2.addObj(new SDF2.Cylinder(4, 8)
+        .tr(M4.translate(-4, -10, 10))
+        .format({
+            line_style: 1,
+            textures: [{id: "slice_local", step:1, dir:V(0, 0, 1)}]
+        }));
     sdf2.process(scene);
     sdf2.draw_to_scene(scene);
     
@@ -352,7 +378,11 @@ class Scene {
         this.lines.push([a, b]);
     }
     addOb(x) {
-        this.lines.push(...x.lines);
+        for (var line of x.lines) {
+            for (let i=1; i<line.length; i++) {
+                this.lines.push([line[i-1], line[i]]);
+            }
+        }
     }
     mapPoint(x) {
         let p = this.camera.mulv(x);
@@ -510,15 +540,13 @@ class Ob {
     }
     static fromChain(points) {
         let res = new Ob();
-        for (let i=1; i<points.length; i++) {
-            res.addLine(points[i-1], points[i]);
-        }
+        res.lines = [points.slice()];
         return res;
     }
     static fromLoop(points) {
         let res = Ob.fromChain(points);
         if (points.length > 1) {
-            res.addLine(points[points.length-1], points[0]);
+            res.lines[0].push(res.lines[0][0]);
         }
         return res;
     }
@@ -529,6 +557,18 @@ class Ob {
         }
         result.push(p3);
         return Ob.fromChain(result);
+    }
+    static circle(r, p0=null, subdiv=32){
+        if (p0 == null) {
+            p0 = new V3(0, 0, 0);
+        }
+        let points = []
+        for (let i=0; i<subdiv; i++) {
+            let a = (Math.PI * 2 * i) / subdiv;
+            let pos = p0.add(new V3(Math.sin(a)*r, Math.cos(a)*r, 0));
+            points.push(pos);
+        }
+        return Ob.fromLoop(points);
     }
 
     /**
@@ -735,6 +775,13 @@ class Ob {
         return res;
     }
     addLine(a,b) {
+        if (this.lines.length > 0) {
+            let line = this.lines[0];
+            if (line.length > 0 && line[line.length - 1] == a) {
+                line.push(b);
+                return;
+            }
+        } 
         this.lines.push([a, b]);
     }
     addLines(ar) {
@@ -749,12 +796,14 @@ class Ob {
     }
     addOb(o) {
         for (const line of o.lines) {
-            this.addLine(line[0], line[1]);
+            this.lines.push(line.slice())
         }
     }
     transform(m) {
-        this.lines.forEach((v, i) => {
-            this.lines[i] = [m.mulv(v[0]), m.mulv(v[1])];
+        this.lines.forEach((v) => {
+            v.forEach((point, i) => {
+                v[i] = m.mulv(point);
+            });
         });
     }
     transformed(m) {
@@ -793,8 +842,23 @@ class SDFF {
     get primitive() {
         return false;
     }
+    get curved() {
+        return true;
+    }
     tr(t) {
         this.transform = t.mul(this.transform);
+        return this;
+    }
+    format(args) {
+        if ("textures" in args) {
+            this.textures = args.textures;
+        }
+        if ("line_style" in args) {
+            this.line_style = args.line_style;
+        }
+        if ("invisible_style" in args) {
+            this.invisible_style = args.invisible_style;
+        }
         return this;
     }
     get_lines(camera_info, t) {
@@ -803,6 +867,13 @@ class SDFF {
     get_texture(texture, node, camera_info) {
         return [];
     }
+    add(x) {
+        return new SDF2.Union(this, x);
+    }
+    sub(x) {
+        return new SDF2.Diff(this, x);
+    }
+    
 }
 
 class SDFNode {
@@ -853,15 +924,9 @@ class SDF2 {
                         
                         let step = texture.step;
                         for (let z=-this.r+step; z<this.r; z+= step) {
-                            let ring = [];
                             let r2 = Math.sqrt(this.r*this.r - z*z);
-                            let subdiv = 32;
-                            for (let i=0; i<subdiv; i++) {
-                                let a = (Math.PI * 2 * i) / subdiv;
-                                
-                                ring.push(new V3(Math.sin(a)*r2, Math.cos(a)*r2, z));
-                            }
-                            ring.push(ring[0]);
+                            let ring = Ob.circle(r2, new V3(0, 0, z), subdiv);
+                            ring = ring.lines[0];
                             for (let i=0; i<ring.length; i++) {
                                 ring[i] = ring[i].swizzleSimple(dir);
                             }
@@ -888,7 +953,7 @@ class SDF2 {
          */
         do(p, id=null) {
             let flip = p.z < 0 ? -1 : 1;
-            p.z *= -1;
+            p.z *= flip;
             let v = p.changez(0);
             let d = v.magnitude() - this.r;
             let dh = p.z - this.h;
@@ -910,8 +975,15 @@ class SDF2 {
         get primitive() {
             return true;
         }
+        get_lines(camera_info, t) {
+            let result = new Ob();
+            
+            result.addOb(Ob.circle(this.r, new V3(0, 0, this.h)));
+            result.addOb(Ob.circle(this.r, new V3(0, 0, -this.h)));
+            return result.lines;
+        }
         get_texture(texture, node, camera_info) {
-            let result = [];
+            let result = new Ob();
             switch (texture.id) {
                 case "slice_local":
                     {
@@ -921,22 +993,13 @@ class SDF2 {
                         }
                         
                         let step = texture.step;
-                        for (let z=-this.r+step; z<this.r; z+= step) {
-                            let ring = [];
-                            let r2 = Math.sqrt(this.r*this.r - z*z);
-                            let subdiv = 32;
-                            for (let i=0; i<subdiv; i++) {
-                                let a = (Math.PI * 2 * i) / subdiv;
-                                
-                                ring.push(new V3(Math.sin(a)*r2, Math.cos(a)*r2, z));
+                        if (dir.z > 0) {
+                            for (let z=-this.h; z<this.h; z+= step) {
+                                result.addOb(Ob.circle(this.r, new V3(0, 0, z)));
                             }
-                            ring.push(ring[0]);
-                            for (let i=0; i<ring.length; i++) {
-                                ring[i] = ring[i].swizzleSimple(dir);
-                            }
-                            result.push(ring);
                         }
-                        return result;
+                        
+                        return result.lines;
                     }
                     break;
             }
@@ -980,6 +1043,9 @@ class SDF2 {
         }
         get primitive() {
             return true;
+        }
+        get curved() {
+            return false;
         }
         corner(m) {
             let r = this.size.mul(-1);
@@ -1152,6 +1218,8 @@ class SDF2 {
         this.tmpd = []
         /** @type {[SDFNode]} */
         this.o2 = [];
+
+        this.RAY_MARCH_LIMIT = 0.000001;
     }
 
     addObj(x){ 
@@ -1193,7 +1261,7 @@ class SDF2 {
             /** @type {SDFR} */
             let hit = this.calcSDF(p);
             let distance = hit.d;
-            if (distance < 0.001) {
+            if (distance < this.RAY_MARCH_LIMIT) {
                 result = hit;
                 break;
             }
@@ -1206,7 +1274,7 @@ class SDF2 {
     clipReach(p0, point, ortho, forward, mustBeOnSurface, node=null) {
         if (mustBeOnSurface) {
             let d = 0;
-            if (true || !node ) {
+            if (!node ) {
                 d = Math.abs(this.calcSDF(point).d);
             } else {
                 let hit = this.calcSDF(point);
@@ -1300,7 +1368,7 @@ class SDF2 {
                     return;
                 }
                 let last = invisible ? last_invisible : last_normal;
-                if (false && last && last.length > 0) {
+                if (last && last.length > 0) {
                     last[last.length - 1] = b;
                     return;
                 }
@@ -1335,7 +1403,10 @@ class SDF2 {
                 let prev = pa;
                 for (let i=1; i<=subdiv; i++) {
                     let p2 = V3.lerp(pa, pb, i/subdiv);
-                    p2 = this.snap_to_surface(p2, node);
+                    if (node.func.curved) {
+                        last_normal = last_invisible = null;
+                        p2 = this.snap_to_surface(p2, node);
+                    }
                     // todo snap to surface
                     let r1 = this.clipReach(p0, prev, ortho, forward, true, node);
                     let r2 = this.clipReach(p0, p2, ortho, forward, true, node);
@@ -1347,14 +1418,13 @@ class SDF2 {
                             let m = l.add(r).mul(0.5);
                             m = this.snap_to_surface(m, node);
                             let good = this.clipReach(p0, m, ortho, forward, true, node) > 0;
-                            if (r1 == good) {
+                            if ((r1 > 0) == good) {
                                 l = m;
                             } else {
                                 r = m;
                             }
                         }
                         if (r1 > 0) {
-                            //result.push([prev, l]);
                             addSegment(prev, l, false);
                             if (r2 == 0) {
                                 addSegment(l, p2, true, show_invisible);
@@ -1363,7 +1433,6 @@ class SDF2 {
                             }
                                 
                         } else {
-                            //result.push([l, p2]);
                             if (r1 == 0) {
                                addSegment(prev, l, true, show_invisible);
                             } else {
@@ -1496,7 +1565,6 @@ function initlib() {
     this.M4 = M4;
     this.Ob = Ob;
     this.Scene = Scene;
-    this.SDF = SDF;
 }
 initlib();
 if (typeof Canvas != 'undefined') {
