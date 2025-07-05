@@ -2,7 +2,7 @@
 //
 let a1 = 15; // min = -720, max=720, step=1
 let a2 = 30; // min = -90, max=90, step=1
-let cd = 40.9; // min = 0, max=360, step=0.1
+let cd = 40; // min = 0, max=360, step=0.1
 let perspective = 1; // min=0, max=1, step=1,  (off, on)
 let viewSize = 200; // DIS min=10, max=600, step=1
 let fov = 90; // min=10, max=160, step=0.1
@@ -68,9 +68,6 @@ function init2() {
         ;
 
     sdf2.addObj(x);
-    sdf2.addObj(new SDF2.Sphere(5, {
-        textures: [{ id: "slice_local", step: 2 }]
-    }).tr(M4.translate(-6, -17, 0).mul(M4.euler(aob1, aob2, 0))));
     //sdf2.addObj((new SDF2.Box(V(1, 1, 1))).tr(M4.translate(10, 0, 0)));
 
     sdf2.addObj(new SDF2.Cylinder(4, 5, {
@@ -506,7 +503,7 @@ class Scene {
                         p1 = line[0];
                         p2 = line[1];
                     } else {
-                        return;
+                        continue
                     }
                 }
                 p1 = this.mapPoint(p1);
@@ -1728,13 +1725,13 @@ class SDF2 {
                             next = Math.min(progress + k, 1);
                             nextP = V3.lerp(pa, pb, next);
                             nextScreen = camera_info.mapWorldPoint(nextP);
-                        } while (sc1.sub(nextScreen).changez(0).len2() > target2);
+                        } while (sc1.sub(nextScreen).changez(0).len2() > target2 && k > 0.01);
                         do {
                             k *= 2;
                             next = Math.min(progress + k, 1);
                             nextP = V3.lerp(pa, pb, next);
                             nextScreen = camera_info.mapWorldPoint(nextP)
-                        } while (sc1.sub(nextScreen).changez(0).len2() < target2 && k < 1-progress);
+                        } while (sc1.sub(nextScreen).changez(0).len2() < target2 && k < 1 - progress);
                         next = progress + k;
                         //console.log(`recalc ${k} ${sc1.sub(nextScreen).changez(0).magnitude()}`);
                     }
@@ -1881,12 +1878,21 @@ class SDF2 {
     }
 
     *drawIncremental(camera_info) {
+        let t0 = Date.now();
+        let t1 = t0;
+        let tim = function() {
+            let t2 = Date.now();
+            console.log(`time ${t2-t1} ${t2-t0}`);
+            t1 = t2;
+        }
+        console.log(`t: ${Date.now()-t0}`);
         for (let i of this.primitive) {
             let node = this.o2[i];
             let lines = node.func.get_lines(camera_info, node);
             if (lines) {
                 lines.transform(node.transform);
                 let clipped = this.clip_lines(camera_info, lines, node, node.line_style, node.invisible_style);
+                tim();
                 yield clipped;
             }
         }
@@ -1899,6 +1905,7 @@ class SDF2 {
                     text.transform(node.transform);
                     let clipped = this.clip_lines(camera_info, text, node, 1, null);    
                     console.log(`sometext ${i}/${this.o2.length}`);
+                    tim();
                     yield clipped;
                 }
             }
