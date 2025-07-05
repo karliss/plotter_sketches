@@ -7,6 +7,7 @@ let perspective = 1; // min=0, max=1, step=1,  (off, on)
 let viewSize = 200; // min=10, max=600, step=1
 let fov = 90; // min=10, max=160, step=0.1
 let subdiv = 32; // min=1, max=1024, step=1
+let subdiv_target = 0.5; // min=0.01, max=50, step=0.01
 let subdivExtra = 1; // min=0, max=1, step=1
 
 let aob1 = 0; // min=0, max=4, step=0.01
@@ -29,12 +30,13 @@ function init2() {
         scene.w = scene.h = viewSize;
         scene.setPerspective(new V3(0, 0, 0), new V3(0, 0, 0));
     } else {
-        scene.setOrthographic(viewSize/200, new V3(0, 0, 0), new V3(0, 0, 0));
+        scene.setOrthographic(100/cd, new V3(0, 0, 0), new V3(0, 0, 0));
     }
     scene.camera_pos = Scene.worldCameraOrbit(new V3(0, 0, 0), cd, a1, a2);
 
 
     let sdf2 = new SDF2();
+    sdf2.SUBDIV_TARGET = subdiv_target;
     let p = new SDF2.Box(V(5, 5, 5));
 
     let x = new SDF2.Box(V(5, 15, 10))
@@ -78,10 +80,39 @@ function init2() {
              line_style: 1,
              textures: [{ id: "slice_local", step: 1, dir: V(0, 0, 1) }]
          }));*/
+
+    sdf2.addObj(
+        //new SDF2.Sphere(5)
+        new SDF2.Intersection(
+            new SDF2.Sphere(5),
+            new SDF2.Box(new V3(4.01,4.01, 4.01)),
+            {textures: [
+                { id: "slice_local", step: 1, dir: V(0, 0, 1) },
+                { id: "slice_local", step: 1, dir: V(0, 1, 0) },
+                { id: "slice_local", step: 1, dir: V(1, 0, 0) }
+            ]}
+        )
+       .sub(new SDF2.Cylinder(2, 10, {
+            textures: [{ id: "slice_local", step: 1, dir: V(0, 0, 1) }
+        ]}))
+        .sub(new SDF2.Cylinder(2, 10, {
+            textures: [{ id: "slice_local", step: 1, dir: V(0, 0, 1) }
+        ]})
+            .tr(M4.euler(Math.PI/2, 0, 0)))
+        .sub(new SDF2.Cylinder(2, 10, {
+            textures: [{ id: "slice_local", step: 1, dir: V(0, 0, 1) }
+        ]}).tr(M4.euler(0, Math.PI/2, 0)))
+        
+        .tr(M4.translate(0,0,-20))
+    );
+
+
+
     sdf2.process(scene);
     sdf2.draw_to_scene(scene);
 
     scene.draw();
+    //console.log(`sdf_runs ${sdf_runs}`);
 }
 // The walk function will be called until it returns false.
 function walk(i) {
@@ -417,8 +448,15 @@ class Scene {
         } else {
             p.x = 0; p.y = 0;
         }
-        return [p.x, p.y];
+        return p;
     }
+
+    mapWorldPoint(p) {
+        let cam = this.camera_pos.mulv(p);
+        let z = cam.z;
+        return this.mapPoint(cam).changez(z);
+    }
+    
     draw() {
         let lastPoint = null;
         turtle.pendown();
@@ -474,16 +512,14 @@ class Scene {
             p2 = this.mapPoint(p2);
             let connected = false;
             if (lastPoint != null) {
-                let dx = lastPoint[0] - p1[0];
-                let dy = lastPoint[1] - p1[1];
-                connected = (dx * dx + dy * dy) < 0.00001;
+                connected = lastPoint.sub(p1).len2()  < 0.00001;
             }
             if (!connected) {
                 turtle.penup();
-                turtle.jump(p1)
+                turtle.jump(p1.x, p1.y)
                 turtle.pendown();
             }
-            turtle.goto(p2);
+            turtle.goto(p2.x, p2.y);
             lastPoint = p2;
         });
         turtle.penup();
@@ -968,6 +1004,8 @@ class SDFNode {
     }
 }
 
+let sdf_runs = 0;
+
 class SDF2 {
 
     static Sphere = class extends SDFF {
@@ -1381,6 +1419,7 @@ class SDF2 {
         this.MAX_STEPS = 300;
         this.RAY_MARCH_LIMIT = 0.0001;
         this.TANGENT_HACK = 0.01;
+        this.SUBDIV_TARGET = 0.5;
     }
 
     addObj(x) {
@@ -1393,6 +1432,7 @@ class SDF2 {
      * @returns {SDFR}
      */
     calcSDF(p, offsetNode=null) {
+        sdf_runs++;
         for (let i of this.primitive) {
             let node = this.o2[i];
             let p2 = node.inverse_transform.mulv(p);
@@ -1402,10 +1442,11 @@ class SDF2 {
             this.tmpd[offsetNode.index].d += offsetNode.sign * this.TANGENT_HACK;
         }
         for (let i = this.combine.length - 1; i >= 0; --i) {
-            let node = this.o2[this.combine[i]];
+            let index = this.combine[i];
+            let node = this.o2[index];
             let r1 = this.tmpd[node.a];
             let r2 = this.tmpd[node.b];
-            this.tmpd[i] = node.func.do(p, r1, r2);
+            this.tmpd[index] = node.func.do(p, r1, r2);
         }
         let res = null;
         for (let i of this.root) {
@@ -1598,9 +1639,39 @@ class SDF2 {
                 last_normal = last_invisible = null;
 
                 let prev = pa;
-                for (let i = 1; i <= subdiv; i++) {
+                let prevOnLine = pa;
+                let k=1/subdiv;
+                let recalcSize = 0.26;
+                let recalcStep = 0.0-0.001;
+                for (let progress=0; progress<1; progress += k) {
 
-                    let p2 = this.interpolate_point(pa, pb, i / subdiv, line, node);
+                    let next = progress + k;
+                    if (next > recalcStep) {
+                        let sc1 = camera_info.mapWorldPoint(prevOnLine);
+                        recalcStep += recalcSize;
+                        let nextP = null
+                        let nextScreen = null;
+
+                        let target2 = this.SUBDIV_TARGET*this.SUBDIV_TARGET;
+                        do {
+                            k *= 0.5;
+                            next = Math.min(progress + k, 1);
+                            nextP = V3.lerp(pa, pb, next);
+                            nextScreen = camera_info.mapWorldPoint(nextP);
+                        } while (sc1.sub(nextScreen).changez(0).len2() > target2);
+                        do {
+                            k *= 2;
+                            next = Math.min(progress + k, 1);
+                            nextP = V3.lerp(pa, pb, next);
+                            nextScreen = camera_info.mapWorldPoint(nextP)
+                        } while (sc1.sub(nextScreen).changez(0).len2() < target2 && k < 1-progress);
+                        next = progress + k;
+                        //console.log(`recalc ${k} ${sc1.sub(nextScreen).changez(0).magnitude()}`);
+                    }
+                    next = Math.min(next, 1);
+                    prevOnLine = V3.lerp(pa, pb, next);
+                    let p2 = this.interpolate_point(pa, pb, next, line, node);
+
                     if (node.func.curved || line.p0) {
                         last_normal = last_invisible = null;
                     }
