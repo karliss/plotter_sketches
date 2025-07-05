@@ -4,21 +4,23 @@ let a1 = 15; // min = -720, max=720, step=1
 let a2 = 30; // min = -90, max=90, step=1
 let cd = 40.9; // min = 0, max=360, step=0.1
 let perspective = 1; // min=0, max=1, step=1,  (off, on)
-let viewSize = 200; // min=10, max=600, step=1
+let viewSize = 200; // DIS min=10, max=600, step=1
 let fov = 90; // min=10, max=160, step=0.1
-let subdiv = 32; // min=1, max=1024, step=1
+let subdiv = 16; // DIS min=1, max=1024, step=1
 let subdiv_target = 0.5; // min=0.01, max=50, step=0.01
-let subdivExtra = 1; // min=0, max=1, step=1
+const subdivExtra = 1; // DIS min=0, max=1, step=1
 
-let aob1 = 0; // min=0, max=4, step=0.01
-let aob2 = 0; // min=0, max=4, step=0.01
+let aob1 = 0; // DIS min=0, max=4, step=0.01
+let aob2 = 0; // DIS min=0, max=4, step=0.01
 
 let scene = null;
 let turtle = null;
 
-let circleSubdiv = 32; // min=3, max=256, step=1
+let circleSubdiv = 16; // min=3, max=256, step=1
 
 const DEBUG_N_ON_SURFACE = true;
+const INCREMENTAL = true;
+let sceneGen = null;
 
 function init2() {
     // Global code will be evaluated once.
@@ -73,7 +75,7 @@ function init2() {
 
     sdf2.addObj(new SDF2.Cylinder(4, 5, {
         //textures: [{ id: "slice_local", step: 1, dir: V(0, 0, 1) }]
-    }).tr(M4.translate(0, 0, 0).mul(M4.euler(aob1, aob2, 0))));
+    }).tr(M4.translate(0, 0, 1).mul(M4.euler(aob1, aob2, 0))));
     /*sdf2.addObj(new SDF2.Cylinder(4, 8)
          .tr(M4.translate(-4, -5, 10))
          .format({
@@ -109,14 +111,22 @@ function init2() {
 
 
     sdf2.process(scene);
-    sdf2.draw_to_scene(scene);
-
-    scene.draw();
-    //console.log(`sdf_runs ${sdf_runs}`);
+    if (!INCREMENTAL) {
+        sdf2.draw_to_scene(scene);
+        scene.draw();
+    } else {
+        sceneGen = sdf2.drawIncremental(scene);
+    }
 }
 // The walk function will be called until it returns false.
 function walk(i) {
-    return false;
+    let r = sceneGen.next();
+    let r2 = r.value;
+    if (r.value) {
+        let ob = r.value;
+        scene.drawincremental(ob);
+    }
+    return !r.done;
 }
 
 class V3 {
@@ -457,6 +467,66 @@ class Scene {
         return this.mapPoint(cam).changez(z);
     }
     
+    drawincremental(ob) {
+        let lastPoint = null;
+        turtle.pendown();
+        ob.lines.forEach((line) => {
+            for (let i=1; i < line.data.length; i++) { 
+                let debug = false;
+                let l = [line.data[i-1], line.data[i]];
+                if (l[0].z > 0 && l[1].z > 0) {
+                    debug = true;
+                }
+                let p1 = this.camera_pos.mulv(l[0]);
+                let p2 = this.camera_pos.mulv(l[1]);
+
+                if (!this.ortho) {
+                    let p0 = new V3(0, 0, 0);
+                    let norm = new V3();
+                    let line = [p1, p2];
+                    let a1 = Math.PI * 0.5 * this.fov[0] / 180;
+                    let a2 = Math.PI * 0.5 * this.fov[1] / 180;
+                    if (line) {
+                        norm = new V3(Math.cos(a1), 0, -Math.sin(a1));
+                        line = Util.planeClip(p0, norm, line[0], line[1]);
+                    }
+                    if (line) {
+                        norm = new V3(-Math.cos(a1), 0, -Math.sin(a1));
+                        line = Util.planeClip(p0, norm, line[0], line[1]);
+                    }
+                    if (line) {
+                        norm = new V3(0, -Math.cos(a2), -Math.sin(a2));
+                        line = Util.planeClip(p0, norm, line[0], line[1]);
+                    }
+                    if (line) {
+                        norm = new V3(0, Math.cos(a2), -Math.sin(a2));
+                        line = Util.planeClip(p0, norm, line[0], line[1]);
+                    }
+                    if (line) {
+                        p1 = line[0];
+                        p2 = line[1];
+                    } else {
+                        return;
+                    }
+                }
+                p1 = this.mapPoint(p1);
+                p2 = this.mapPoint(p2);
+                let connected = false;
+                if (lastPoint != null) {
+                    connected = lastPoint.sub(p1).len2()  < 0.00001;
+                }
+                if (!connected) {
+                    turtle.penup();
+                    turtle.jump(p1.x, p1.y)
+                    turtle.pendown();
+                }
+                turtle.goto(p2.x, p2.y);
+                lastPoint = p2;
+            }
+        });
+        turtle.penup();
+    }
+
     draw() {
         let lastPoint = null;
         turtle.pendown();
@@ -1083,7 +1153,7 @@ class SDF2 {
                         let step = texture.step;
                         for (let z = -this.r + step; z < this.r; z += step) {
                             let r2 = Math.sqrt(this.r * this.r - z * z);
-                            let ring = Ob.circle(r2, new V3(0, 0, z), subdiv);
+                            let ring = Ob.circle(r2, new V3(0, 0, z));
                             let ringData = ring.lines[0].data;
                             for (let i = 0; i < ringData.length; i++) {
                                 ringData[i] = ringData[i].swizzleSimple(dir);
@@ -1808,6 +1878,31 @@ class SDF2 {
             }
         }
         return result;
+    }
+
+    *drawIncremental(camera_info) {
+        for (let i of this.primitive) {
+            let node = this.o2[i];
+            let lines = node.func.get_lines(camera_info, node);
+            if (lines) {
+                lines.transform(node.transform);
+                let clipped = this.clip_lines(camera_info, lines, node, node.line_style, node.invisible_style);
+                yield clipped;
+            }
+        }
+        for (let i of this.primitive) {
+            let node = this.o2[i];
+            let textures = node.textures;
+            if (textures) {
+                for (let texture of textures) {
+                    let text = node.func.get_texture(texture, node, camera_info);
+                    text.transform(node.transform);
+                    let clipped = this.clip_lines(camera_info, text, node, 1, null);    
+                    console.log(`sometext ${i}/${this.o2.length}`);
+                    yield clipped;
+                }
+            }
+        }
     }
 
     /**
