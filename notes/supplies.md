@@ -5,7 +5,7 @@
 * Sun-Star Nocfree
 * Faber-Castell Grip Matic $
 * Orez Nero $$
-* Uni Kuru Toga Dive $$$
+* Uni Kuru Toga Dive $$$ (the mechanism in most other kuru toga pencils only rotate instead of autofeed)
 
 https://forum.knockology.com/t/comprehensive-list-of-auto-advance-pencils/1391
 
@@ -17,10 +17,8 @@ https://forum.knockology.com/t/comprehensive-list-of-auto-advance-pencils/1391
     * original rapidograph(1953), variant, variant B, foliograph, micronorm. Compatible nib. Visible air trap path combined with mounting thread.
     * isograph(1976-now), nib combined with collar. Supposed to be refillable from bottle, but rotring also sells (small) disposable cartridges. Different from rapidograph(1983) cartridges.
     * new rapidograph(1983) uses big "capillary" cartridges, skinny nib, airtrap is part of cartridge instead of nib
-* STAEDTLER Mars matic
 * Koh-I-Noor® Rapidograph® (previously rapidograph trademark was owned and used by rOtring)
     * nib looks similar to Rotring Variant B
-* Faber-Castel TG1-S (historically had other TG1 versions like TG1-J TG1-H)
 
 * Hero 81A (China)
 * isomars technoart (India?, their branding and product packaging seems to be heavily inspired by rOtring)
@@ -37,13 +35,15 @@ https://forum.knockology.com/t/comprehensive-list-of-auto-advance-pencils/1391
 * Trident Desegraph (Brazil)
     - https://trident.com.br/categoria-produto/canetas-para-desenho/canetas-desegraph-recarregavel/
 
-
+Production likely stopped recently
+* STAEDTLER Mars matic
+* Faber-Castel TG1-S (historically had other TG1 versions like TG1-J TG1-H)
 
 Historical, closed or doesn't produce technical pens anymore
 
 * Kern Prontograph (Swiss company, closed factory in 1991) https://www.kern-aarau.ch/kern/willkommen.html
 * Centropen centrograph (Czech Republic, still making various writing tools the technical pen not listed on website or latest catalog)
-* MECANORMA mg1 (France, looks very similar to Aristo MG1)
+* MECANORMA mg1 (France, looks very similar to Aristo MG1 (non pro))
 * Mutschler  (Heidelberg, Germany) [source](https://www.pelikan-collectibles.com/en/Pelikan/Models/Drawing-pen/index.html#heading_toc_j_6)
     * reform refograph (Germany)
         * reform toz
@@ -63,6 +63,7 @@ Historical, closed or doesn't produce technical pens anymore
 * Erograph (Germany)
 * Ален Мак, попово (Bulgaria?)
 * GG01 Harkov (USSR)
+* Pentel Ceranomatic
 
 * "Koh-I-NOOR PROFESIONAL II" looks like relabeled Rystor ???, what is this?
 
@@ -153,7 +154,7 @@ In case of long mounting thread, any air grove usually overlaps with mounting th
 | Hero 81A                               |      | conical   | octagon        | short thread on the back     | shallow spiral grove (1:1)                                     |                                                                          |
 | CLEO SKRIBENT                          |      | conical   | hexagon        | ??                           | ??                                                             |                                                                          |
 | GG01 Harkov                            | F?   | cylinders | short thread   | press fit?                   | shallow spiral                                                 |                                                                          |
-| Markant Lin                            |      | cylinder  | flat? round?   | short thread closer to front | shallow wide spiral (2grove:1fin)                              |                                                                          |
+| Markant Lin                            |      | cylinder  | 2 flats   | short thread closer to front | shallow wide spiral (2grove:1fin)                              |                                                                          |
 
 *) F versions with tungsten tip have the conical metal parts in golden color. J jeweled tip, P for etching inks.
 
@@ -346,13 +347,13 @@ While these often focus on drawing/writing tools which you would rarely use with
 * https://www.reddit.com/r/pen/
 * https://www.reddit.com/r/mechanicalpencils/wiki/index/
 * https://www.reddit.com/r/fountainpens/
-* https://www.pelikan-collectibles.com/
 * https://www.fountainpennetwork.com/forum/
 * https://stationery.wiki/Main_Page
-* http://dirck.delint.ca/beta/
-* http://www.ruettinger-web.de/e-pelikan-literatur-buecher.html
+* http://dirck.delint.ca/beta/  mostly fountain pens, has history pages for many manufacturers that made more than fountain pens
+* https://www.pelikan-collectibles.com/
+* http://www.ruettinger-web.de/e-pelikan-literatur-buecher.html   mostly pelikan fountain pens
 * http://www.pencilpages.com/
-* https://cestdelamerdetonstylo.blogspot.com/
+* https://cestdelamerdetonstylo.blogspot.com/ various photos
 
 
 # shops

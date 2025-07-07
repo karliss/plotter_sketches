@@ -17,6 +17,7 @@
 
 * https://newsletter.revdancatt.com/
 * https://penplotter.art/
+* https://lostpixels.io/
 
 # Software
 

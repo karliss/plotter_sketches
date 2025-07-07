@@ -328,22 +328,23 @@ Pens
 | 748817   |             |          |                 | rotring rapidoplot MPP 4x0.7 8P paper, Nicolet Zeta 8..-Series, needs adapter                                                         |
 | 749521   |             |          |                 | rotring rapidoplot DPP Easyplot 9P, 4x0.5 black, Calcomp 102x, 104x direct fit                                                        |
 | 749359   |             |          |                 | rotring rapidoplot MPP 9P 1x0.35mm blue, Calcomp 102x, 104x, direct fit                                                               |
-| 751010   |             | S0217870 |                 | Isograph nib                                                                                                                          |
-| 751013   |             | S0217940 |                 | Isograph nib                                                                                                                          |
-| 751018   |             | S0218020 | 4 006856 751031 | Isograph nib                                                                                                                          |
-| 751020   |             | S0218100 | 4 006856 751048 | Isograph nib                                                                                                                          |
-| 751025   |             | S0218170 |                 | Isograph nib                                                                                                                          |
-| 751030   |             | S0218250 |                 | Isograph nib                                                                                                                          |
-| 751035   |             | S0218320 |                 | Isograph nib                                                                                                                          |
-| 751040   |             | S0218400 |                 | Isograph nib                                                                                                                          |
-| 751050   |             | S0218460 | 4 006856 751109 | Isograph nib                                                                                                                          |
-| 751060   |             | S0218540 |                 | Isograph nib                                                                                                                          |
-| 751070   |             | S0218600 |                 | Isograph nib                                                                                                                          |
-| 751080   |             | S0218680 |                 | Isograph nib                                                                                                                          |
-| 751100   |             | S0218740 |                 | Isograph nib                                                                                                                          |
-| 751140   |             | S0218810 |                 | Isograph nib                                                                                                                          |
-| 751200   |             | S0218880 |                 | Isograph nib                                                                                                                          |
+| 751010   |             | S0217870 |                 | Isograph nib 0.1mm                                                                                                                    |
+| 751013   |             | S0217940 |                 | Isograph nib 0.13mm                                                                                                                   |
+| 751018   |             | S0218020 | 4 006856 751031 | Isograph nib 0.18mm                                                                                                                   |
+| 751020   |             | S0218100 | 4 006856 751048 | Isograph nib 0.2mm                                                                                                                    |
+| 751025   |             | S0218170 |                 | Isograph nib 0.25mm                                                                                                                   |
+| 751030   |             | S0218250 |                 | Isograph nib 0.30mm                                                                                                                   |
+| 751035   |             | S0218320 |                 | Isograph nib 0.35mm                                                                                                                   |
+| 751040   |             | S0218400 |                 | Isograph nib 0.40mm                                                                                                                   |
+| 751050   |             | S0218460 | 4 006856 751109 | Isograph nib 0.50mm                                                                                                                   |
+| 751060   |             | S0218540 |                 | Isograph nib 0.60mm                                                                                                                   |
+| 751070   |             | S0218600 | 4 006856 751147 | Isograph nib 0.7mm                                                                                                                    |
+| 751080   |             | S0218680 |                 | Isograph nib 0.8mm                                                                                                                    |
+| 751100   |             | S0218740 |                 | Isograph nib 1.0mm                                                                                                                    |
+| 751140   |             | S0218810 |                 | Isograph nib 1.4mm                                                                                                                    |
+| 751200   |             | S0218880 |                 | Isograph nib 2.0mm                                                                                                                    |
 | 755013   |             | S0219030 | 4 006856 755015 | Rapidograph (new) nib 0.13mm                                                                                                          |
+| 755050   |             |          | 4 006856 755107 | Rapidograph (new) nib 0.5mm                                                                                                           |
 | 755070   |             |          | 4 006856 755145 | Rapidograph (new) nib 0.7mm                                                                                                           |
 | -        |             |          |                 |                                                                                                                                       |
 | 770117   |             |          |                 | rotring rapidoplot MPP 4x0.18mm black 3F, HP 75xx, Rolad DXY, DPX, needs adapter                                                      |
@@ -418,13 +419,15 @@ Nib design changes:
 * plastic endcap hole square, rhombus (unknown order)
 
 Years:
-| Date | Product id | source               | Unique features                                                                     |
-| ---- | ---------- | -------------------- | ----------------------------------------------------------------------------------- |
+| Date | Product id | source               | Unique features                                                                     ||
+| ---- | ---------- | -------------------- | ----------------------------------------------------------------------------------- |--|
 | 9-62 | 3060       |                      |                                                                                     |
 | 2003 | 3165       |                      | White.                                                                              |
 | 1983 |            | rotring history      | new rapidograph launched                                                            |
-| 1990 | 155xx      | rotring 1990 catalog | "rotring rapidograph", brown barrel, red stripe                                     |
+| 1990 | 155xx      | rotring 1990 catalog | "rotring rapidograph", brown barrel, red stripe, 3 stripes on body                  |
 | ???  | 155xx      | ebay                 | "rotring rapidograph", brown barrel, red stripe                                     |
+| ???  |            | ebay                 | "rotring rapidogrpah iso", brown barel, red stripe, L shapes on body                |
+| ???  | 115120 !   | reddit               | "rotring rapidograph", black barel, red stripe, L shapes on body | https://www.reddit.com/r/rOtring/comments/1ls8twx/help_me_determine_the_year/ |
 | ???  | 155xx      | ebay                 | "rotring rapidograph", black barrel red stripe                                      |
 | 1976 | 751xxx     | rotring history      | isograph launched                                                                   |
 | 1980 | 751xxx     | rotring catalog 1980 | "rotring 2000 isograph", 3+5mm metal bushing                                        |
