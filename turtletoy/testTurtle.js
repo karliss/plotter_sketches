@@ -25,14 +25,14 @@ export class TestTurtle
     startSVG() {
         this.print(String.raw`<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   width="180mm"
-   height="180mm"
-   viewBox="-90 -90 180 180"
+   width="200mm"
+   height="200mm"
+   viewBox="-100 -100 200 200"
    version="1.1"
    id="svg1"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
-    <rect id="bg" x="-90" y="-90" width="180" height="180" style="fill:#ffffff;stroke:none"/>
+    <rect id="bg" x="-100" y="-100" width="200" height="200" style="fill:#ffffff;stroke:none"/>
     <path style="fill: none;stroke: #000000;stroke-width: 0.3;stroke-linecap: round;stroke-linejoin: round;"
        d="`);
     }

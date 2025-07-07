@@ -9,6 +9,7 @@ let fov = 90; // min=10, max=160, step=0.1
 let subdiv = 16; // DIS min=1, max=1024, step=1
 let subdiv_target = 0.5; // min=0.01, max=50, step=0.01
 const subdivExtra = 1; // DIS min=0, max=1, step=1
+let grid_size = 0.2; // min = 0.05, max=20, step=0.05
 
 let aob1 = 0; // DIS min=0, max=4, step=0.01
 let aob2 = 0; // DIS min=0, max=4, step=0.01
@@ -17,6 +18,8 @@ let scene = null;
 let turtle = null;
 
 let circleSubdiv = 16; // min=3, max=256, step=1
+
+let useGrid = 1; // min=0, max=2, step=1
 
 const DEBUG_N_ON_SURFACE = true;
 const INCREMENTAL = true;
@@ -27,18 +30,20 @@ function init2() {
     //const turtle = new Turtle();
 
     scene = new Scene();
+    scene.w = scene.h = viewSize;
     if (perspective > 0) {
         scene.fov = [fov, fov];
-        scene.w = scene.h = viewSize;
         scene.setPerspective(new V3(0, 0, 0), new V3(0, 0, 0));
     } else {
-        scene.setOrthographic(100/cd, new V3(0, 0, 0), new V3(0, 0, 0));
+        scene.setOrthographic(100 / cd, new V3(0, 0, 0), new V3(0, 0, 0));
     }
     scene.camera_pos = Scene.worldCameraOrbit(new V3(0, 0, 0), cd, a1, a2);
 
 
     let sdf2 = new SDF2();
     sdf2.SUBDIV_TARGET = subdiv_target;
+    sdf2.enableGrid = useGrid;
+    sdf2.grid_step = grid_size;
     let p = new SDF2.Box(V(5, 5, 5));
 
     let x = new SDF2.Box(V(5, 15, 10))
@@ -65,6 +70,7 @@ function init2() {
         .sub(new SDF2.Cylinder(2, 8)
             .tr(M4.euler(0, Math.PI / 2, 0))
             .format({ textures: [{ id: "slice_local", step: 1, dir: V(0, 0, 1) }] }))
+    x.format({ line_style: null })
         ;
 
     sdf2.addObj(x);
@@ -84,28 +90,39 @@ function init2() {
         //new SDF2.Sphere(5)
         new SDF2.Intersection(
             new SDF2.Sphere(5),
-            new SDF2.Box(new V3(4.01,4.01, 4.01)),
-            {textures: [
-                { id: "slice_local", step: 1, dir: V(0, 0, 1) },
-                { id: "slice_local", step: 1, dir: V(0, 1, 0) },
-                { id: "slice_local", step: 1, dir: V(1, 0, 0) }
-            ]}
+            new SDF2.Box(new V3(4.01, 4.01, 4.01)),
+            {
+                textures: [
+                    { id: "slice_local", step: 1, dir: V(0, 0, 1) },
+                    { id: "slice_local", step: 1, dir: V(0, 1, 0) },
+                    { id: "slice_local", step: 1, dir: V(1, 0, 0) }
+                ]
+            }
         )
-       .sub(new SDF2.Cylinder(2, 10, {
-            textures: [{ id: "slice_local", step: 1, dir: V(0, 0, 1) }
-        ]}))
-        .sub(new SDF2.Cylinder(2, 10, {
-            textures: [{ id: "slice_local", step: 1, dir: V(0, 0, 1) }
-        ]})
-            .tr(M4.euler(Math.PI/2, 0, 0)))
-        .sub(new SDF2.Cylinder(2, 10, {
-            textures: [{ id: "slice_local", step: 1, dir: V(0, 0, 1) }
-        ]}).tr(M4.euler(0, Math.PI/2, 0)))
-        
-        .tr(M4.translate(0,0,-20))
+            .sub(new SDF2.Cylinder(2, 10, {
+                textures: [{ id: "slice_local", step: 1, dir: V(0, 0, 1) }
+                ]
+            }))
+            .sub(new SDF2.Cylinder(2, 10, {
+                textures: [{ id: "slice_local", step: 1, dir: V(0, 0, 1) }
+                ]
+            })
+                .tr(M4.euler(Math.PI / 2, 0, 0)))
+            .sub(new SDF2.Cylinder(2, 10, {
+                textures: [{ id: "slice_local", step: 1, dir: V(0, 0, 1) }
+                ]
+            }).tr(M4.euler(0, Math.PI / 2, 0)))
+
+            .tr(M4.translate(0, 0, -20))
     );
 
-
+    let t0 = Date.now();
+    let t1 = t0;
+    let tim = function () {
+        let t2 = Date.now();
+        console.log(`time ${t2 - t1} ${t2 - t0}`);
+        t1 = t2;
+    }
 
     sdf2.process(scene);
     if (!INCREMENTAL) {
@@ -117,6 +134,9 @@ function init2() {
 }
 // The walk function will be called until it returns false.
 function walk(i) {
+    if (!sceneGen) {
+        return false;
+    }
     let r = sceneGen.next();
     let r2 = r.value;
     if (r.value) {
@@ -418,6 +438,7 @@ class Scene {
     constructor() {
         this.camera_pos_inverse = new M4();
         this.camera_pos = Scene.worldCameraM(new V3(0, 0, 0), new V3(1, 0, 0));
+        this.camera_inverse = new M4();
         this.camera = Scene.orthographic1();
         this.lines = [];
         this.ortho = true;
@@ -434,6 +455,16 @@ class Scene {
      */
     get camera_pos() {
         return this._camera_pos;
+    }
+    set camera(m) {
+        this._camera = m;
+        this.camera_inverse = m.inverse();
+    }
+    /**
+     * @type {M4}
+     */
+    get camera() {
+        return this._camera;
     }
     addLine(a, b) {
         this.lines.push([a, b]);
@@ -463,14 +494,14 @@ class Scene {
         let z = cam.z;
         return this.mapPoint(cam).changez(z);
     }
-    
+
     drawincremental(ob) {
         let lastPoint = null;
         turtle.pendown();
         ob.lines.forEach((line) => {
-            for (let i=1; i < line.data.length; i++) { 
+            for (let i = 1; i < line.data.length; i++) {
                 let debug = false;
-                let l = [line.data[i-1], line.data[i]];
+                let l = [line.data[i - 1], line.data[i]];
                 if (l[0].z > 0 && l[1].z > 0) {
                     debug = true;
                 }
@@ -510,7 +541,7 @@ class Scene {
                 p2 = this.mapPoint(p2);
                 let connected = false;
                 if (lastPoint != null) {
-                    connected = lastPoint.sub(p1).len2()  < 0.00001;
+                    connected = lastPoint.sub(p1).len2() < 0.00001;
                 }
                 if (!connected) {
                     turtle.penup();
@@ -528,10 +559,6 @@ class Scene {
         let lastPoint = null;
         turtle.pendown();
         this.lines.forEach((l) => {
-            let debug = false;
-            if (l[0].z > 0 && l[1].z > 0) {
-                debug = true;
-            }
             let p1 = this.camera_pos.mulv(l[0]);
             let p2 = this.camera_pos.mulv(l[1]);
 
@@ -579,7 +606,7 @@ class Scene {
             p2 = this.mapPoint(p2);
             let connected = false;
             if (lastPoint != null) {
-                connected = lastPoint.sub(p1).len2()  < 0.00001;
+                connected = lastPoint.sub(p1).len2() < 0.00001;
             }
             if (!connected) {
                 turtle.penup();
@@ -637,8 +664,7 @@ class Scene {
         return this.camera_pos_inverse.mulv(p);
     }
     screenToWorld(p) {
-        // TODO: missing camera<->screen conversion
-        return this.camera_pos_inverse.mulv(p);
+        return this.camera_pos_inverse.mulv(this.camera_inverse.mulv(p));
     }
 
     static orthographic1(scale = 1) {
@@ -1009,6 +1035,9 @@ class SDFF {
         if ("invisible_style" in args) {
             this.invisible_style = args.invisible_style;
         }
+        if ("detect_edges" in args) {
+            this.detect_edges = args.detect_edges;
+        }
     }
     get primitive() {
         return false;
@@ -1212,10 +1241,10 @@ class SDF2 {
 
             result.addObMove(Ob.circle(this.r, new V3(0, 0, this.h)));
             result.addObMove(Ob.circle(this.r, new V3(0, 0, -this.h)));
-            let p0 = camera_info.screenToWorld(new V3());
+            let p0 = camera_info.cameraToWorld(new V3());
 
             if (camera_info.ortho) {
-                let forwardGlobal = camera_info.screenToWorld(new V3(0, 0, -1))
+                let forwardGlobal = camera_info.cameraToWorld(new V3(0, 0, -1))
                 let flocal = node.inverse_transform.muldir(forwardGlobal);
 
                 let side = flocal.cross(new V3(0, 0, 1));
@@ -1240,7 +1269,7 @@ class SDF2 {
                 v2 = v2.mul(radiusOutline);
                 let side1 = v1.add(v2);
                 let side2 = v1.sub(v2);
-               
+
                 result.addLine(side1.changez(-this.h), side1.changez(this.h));
                 result.addLine(side2.changez(-this.h), side2.changez(this.h));
             }
@@ -1487,6 +1516,16 @@ class SDF2 {
         this.RAY_MARCH_LIMIT = 0.0001;
         this.TANGENT_HACK = 0.01;
         this.SUBDIV_TARGET = 0.5;
+        this.MAX_DISTANCE = 10000;
+        this.EDGE_SEARCH_ITER = 16;
+
+        this.grid_step = 1;
+
+
+        this.enableGrid = 1;
+
+        /** @type {[[[V3, float, SDFR]]]} */
+        this.grid = null;
     }
 
     addObj(x) {
@@ -1498,7 +1537,7 @@ class SDF2 {
      * @param {SDFNode} offsetNode
      * @returns {SDFR}
      */
-    calcSDF(p, offsetNode=null) {
+    calcSDF(p, offsetNode = null) {
         sdf_runs++;
         for (let i of this.primitive) {
             let node = this.o2[i];
@@ -1526,11 +1565,11 @@ class SDF2 {
         return res;
     }
 
-    runRay(p0, dir, limit, offsetNode=null) {
+    runRay(p0, dir, limit, offsetNode = null) {
         let travel = 0;
         let p = p0;
         let result = null;
-        let steps =0;
+        let steps = 0;
         while (travel < limit) {
             steps++;
             /** @type {SDFR} */
@@ -1594,7 +1633,7 @@ class SDF2 {
      * @param {SDFF} node 
      */
     snap_to_surface(p, node) {
-        if(!DEBUG_N_ON_SURFACE) {
+        if (!DEBUG_N_ON_SURFACE) {
             return p;
         }
         let p2Local = node.inverse_transform.mulv(p);
@@ -1707,10 +1746,10 @@ class SDF2 {
 
                 let prev = pa;
                 let prevOnLine = pa;
-                let k=1/subdiv;
+                let k = 1 / subdiv;
                 let recalcSize = 0.26;
-                let recalcStep = 0.0-0.001;
-                for (let progress=0; progress<1; progress += k) {
+                let recalcStep = 0.0 - 0.001;
+                for (let progress = 0; progress < 1; progress += k) {
 
                     let next = progress + k;
                     if (next > recalcStep) {
@@ -1719,7 +1758,7 @@ class SDF2 {
                         let nextP = null
                         let nextScreen = null;
 
-                        let target2 = this.SUBDIV_TARGET*this.SUBDIV_TARGET;
+                        let target2 = this.SUBDIV_TARGET * this.SUBDIV_TARGET;
                         do {
                             k *= 0.5;
                             next = Math.min(progress + k, 1);
@@ -1844,6 +1883,222 @@ class SDF2 {
         }
     }
 
+    gridPos(i, j, camera_info) {
+        let w = camera_info.w;
+        let n = this.grid.length;
+        return new V3((j * w / n) - 0.5 * w, (i * w / n) - 0.5 * w, 0);
+    }
+
+    /**
+     * 
+     * @param {Scene} camera_info 
+     */
+    calcGrid(camera_info) {
+        let c = camera_info.screenToWorld(new V3(0, 0, 1));
+        let vy = camera_info.screenToWorld(new V3(0, 1, 1)).sub(c);
+        let vx = camera_info.screenToWorld(new V3(1, 0, 1)).sub(c);
+
+        let n = camera_info.w / this.grid_step;
+        let res = [];
+        for (let i = 0; i < n; i++) {
+            let a = [];
+            a.length = n;
+            res.push(a);
+        }
+        this.grid = res;
+        let forward = camera_info.camera_pos_inverse.muldir(new V3(0, 0, -1));
+        let p0 = camera_info.cameraToWorld(new V3());
+        let w = camera_info.w;
+
+        /*let debug_points = [
+            camera_info.screenToWorld(new V3(w*0.5, 0, 1)),
+            camera_info.screenToWorld(new V3(0, w*0.5, 1)),
+            camera_info.screenToWorld(new V3(-w*0.5, 0, 1)),
+            camera_info.screenToWorld(new V3(0, -w*0.5, 1)),
+        ];
+        let debugOb = Ob.fromLoop(debug_points);
+        camera_info.drawincremental(debugOb);*/
+
+        for (let i = 0; i < n; i++) {
+            for (let j = 0; j < n; j++) {
+                let p = this.gridPos(i, j, camera_info);
+                let worldP = c.add(vx.mul(p.x)).add(vy.mul(p.y));
+                let f = forward;
+                if (!camera_info.ortho) {
+                    f = worldP.sub(p0).normalized();
+                    worldP = p0;
+                }
+                let rayResult = this.runRay(worldP, f, this.MAX_DISTANCE, null);
+                res[i][j] = rayResult;
+            }
+            //console.log(`${i}/${n}`);
+        }
+        //camera_info.drawincremental(ob);
+    }
+
+    /**
+     * 
+     * @param {Scene} camera_info 
+     */
+    searchEdges(camera_info) {
+        const DIR1 = [[0, 1], [1, 0]];
+        let n = this.grid.length;
+
+        let visited = new Uint8Array(n * n * 4);
+        let depth = new Uint32Array(n * n * 4);
+        let NEXT2 = [
+            [[0, 0, 1], [0, 1, 1], [1, 0, 0],
+            [-1, 0, 1], [-1, 1, 1], [-1, 0, 0]],
+            [[0, 0, 0], [1, 0, 0], [0, 1, 1],
+            [0, -1, 0], [1, -1, 0], [0, -1, 1]],
+        ]
+
+        function splitIndex(v) {
+            let side = v % 4;
+            v = Math.trunc(v / 4);
+            let j = v % n;
+            v = Math.trunc(v / n);
+            let i = v;
+            return [i, j, side];
+        }
+        function joinIndex(i, j, side) {
+            return (((i * n) + j) * 4) + side;
+        }
+        function needEdge(hit1, hit2) {
+            let o1 = hit1[2] ? hit1[2].obj : null;
+            let o2 = hit2[2] ? hit2[2].obj : null;
+            return o1 != o2;
+        }
+        let context = this;
+        function hasEdge(i, j, ni, nj) {
+            return needEdge(context.grid[i][j], context.grid[ni][nj]);
+        }
+
+        let forward = camera_info.camera_pos_inverse.muldir(new V3(0, 0, -1));
+        let p0 = camera_info.cameraToWorld(new V3());
+        //let edges = [];
+        let followPath = function (i, j, side, o1, o2) {
+            let s = [];
+            let i0 = joinIndex(i, j, side);
+            if (visited[i0]) {
+                return;
+            }
+            let startPos = context.grid[i][j][0];// todo 
+            s.push([i0, 0, null])
+            while (s.length > 0) {
+                let [index, it, edgePos] = s[s.length - 1];
+                let [ci, cj, cs] = splitIndex(index);
+                if (it == 0) {
+                    let hit1 = context.grid[ci][cj];
+                    let i2 = ci + DIR1[cs][1];
+                    let j2 = cj + DIR1[cs][0];
+                    let hit2 = context.grid[i2][j2];
+
+                    let p1World = camera_info.screenToWorld(context.gridPos(ci, cj, camera_info).changez(1));
+                    let p2World = camera_info.screenToWorld(context.gridPos(i2, j2, camera_info).changez(1));
+
+                    let left = p1World, right = p2World;
+                    let hitleft = hit1;
+                    let hitRight = hit2;
+                    /*{ //DEBUG
+                        let tmp = new Ob();
+                        tmp.addLine(p1World, p2World);
+                        camera_info.drawincremental(tmp);
+                    }*/
+                    for (let t = 0; t < context.EDGE_SEARCH_ITER; t++) {
+                        let m = V3.lerp(left, right, 0.5);
+                        let rayStart = m;
+                        let f = forward;
+                        if (!camera_info.ortho) {
+                            f = rayStart.sub(p0).normalized();
+                            rayStart = p0;
+                        }
+                        let rayResult = context.runRay(rayStart, f, context.MAX_DISTANCE, null);
+                        if (needEdge(hit1, rayResult)) {
+                            right = m;
+                            hitRight = rayResult;
+                        } else {
+                            left = m;
+                            hitleft = rayResult;
+                        }
+                    }
+                    
+                    if (hitleft[1] <  hitRight[1]) {
+                        edgePos = hitleft[0];
+                    } else {
+                        edgePos = hitRight[0];
+                    }
+                    s[s.length - 1][2] = edgePos;
+                    if (s.length > 1) {
+                        let prevPos = s[s.length - 2][2];
+
+                        let tmp = new Ob();
+                        tmp.addLine(prevPos, edgePos);
+                        camera_info.drawincremental(tmp);
+                    }
+                }
+
+                if (it >= 6) {
+                    s.pop();
+                } else {
+
+                    s[s.length - 1][1] = it + 1;
+
+                    let diff = NEXT2[cs][it];
+                    let ni = ci + diff[1];
+                    let nj = cj + diff[0];
+                    let ns = diff[2];
+                    if (ni < 0 || nj < 0 || ni >= n || nj >= n) {
+                        continue;
+                    }
+                    let nextIndex = joinIndex(ni, nj, ns);
+                    let n2i = ni + DIR1[ns][1];
+                    let n2j = nj + DIR1[ns][0];
+                    if (n2i >= n || n2j >= n) {
+                        continue;
+                    }
+                    //let ns = diff[2];
+                    if (visited[nextIndex] ||
+                        !hasEdge(ni, nj, n2i, n2j)
+                    ) {
+                        continue;
+                    }
+                    visited[nextIndex] = 1;
+                    depth[nextIndex] = depth[index] + 1;
+
+                    /*let pos1 = context.grid[ni][nj][0];
+                    let pos2 = context.grid[n2i][n2j][0];
+
+
+                    let posNew = V3.lerp(pos1, pos2, 0.5);
+                    let tmp = new Ob();
+                    tmp.addLine(prevp, posNew);
+                    camera_info.drawincremental(tmp);*/
+                    s.push([nextIndex, 0, null]);
+                }
+            }
+        }
+
+        for (let i = 0; i < n; i++) {
+            for (let j = 0; j < n; j++) {
+                let hit1 = this.grid[i][j];
+                let o1 = hit1[2] ? hit1[2].obj : null;
+                for (let side = 0; side < DIR1.length; side++) {
+                    let tx = j + DIR1[side][0];
+                    let ty = i + DIR1[side][1];
+                    if (tx < 0 || ty < 0 || tx >= n || ty >= n) {
+                        continue;
+                    }
+                    let hit2 = this.grid[ty][tx];
+                    if (needEdge(hit1, hit2)) {
+                        followPath(i, j, side);
+                    }
+                }
+            }
+
+        }
+    }
+
     /**
      * 
      * @param {Scene} camera_info 
@@ -1880,12 +2135,12 @@ class SDF2 {
     *drawIncremental(camera_info) {
         let t0 = Date.now();
         let t1 = t0;
-        let tim = function() {
+        let tim = function () {
             let t2 = Date.now();
-            console.log(`time ${t2-t1} ${t2-t0}`);
+            //console.log(`time ${t2 - t1} ${t2 - t0}`);
             t1 = t2;
         }
-        console.log(`t: ${Date.now()-t0}`);
+        console.log(`t: ${Date.now() - t0}`);
         for (let i of this.primitive) {
             let node = this.o2[i];
             let lines = node.func.get_lines(camera_info, node);
@@ -1903,12 +2158,16 @@ class SDF2 {
                 for (let texture of textures) {
                     let text = node.func.get_texture(texture, node, camera_info);
                     text.transform(node.transform);
-                    let clipped = this.clip_lines(camera_info, text, node, 1, null);    
-                    console.log(`sometext ${i}/${this.o2.length}`);
+                    let clipped = this.clip_lines(camera_info, text, node, 1, null);
+                    //console.log(`sometext ${i}/${this.o2.length}`);
                     tim();
                     yield clipped;
                 }
             }
+        }
+        if (this.enableGrid == 1) {
+            this.calcGrid(camera_info);
+            this.searchEdges(camera_info);
         }
     }
 
