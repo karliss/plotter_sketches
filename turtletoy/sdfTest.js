@@ -1021,6 +1021,11 @@ class SDFR {
     }
 }
 class SDFF {
+    static DETECT_EDGE_EMPTY = 1;
+    static DETECT_EDGE_FRONT = 2;
+    static DETECT_EDGE_EXTERNAL = 2;
+    static DETECT_EDGE_INTERNAL = 8;
+
     constructor(args) {
         if (!args) {
             args = {}
@@ -1083,7 +1088,11 @@ class SDFF {
 }
 
 class SDFNode {
-    constructor() {
+    /**
+     * 
+     * @param {SDFNode} parent 
+     */
+    constructor(parent) {
         this.a = null;
         this.b = null;
         /** @type{M4} */
@@ -1091,8 +1100,18 @@ class SDFNode {
         /** @type{M4} */
         this.inverse_transform = null;
         this.g = null;
+
         this.line_style = 1;
         this.invisible_style = null;
+        this.textures = null;
+        this.edge_detection = 0;
+        if (parent) {
+            this.line_style = parent.line_style;
+            this.invisible_style = parent.invisible_style;
+            this.textures = parent.textures;
+            this.edge_detection = parent.edge_detection;
+        }
+
         this.sign = 1;
         this.index = -1;
         /** @type{SDFF} */
@@ -1834,7 +1853,7 @@ class SDF2 {
         let combine = [];
         let primitive = [];
 
-        function recursiveProc(x, transform, textures, line_style, invisible_style, sign) {
+        function recursiveProc(x, transform, parent, sign) {
             let index = o2.length;
             let t2 = transform.mul(x.transform);
             if (x.primitive) {
@@ -1842,37 +1861,41 @@ class SDF2 {
             } else {
                 combine.push(index);
             }
-            if (x.textures !== undefined) {
-                textures = x.textures;
-            }
-            if (x.line_style !== undefined) {
-                line_style = x.line_style;
-            }
-            if (x.invisible_style !== undefined) {
-                invisible_style = x.invisible_style;
-            }
-            let node = new SDFNode();
+
+            let node = new SDFNode(parent);
+            node.sign *= sign;
             node.func = x;
             node.transform = t2;
-            node.textures = textures;
-            node.line_style = line_style;
-            node.invisible_style = invisible_style;
+
+            if (x.textures !== undefined) {
+                node.textures = x.textures;
+            }
+            if (x.line_style !== undefined) {
+                node.line_style = x.line_style;
+            }
+            if (x.invisible_style !== undefined) {
+                node.invisible_style = x.invisible_style;
+            }
+            if (x.edge_detection !== undefined) {
+                node.edge_detection = x.edge_detection;
+            }
+
             node.index = index;
-            node.sign = sign;
             o2.push(node);
             if (!x.primitive) {
-                node.a = recursiveProc(x.a, t2, textures, line_style, invisible_style, sign);
-                let subSign = sign;
+                node.a = recursiveProc(x.a, t2, node, 1);
+                let subSign = 1;
                 if (x instanceof SDF2.Diff) {
-                    subSign = -subSign;
+                    subSign = -1;
                 }
-                node.b = recursiveProc(x.b, t2, textures, line_style, invisible_style, subSign);
+                node.b = recursiveProc(x.b, t2, node, subSign);
             }
             return index;
         }
         let identity_transform = new M4();
+        let dummyParent = new SDFNode();
         for (let item of this.objs) {
-            root.push(recursiveProc(item, identity_transform, null, 1, null, 1));
+            root.push(recursiveProc(item, identity_transform, dummyParent));
         }
         this.o2 = o2;
         this.root = root;
@@ -2022,8 +2045,8 @@ class SDF2 {
                             hitleft = rayResult;
                         }
                     }
-                    
-                    if (hitleft[1] <  hitRight[1]) {
+
+                    if (hitleft[1] < hitRight[1]) {
                         edgePos = hitleft[0];
                     } else {
                         edgePos = hitRight[0];
