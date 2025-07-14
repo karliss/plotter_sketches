@@ -70,7 +70,7 @@ function init2() {
         .sub(new SDF2.Cylinder(2, 8)
             .tr(M4.euler(0, Math.PI / 2, 0))
             .format({ textures: [{ id: "slice_local", step: 1, dir: V(0, 0, 1) }] }))
-    x.format({ line_style: null })
+        x.format({ line_style: null , detect_edges: 17})
         ;
 
     sdf2.addObj(x);
@@ -1023,26 +1023,16 @@ class SDFR {
 class SDFF {
     static DETECT_EDGE_EMPTY = 1;
     static DETECT_EDGE_FRONT = 2;
-    static DETECT_EDGE_EXTERNAL = 2;
-    static DETECT_EDGE_INTERNAL = 8;
+    static DETECT_EDGE_EXTERNALG = 4;
+    static DETECT_EDGE_INTERNALG = 8;
+    static DETECT_EDGE_SURFACE = 16;
 
     constructor(args) {
         if (!args) {
             args = {}
         }
         this.transform = new M4();
-        if ("textures" in args) {
-            this.textures = args.textures;
-        }
-        if ("line_style" in args) {
-            this.line_style = args.line_style;
-        }
-        if ("invisible_style" in args) {
-            this.invisible_style = args.invisible_style;
-        }
-        if ("detect_edges" in args) {
-            this.detect_edges = args.detect_edges;
-        }
+        this.format(args);
     }
     get primitive() {
         return false;
@@ -1063,6 +1053,12 @@ class SDFF {
         }
         if ("invisible_style" in args) {
             this.invisible_style = args.invisible_style;
+        }
+        if ("detect_edges" in args) {
+            this.detect_edges = args.detect_edges;
+        }
+        if ("groot" in args) {
+            this.groot = args.groot;
         }
         return this;
     }
@@ -1099,17 +1095,19 @@ class SDFNode {
         this.transform = null;
         /** @type{M4} */
         this.inverse_transform = null;
-        this.g = null;
+        
 
         this.line_style = 1;
         this.invisible_style = null;
         this.textures = null;
-        this.edge_detection = 0;
+        this.detect_edges = 0;
+        this.group = -1;
         if (parent) {
             this.line_style = parent.line_style;
             this.invisible_style = parent.invisible_style;
             this.textures = parent.textures;
-            this.edge_detection = parent.edge_detection;
+            this.detect_edges = parent.detect_edges;
+            this.group = parent.group;
         }
 
         this.sign = 1;
@@ -1561,7 +1559,7 @@ class SDF2 {
         for (let i of this.primitive) {
             let node = this.o2[i];
             let p2 = node.inverse_transform.mulv(p);
-            this.tmpd[i] = node.func.do(p2, i);
+            this.tmpd[i] = node.func.do(p2, this.o2[i]);
         }
         if (offsetNode) {
             this.tmpd[offsetNode.index].d += offsetNode.sign * this.TANGENT_HACK;
@@ -1611,7 +1609,7 @@ class SDF2 {
                 d = Math.abs(this.calcSDF(point).d);
             } else {
                 let hit = this.calcSDF(point);
-                if (this.o2[hit.obj] != node) {
+                if (hit.obj != node) {
                     return -1;
                 }
                 d = Math.abs(hit.d);
@@ -1876,8 +1874,11 @@ class SDF2 {
             if (x.invisible_style !== undefined) {
                 node.invisible_style = x.invisible_style;
             }
-            if (x.edge_detection !== undefined) {
-                node.edge_detection = x.edge_detection;
+            if (x.detect_edges !== undefined) {
+                node.detect_edges = x.detect_edges;
+            }
+            if (x.groot) {
+                node.group = index;
             }
 
             node.index = index;
@@ -1921,7 +1922,7 @@ class SDF2 {
         let vy = camera_info.screenToWorld(new V3(0, 1, 1)).sub(c);
         let vx = camera_info.screenToWorld(new V3(1, 0, 1)).sub(c);
 
-        let n = camera_info.w / this.grid_step;
+        let n = Math.floor(camera_info.w / this.grid_step);
         let res = [];
         for (let i = 0; i < n; i++) {
             let a = [];
@@ -1990,7 +1991,38 @@ class SDF2 {
         function needEdge(hit1, hit2) {
             let o1 = hit1[2] ? hit1[2].obj : null;
             let o2 = hit2[2] ? hit2[2].obj : null;
-            return o1 != o2;
+            if (o1 == null) {
+                [o1, o2] = [o2, o1];
+                [hit1, hit2] = [hit2, hit1];
+            }
+            if (o1 == null) {
+                return false;
+            }
+            if (o2 == null) {
+                return (o1.detect_edges & (SDFF.DETECT_EDGE_EMPTY));
+            }
+            if (o1.detect_edges == 0 && o2.detect_edges == 0){ 
+                return false;
+            }
+            let frontO1 = !(o1.detect_edges & SDFF.DETECT_EDGE_FRONT) || hit1[1] < hit2[1];
+            let frontO2 = !(o2.detect_edges & SDFF.DETECT_EDGE_FRONT) || hit2[1] < hit1[1];
+            let mask = 0;
+            if (frontO1) {
+                mask |= o1.detect_edges;
+            }
+            if (frontO2) {
+                mask |= o2.detect_edges;
+            }
+            if (o1 != o2 && (mask & SDFF.DETECT_EDGE_SURFACE)) {
+                return true;
+            }
+            if (o1.group == o2.group && (mask & SDFF.DETECT_EDGE_INTERNALG)) {
+                return true;
+            }
+            if (o1.group != o2.group && (mask & SDFF.DETECT_EDGE_EXTERNALG)) {
+                return true;
+            }
+            return false;
         }
         let context = this;
         function hasEdge(i, j, ni, nj) {
@@ -2105,7 +2137,6 @@ class SDF2 {
         for (let i = 0; i < n; i++) {
             for (let j = 0; j < n; j++) {
                 let hit1 = this.grid[i][j];
-                let o1 = hit1[2] ? hit1[2].obj : null;
                 for (let side = 0; side < DIR1.length; side++) {
                     let tx = j + DIR1[side][0];
                     let ty = i + DIR1[side][1];
