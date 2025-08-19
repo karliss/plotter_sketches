@@ -23,6 +23,48 @@ TODO:
   - drive pulley for mounting on stepper motor shaft, with grubscrew for locking it in place on D shaped shaft
   - toothed and smooth idler pulleys depending on belt routing
 
+
+### Linear slide mechanism
+
+Most pen plotters will have multiple linear axis requiring some kind of slide mechanism. Common choices are 2020 V slot profiles with POM wheels, round rods with linear bearings or plastic bushings, linear rails.
+
+
+My personal opinion is that linear rails are slightly overhyped for pen plotters. They are good parts when used correctly, but they aren't silver bullet that will automatically make the plotter 10x more accurate. 
+I get the feeling that one of reasons linear rails are perceived as "being the best" is because out of the box they directly provide all the required functionality and even when used incorrectly will likely behave good enough for DIY level machine. Other systems have a lot more room for behaving awful when used incorrectly.
+
+Seemingly out of the box they:
+* are straight and self supported (not quite true 1*)
+* fully constrain rotation and position along all axis except one linear motion (*3)
+* has no slop (*2)
+
+In reality
+1*) Linear rails are not designed to be a structural part. They will be only as straight and rigid as frame you mount them to. Any stick shaped object longer than 0.5m will bend. Less critical for pen plotters, but for any other CNC machine if you want to benefit from high quality linear rails you need to think about what you are attaching the linear rail to. 
+2*) Cheap linear rails can have slop especially if you are buying the rails and carriages separately. Less of problem if you are buying a set of rail+carriage in which case the seller might have already picked pairs which have the best fit. Occasionally hobbyists will buy a rail+a bunch of carriages just to pick one with best fit. 
+3*) Typical linear rails are quite narrow. This means that while they constrain rotation on all 3 axis, the maximum torque is limited and the leverage from anything attached to it can easily be 10-20x than the size of carriage. So in any application where some forces are involved will likely have 2 parallel rails and or carriages. Increasing spacing with 2 rails is often a simpler solution than increasing size of rail.
+
+In comparison
+
+Linear rods+linear bearings(or plastic bushings) have few properties which require more careful design ahead of time.
+They don't constrain rotation which sometimes can be a feature, but in most cases you will need two parallel rods to constrain the rotation.
+On the other hand, like previously mentioned linear rails are often in pairs anyway so this isn't as big of deal as it might seem. But even if you have 2 parallel rods, unless you have additional structural they can easily twist.
+
+Linear bearing are round which makes attaching them to rest of mechanism a bit trickier. To make things worse they are often designed with assumption that they will be press fit in specifically size hole which will provide certain amount of compression and ensure 0 slop. Poorly designed systems can give an incorrect impression that linear bearings are inherently sloppy. You can buy linear bearing blocks which solve both the mounting and compression problems, but those are usually somewhat expensive. More common in industrial application, less in DIY builds.
+
+Linear rods can only be supported by the ends. You can't support them in the middle like linear rails or v wheels. This limits their use for bigger machines.
+
+
+V slot profiles with wheels might seem like inferior solution (partially due to prejudice against plastic), but if used correctly they can be more than adequate for the forces and precision requirements of pen plotters. 
+
+First thing with v slot profiles and wheels is to get actual v slot aluminium profiles designed to be used with corresponding wheels. There are other 2020 aluminum profiles with very similar shape (except small difference for the grove in the middle), which are not designed to be used with wheels. Using wrong ones might work temporary immediately after assembling but wrong shape profiles will very quickly vear out groves in the wheels. Don't trust amazon/ebay listing descriptions, check the pictures as well. Even when description says V-slot pictures occasionally show regular non v slot 2020 profiles, best to avoid listing where picture doesn't match description.
+
+Second important thing is that the wheels need a to be properly tensioned. Typically this is achieved by having an eccentric nut which allows shifting the wheel by a millimeter in either direction and thus tighten it against the aluminum profile. Once tightened there should be no slop. But don't tighten them excessively as that will cause excessive wear on the wheels and also increase friction. 
+
+You can buy the of the shelf mounting plates designed to be used with 2020 v slot profiles and wheels both as a kit with wheels included and just plates. They have the proper spacing for hole size to be used this way. You can buy just the wheels and eccentric nuts separately and design your own mounting plates. But unless you have the resources to make them out of metal, consider buying existing mounting plates. Attempting to 3d print them can easily lead to wheels either being loose immediately or over time as the plastic parts deform. The way tightening mechanism works means you can't easily support the bolts with wheels from both sides, and supporting them from single side with a plate is more suited for stronger materials.
+
+One advantage of v slots design is that the aluminum profiles can be also used as structural elements resulting in simpler more compact design.
+
+One more advantage of v slots is the wheel spacing. Even in the smallest case with 1x1 2020 you get 4 wheels spaced 40mm in both directions. You can also get bigger plates designed for 2x1 or 2x2 profiles further increasing wheel spacing. Larger wheel spacing helps resisting any torque without need for 2 parallel rails or multiple carriages on single rail like you would need do with linear rails or rods.
+
 ## Source of inspiration/existing models
 
 If you are looking for inspiration or an existing design to build checkout websites with models for 3d printing, and posting diy projects. Recommended keywords for search "plotter", "pen plotter", "drawingbot". The later two will have more projects which are using mix of different techniques not just 3d printing.

@@ -377,6 +377,7 @@ Mostly used by flatbed vintage plotters, but there is at least one case of linea
 Consists of pens being placed at the edge of drawing area and a latching mechanism similar to rotary pen changer. This allows pen changer to be fully passive without any additional actuator beside the ones used to do x/y motion.
 
 Sometimes also used by DIY machines, tricky part is having a mechanism which allows reliably grabbing and releasing the pen but holds it rigidly without wobble while drawing.
+
 Typical example - Roland DXY series.
 
 * DMP-161 - unusual case of roller plotter with linear pen changer https://www.youtube.com/watch?v=JGgGQGiP4As

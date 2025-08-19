@@ -134,18 +134,18 @@ In case of long mounting thread, any air grove usually overlaps with mounting th
 | Koh-I-Noor                             | A    | conical   | 2 flats        | long thread                  | grove across mounting thread                                   | Similar to Variant, sometimes transparent                                |
 | Koh-I-Noor                             | A    | cylinders | 2 flats        | long thread                  | grove across mounting thread                                   | Similar to Variant B , sometimes transparent                             |
 | Leroy K&E                              | A    | cylinders | 2flats         | long thread?                 | ??                                                             | Variant B, Made by Koh-I-Noor USA                                        |
-| Staedtler marsmatic                    | D?   | cylinders | hexagon        | short thread closer to front | shallow spiral grove with step after each turn                 | **                                                                       |
-| Staedtler mars                         | EA*9  | cylinder  | hexagon        | long thread                  | 2x360 groves splitting thread in 3 sections, 2 vertical groves | sometimes first cylinder is made of plastic **                           |
-| Staedtler mars 550                     | EA*9  | conical   | textured       | long thread                  | 2x360                                                          |                                                                          |
-| Staedtler mars plot                    | EA*9  | cylinder  | hexagon        | long thread                  | 2x360 groves splitting thread in 3 sections, 2 vertical groves | stubby tip, spring                                                       |
+| Staedtler marsmatic                    | D   | cylinders | hexagon        | short thread closer to front | shallow spiral grove with step after each turn                 | **                                                                       |
+| Staedtler mars                         | EA*9 | cylinder  | hexagon        | long thread                  | 2x360 groves splitting thread in 3 sections, 2 vertical groves | sometimes first cylinder is made of plastic **                           |
+| Staedtler mars 550                     | EA*9 | conical   | textured       | long thread                  | 2x360                                                          |                                                                          |
+| Staedtler mars plot                    | EA*9 | cylinder  | hexagon        | long thread                  | 2x360 groves splitting thread in 3 sections, 2 vertical groves | stubby tip, spring                                                       |
 | Staedtler mars magno                   | H    | pl cyl    | hexagon        | short thread closer to front | medium spiral                                                  | flat face after hexagon, no body, nib->cartridge->barrel                 |
 | Faber castell TG1                      | F    | cylinders | short thread   | press fit cone               | shallow contiguous spiral grove                                | partially transparent (at least 3 revisions *8)                          |
 | Rystor                                 | G    | cylinders | 3 notches      | long thread/airtrap          | medium depth spiral that functions mounting thread             |                                                                          |
 | Trident Desegraph                      | *7   | cylinders | hexagon        | long thread                  | 360 groves + vertical cuts on alternating sides                |                                                                          |
 | Reform refograph,Pelikan E-Technik     | I    | cylinders | hexagon        | short thread on the back     | medium depth compact spiral grove                              |                                                                          |
 | Lyragraph                              | I?   | cylinders | hexagon        | short thread on the back     | medium depth compact spiral grove                              |                                                                          |
-| Unitech                              | I?   | cylinders | hexagon        | short thread on the back     | medium depth compact spiral grove                              |                                                                          |
-| Standardgrpah stano, stano cs, MG1 pro |      | cylinders | hexagon        | long thread                  | back and forth                                                 |                                                                          |
+| Unitech                                | I?   | cylinders | hexagon        | short thread on the back     | medium depth compact spiral grove                              |                                                                          |
+| Standardgrpah stano, stano cs, MG1 pro | J A? | cylinders | hexagon        | long thread                  | back and forth                                                 |                                                                          |
 | Mecanorma MG1, Aristo MG1              |      | cylinders | N/A            | unified nib/body             |                                                                | Too wide for adapting to HP, Roland plotters.                            |
 | Herlitz Technoliner                    |      | cylinders | hexagon        |                              |                                                                |                                                                          |
 | Kern prontograph                       |      | cylinders | hexagon        | long thread                  | wide spiral grove  (1:1)                                       |                                                                          |
@@ -154,7 +154,7 @@ In case of long mounting thread, any air grove usually overlaps with mounting th
 | Hero 81A                               |      | conical   | octagon        | short thread on the back     | shallow spiral grove (1:1)                                     |                                                                          |
 | CLEO SKRIBENT                          |      | conical   | hexagon        | ??                           | ??                                                             |                                                                          |
 | GG01 Harkov                            | F?   | cylinders | short thread   | press fit?                   | shallow spiral                                                 |                                                                          |
-| Markant Lin                            |      | cylinder  | 2 flats   | short thread closer to front | shallow wide spiral (2grove:1fin)                              |                                                                          |
+| Markant Lin                            |      | cylinder  | 2 flats        | short thread closer to front | shallow wide spiral (2grove:1fin)                              |                                                                          |
 
 *) F versions with tungsten tip have the conical metal parts in golden color. J jeweled tip, P for etching inks.
 
@@ -185,68 +185,81 @@ In case of long mounting thread, any air grove usually overlaps with mounting th
 rapidoplot Koh-I-Noor naming scheme
 
 Examples 64NDW-01E, 6810.01M
-| 6   | 4NDW | -   | 0        | 1     | E    |
-| --- | ---- | --- | -------- | ----- | ---- |
-|     | type |     | material | color | size |
-|     |      |     | 0 paper  |       |      |
-|     |      |     | 5 film   |       |      |
+| 6   | 4NDW | -   | 0              | 1                | E        |
+| --- | ---- | --- | -------------- | ---------------- | -------- |
+|     | type |     | material       | color            | size     |
+| --- | ---  |     | -------        | ----             | ----     |
+|     |      |     | 0 paper        | 1 Black          | E 0.25mm |
+|     |      |     | 3 paper/vellum | 2 Blue           | F 0.35mm |
+|     |      |     | 4 film         | 3 Green          | M 0.50mm |
+|     |      |     | 5 film         | 4 Red            | B 0.70mm |
+|     |      |     |                | 5 Yellow         |          |
+|     |      |     |                | 7 Turquoise      |          |
+|     |      |     |                | 8 Orange         |          |
+|     |      |     |                | 9 Brown          |          |
+|     |      |     |                | M Magenta        |          |
+|     |      |     |                | T Turquoise 2    |          |
+|     |      |     |                | R redviolet      |          |
+|     |      |     |                | V Violet         |          |
+|     |      |     |                | A (1,2,3,4,5)mix |          |
+|     |      |     |                | B (1,3,aq,blu,V) |          |
+|     |      |     |                | C (9,5,8,4,R)    |          |
 
 
+| Code  | Type                                |
+| ----- | ----------------------------------- |
+| 6401  | Fiber tip S-style (HP)              |
+| 6402  | Fiber tip Hi                        |
+| 6403  | Fiber tip Zeta                      |
+| 6409  | Hp/tektronix                        |
+| 6601  | S-style rollerball                  |
+| 6602  | HI rollerball                       |
+| 6720  | E-style direct fit                  |
+| 6810  | A-style universal                   |
+| 6820  | E-style paper direct fit            |
+| 6910  | A-style film                        |
+| 6920  | E-Style film direct fit             |
 
-| Code | Size   |
-| ---- | ------ |
-| E    | 0.25mm |
-| F    | 0.35mm |
-| M    | 0.5 mm |
-| B    | 0.7 mm |
+| 6   | 4                | 01                                        |
+| --- | ---------------- | ----------------------------------------- |
+|     | tip              | shape                                     |
+| --- | ---              | ---                                       |
+|     | 4 fiber tip      | 01 - S style                              |
+|     | 6 rollerball     | 02 - HI                                   |
+|     | 7 easyplot paper | 03 - Zeta                                 |
+|     | 8 paper tech pen | 040 - Mutoh                               |
+|     | 9 film tech pen  | 06 - CC, 6, W-style mixed                 |
+|     |                  | 09 - HP Tektronix,W-stlye?            ??? |
+|     |                  | 10 - A-style                              |
+|     |                  | 20 - E-style                              |
 
-| Code | Color     |
-| ---- | --------- |
-| 1    | Black     |
-| 2    | Blue      |
-| 3    | Green     |
-| 4    | Red       |
-| 5    | Yellow    |
-| 7    | Turqoise  |
-| 8    | Orange    |
-| 9    | Brown     |
-| M    | Magenta   |
-| R    | Redviolet |
-| V    | Violet    |
-
-
-
-| Code    | Type                     |
-| ------- | ------------------------ |
-| 6401    | Fiber tip S-style (HP)   |
-| 6402    | Fiber tip Hi             |
-| 64NDS   | S-style paper            |
-| 64MDS   | S-style film             |
-| 64NDH   | H-style paper            |
-| 64MDH | H-style  film            |
-| 64NDW   | W-style paper            |
-| 64NDK   | K-style paper            |
-| 6601    | S-style rollerball       |
-| 6720-3  | E-style direct fit       |
-| 6810    | A-style universal        |
-| 6820    | E-style paper direct fit |
-| 6920    | E-Style film direct fit  |
-|         |                          |
+Type code pattern
+| 6   | 4            | -   | N        | D    | K           | 0          |
+| --- | ------------ | --- | -------- | ---- | ----------- | ---------- |
+|     |              |     | material |      | style       | (optional) |
+| --- | ---          |     | -------  | ---- | ----        | ---        |
+|     | 4 fiber tip  |     | M film   | D    | B - B style | 0          |
+|     | 6 rollerball |     | N paper  | A    | W - W style | B          |
+|     |              |     |          |      | K - K style | C          |
+|     |              |     |          |      | X -         | K          |
+|     |              |     |          |      | S - S style |            |
+|     |              |     |          |      | N           |            |
+|     |              |     |          |      | U           |            |
 
 
-| rotring name | Koh-I-Noor rapidoplot |                                                                                |               |
-| ------------ | --------------------- | ------------------------------------------------------------------------------ | ------------- |
-| Type 1       | A-style?              | adapters                                                                       | slim          |
-| Type 2       | S-style               | HP direct fit                                                                  | has ring      |
-| Type 3       | H-style               | HP with adapter                                                                |               |
-| Type 5       | K-style               | HI DMP, BBC/Goerz 28x 29x, Gould 63xx                                          |               |
-| Type 6       | C-style               | Calcomp 800, 900 series direct fit, Calcomp 104x and Hitachi 67x with adapters |               |
-| Type 7       | Z-Style               | Benson, Digigraph, Kongsberg direct fit                                        | slim straight |
-| Type 8       |                       |                                                                                |               |
-| Type 9       | W-style               | Calcomp 104x direct                                                            | has ring      |
-| Type 20      | E-Style               | HP direct fit                                                                  | has ring      |
+| rotring name | Koh-I-Noor rapidoplot |                                                                                            |               |
+| ------------ | --------------------- | ------------------------------------------------------------------------------------------ | ------------- |
+| Type 1       | A-style?              | adapters                                                                                   | slim          |
+|              | B-style?              | ???                                                                                        |               |
+| Type 2       | S-style               | HP direct fit short, works with many Roland plotters as well                               | has ring      |
+| Type 3       | H-style               | HP with adapter                                                                            |               |
+| Type 5       | K-style               | adapters? HI DMP, BBC/Goerz 28x 29x, Gould 63xx                                            |               |
+| Type 6       |                       | Calcomp 800, 900 series direct fit (6p), Calcomp 104x and Hitachi 67x with adapters (6P/M) |               |
+| Type 7       | Z-Style               | Benson, Digigraph, Kongsberg direct fit                                                    | slim straight |
+| Type 8       |                       | Nicoleta Zeta 8xx                                                                          |               |
+| Type 9       | W-style               | Calcomp 104x direct                                                                        | has ring      |
+| Type 20      | E-Style               | HP direct fit, long                                                                        |               |
 
-F
 
 A/1P Adaptor list (for A-Style pens)
 
@@ -309,9 +322,37 @@ A/1P Adaptor list (for A-Style pens)
 | 757 PLx P   | PL0-8   |       | >1000 mm/s                  |             |             | tungsten carbide, for plotters with pressure controlled ink feed                                              |
 | 757 PLx CSP | PL0-8   |       | >1000mm/s                   |             | orange      | tungsten carbide with cross-groves, for plotters with pressure controlled ink feed                            |
 | 759 PLx P   | PL2-10  |       | >1000mm/s                   |             |             | jewel tipped,  for plotters with pressure controlled ink feed                                                 |
-| 700 
+
 
 *) additional marking on the sides of hexagon
+
+Big adapter table
+
+| Group                       | Rotring nib | KiN nib | Staedtler nib | A-style  (1) ad | H style (type3) ad | Type 6 ad | Other adapter        |
+| --------------------------- | ----------- | ------- | ------------- | --------------- | ------------------ | --------- | -------------------- |
+| HP short (S-style)          | 741920      | 7009WOP | 75PL07H1      |                 |                    |           |                      |
+| HP long (E-style)           | 741926      | 7008WOP | 75PL07H2      | 7153SLV         | 7053SLV            |           |                      |
+| HP7475                      |             |         | 75PL07H3      |                 |                    |           |                      |
+| Roland DPX2000              | 741966      |         | 75PL07H4      |                 |                    |           |                      |
+| HI DMP 2                    |             | 6300WOP | 75PL00H10     |                 |                    |           |                      |
+| HI DMP 2                    |             | 7006WOP | 75PL03H10     | 7152SLV         | 7052SLV      ?     |           |                      |
+| Goerz 292, 293              |             |         | 75PL03H11     | 741900          |                    |           | 741936 (K-style)     |
+| Calcomp 8xx 9xx Type 6      | 741904      | 7011WOP | 75PL05H       | 7146SLV 741900  |                    | Direct    |                      |
+| Calcomp 1040 W-style type 9 |             | 7010WOP | 75PL05H1      | 7154SLV         |                    | yes       |                      |
+| Graphtec ??, Numonics 5412  |             | 7015WOP | 75PL23H       | 7155SLV         | 741986             |           | 741984 (Astyle) ??   |
+| Benson Type 7               | 741910      | 7019WOP | 75PL00H       |                 |                    |           | staedtler integrated |
+| Zeta 8xx Type 8             |             | 7012WOP |               |                 |                    |           |                      |
+| H style Type 3              | 741908      |         |               |                 | Direct             |           |                      |
+| A style 1p                  |             | 7101WOP |               | Direct          |                    |           |                      |
+| K style,Type 5              | 741909      |         |               |                 |                    |           |                      |
+| Hitachi 673                 |             |         | 75PL22H1      |                 |                    |           |                      |
+| Hitachi 641, 672            |             |         | 75PL22H       |                 |                    | 741996    |                      |
+| Sekonic SPL 400 410         |             |         | 75PL21H       | 74195(6/7)?     |                    | 741956?   |                      |
+| Mutoh IP/xP                 |             |         | 75PL15H1      | 7162SLV         |                    |           |                      |
+
+
+* Roland DPX2000, 2200, 3300 -> HP+metal ring
+* 
 
 
 # Pen refilling
@@ -354,6 +395,9 @@ While these often focus on drawing/writing tools which you would rarely use with
 * http://www.ruettinger-web.de/e-pelikan-literatur-buecher.html   mostly pelikan fountain pens
 * http://www.pencilpages.com/
 * https://cestdelamerdetonstylo.blogspot.com/ various photos
+* https://www.fountainpennetwork.com/forum/topic/208-reference-web-sites/
+* https://graphography.org
+* https://unsharpen.com/
 
 
 # shops

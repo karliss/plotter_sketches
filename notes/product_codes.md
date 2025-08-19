@@ -42,14 +42,16 @@ Koh-i-nor nib summary
 
 
 Pens
-| Pen          | Default nib        | Description                                                                           |
-| ------------ | ------------------ | ------------------------------------------------------------------------------------- |
-| 3076(JT)-CS1 | 72(JT)             | Rapidograph SL                                                                        |
-| 3095(JT)-CS1 | 92(JT)             | Rapidometics (iso sizes)                                                              |
-| 3065(JT)-HO  | 82, 62?            | Rapidograph Octagonal holder                                                          |
+| Pen          | Default nib        | Description                                                                                 |
+| ------------ | ------------------ | ------------------------------------------------------------------------------------------- |
+| 3070         |                    | Acetograph |
+| 3075         |                    | Acetograph                                                                                  |
+| 3076(JT)-CS1 | 72(JT)             | Rapidograph SL                                                                              |
+| 3095(JT)-CS1 | 92(JT)             | Rapidometics (iso sizes)                                                                    |
+| 3065(JT)-HO  | 82, 62?            | Rapidograph Octagonal holder                                                                |
 | 3060(JT)     | 62(JT)? 67? 3060?? | Rapidograph technical fountain pen, round (2curve) black body, default nibs black no stripe |
-| 3040         | 47                 | Inkograph                                                                             |
-|              |                    |                                                                                       |
+| 3040         | 47                 | Inkograph                                                                                   |
+|              |                    |                                                                                             |
 
 | Art. No. | No. 2       | No. 3    | Barcode         | Name, description                                                                                                                     |
 | -------- | ----------- | -------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
@@ -74,27 +76,38 @@ Pens
 |          | 63 JB       |          |                 | (K-i-N) plotter point 0.80, stubby plotter point, red (body), dark green (accent)                                                     |
 |          | 63 JB       |          |                 | (K-i-N) plotter point 1.2 ,  stubby plotter point, red (body), orange (accent)                                                        |
 |          | 63 SB       |          |                 | (K-i-N) plotter point 0.30,  stubby plotter point, white (body), yellow (accent)                                                      |
+|          | 63SB.Z      |          | 0 14173 27931 6 | (K-i-N) plotter point 0.35, 4mm/BUSH SS                                                                                               |
+|          | 63SB.ZZZ    |          | 0 14173 27932 3 | (K-i-N) plotter point 0.25, 4mm/BUSH SS                                                                                               |
+|          | 63SB.1      |          | 0 14173 27933 0 | (K-i-N) plotter point 0.50, 4mm/BUSH SS                                                                                               |
+|          | 63SB.2      |          | 0 14173 27934 7 | (K-i-N) plotter point 0.60, 4mm/BUSH SS DNO                                                                                           |
+|          | 63SB.4Z     |          | 0 14173 27937 8 | (K-i-N) plotter point 0.18, 4mm/BUSH SS                                                                                               |
 |          | 63 SB       |          |                 | (K-i-N) plotter point 0.60,  stubby plotter point, white (body), red (accent)                                                         |
 |          | 63 SB       |          |                 | (K-i-N) plotter point 0.80,  stubby plotter point, white (body), dark green (accent)                                                  |
 |          | 63 TB       |          |                 | (K-i-N) plotter point 2 1/2,  stubby plotter point, blue (body), blue (accent)                                                        |
 |          | 63 TB       |          |                 | (K-i-N) plotter point 0.8 ,  stubby plotter point, blue (body), black (accent)                                                        |
-|          | 63 VTB      |          |                 | (K-i-N) plotter point 0.5 ,  stubby plotter point, blue (body), black (accent)                                                        |
+|          | 63TB.1      |          | 0 14173 27941 5 | (K-i-N) plotter point 0.5, REFILL NIB                                                                                                 |
+|          | 63TB.25     |          | 0 14173 27942 2 | (K-i-N) plotter point 0.7, REFILL NIB                                                                                                 |
+|          | 63TB.4Z     |          | 0 14173 27946 0 | (K-i-N) plotter point 0.18, REFILL NIB                                                                                                |
+|          | 63VTB.1     |          | 0 14173 27949 1 | (K-i-N) plotter point 0.5 , stubby plotter point, blue (body), black (accent), 4mm/BUSH V-GRV                                         |
 |          | 63 VTB      |          |                 | (K-i-N) plotter point 0.6 ,  stubby plotter point, blue (body), red (accent)                                                          |
 |          | 63 VTB      |          |                 | (K-i-N) plotter point 0.7 ,  stubby plotter point, blue (body), blue (accent)                                                         |
 |          | 67          |          |                 | (K-i-N) Replacement Points Steel for 3060 Rapidograph pens                                                                            |
 |          | 67BK        |          |                 | (K-i-N) Replacement Points Steel for 3060 Rapidograph pens. Individually packed on card                                               |
 |          | 72J         |          |                 | (K-i-N Rap inc) rapidograph SL jewel point 2 1/2, transparent (body), blue (accent)                                                   |
 |          | 72J         |          |                 | (K-i-N Rap inc) rapidograph SL jewel point 4      transparent (body), orange (accent)                                                 |
-|          | 72D.6Z      |          |                 | (K-i-N) Stainless steel replacmenet point, 6x0 (0.13mm)                                                                               |
+|          | 72D.6Z      |          | 0 14173 28791 5 | (K-i-N) Stainless steel replacmenet point, 6x0 (0.13mm)                                                                               |
+|          | 72D.4Z      |          | 0 14173 28789 2 | (K-i-N) Stainless steel replacmenet point, 4x0 (0.18mm)                                                                               |
 |          | 72D.ZZZ     |          | 0 14173 28782 3 | (K-i-N) Stainless steel replacmenet point, 3x0 (0.25mm)                                                                               |
-|          | 72D.ZZ      |          |                 | (K-i-N) Stainless steel replacmenet point, 00  (0.30mm)                                                                               |
-|          | 72D.Z       |          |                 | (K-i-N) Stainless steel replacmenet point, 0   (0.35mm)                                                                               |
-|          | 72D.1       |          |                 | (K-i-N) Stainless steel replacmenet point, 1   (0.50mm)                                                                               |
-|          | 72D.2       |          |                 | (K-i-N) Stainless steel replacmenet point, 2   (0.60mm)                                                                               |
-|          | 72D.25      |          |                 | (K-i-N) Stainless steel replacmenet point, 2.5 (0.70mm)                                                                               |
-|          | 72D.3       |          |                 | (K-i-N) Stainless steel replacmenet point, 3   (0.80mm)                                                                               |
-|          | 72D.35      |          |                 | (K-i-N) Stainless steel replacmenet point, 3.5 (1.00mm)                                                                               |
-|          | 72D.4       |          |                 | (K-i-N) Stainless steel replacmenet point, 4   (1.20mm)                                                                               |
+|          | 72D.ZZ      |          | 0 14173 28781 6 | (K-i-N) Stainless steel replacmenet point, 00  (0.30mm)                                                                               |
+|          | 72D.Z       |          | 0 14173 28780 9 | (K-i-N) Stainless steel replacmenet point, 0   (0.35mm)                                                                               |
+|          | 72D.1       |          | 0 14173 28783 0 | (K-i-N) Stainless steel replacmenet point, 1   (0.50mm)                                                                               |
+|          | 72D.2       |          | 0 14173 28784 7 | (K-i-N) Stainless steel replacmenet point, 2   (0.60mm)                                                                               |
+|          | 72D.25      |          | 0 14173 28785 4 | (K-i-N) Stainless steel replacmenet point, 2.5 (0.70mm)                                                                               |
+|          | 72D.3       |          | 0 14173 28786 1 | (K-i-N) Stainless steel replacmenet point, 3   (0.80mm)                                                                               |
+|          | 72D.35      |          | 0 14173 28787 8 | (K-i-N) Stainless steel replacmenet point, 3.5 (1.00mm)                                                                               |
+|          | 72D.4       |          | 0 14173 28788 5 | (K-i-N) Stainless steel replacmenet point, 4   (1.20mm)                                                                               |
+|          | 72D.6       |          | 0 14173 28790 8 | (K-i-N) Stainless steel replacmenet point, 6   (1.40mm)                                                                               |
+|          | 72D.7       |          | 0 14173 28792 2 | (K-i-N) Stainless steel replacmenet point, 7   (2.00mm)                                                                               |
 |          | 72(JT)KT    |          |                 | (K-i-N) Rapidograph SL Conversion Kit (stainless steel) 72 nib+cap+tool for 3065                                                      |
 |          | 92(JT)KT    |          |                 | (K-i-N) Rapidograph SL Conversion Kit (stainless steel) 92 nib+cap+tool for 3065                                                      |
 |          | 82          |          |                 | (K-i-N) Replacement Points (transparent plastic) for no 3065 Rapidograph pens, 18 sizes                                               |
@@ -126,25 +139,32 @@ Pens
 |          | 3065-JCP-8  |          |                 | (K-i-N) Slim 8 pen set, same as 3065-JSP8 but with pocket clip                                                                        |
 |          | 3065-TSP-8  |          |                 | (K-i-N) Slim 8 pen set, same as 3065-SP8 but with tungsten point and 3072-F ink, also sizes 7, 6, 4, 3                                |
 |          | 3065-TCP-8  |          |                 | (K-i-N) Slim 8 pen set, same as 3065-TSP8 but with pocket clip                                                                        |
-|          | 3165SP7     |          |                 | (K-i-N) 7 Pen Slim set sizes ???3x0 00, 0, 1, 2, 3, 4??? (inconsistent information which pens sets SP7 and SP7A contain)              |
-|          | 3165SP7A    |          |                 | (K-i-N) 7 Pen Artist set 6x0, 4x0, 3x0 2x0, 0, 1, 2                                                                                   |
-|          | 3165SP7P    |          |                 | (K-i-N) 7 Pen Rapidograph set 000, 00, 0, 1, 2, 2.5, 3, 4                                                                             |
-|          | 3165BX.ZZZ  |          |                 | (K-i-N) Pen and ink Pen set, size 3x0 Nib                                                                                             |
-|          | 3165BX.ZZ   |          |                 | (K-i-N) Pen and ink Pen set, size 00  Nib                                                                                             |
-|          | 3165BX.1    |          |                 | (K-i-N) Pen and ink Pen set, size 1   Nib                                                                                             |
-|          | 3165BX.2    |          |                 | (K-i-N) Pen and ink Pen set, size 2   Nib                                                                                             |
-|          | 3165SP4     |          |                 | (K-i-N) 4 Pen set 0.3 0.35 0.5 0.6                                                                                                    |
-|          | 31657.HRS   |          |                 | (K-i-N) Humified Revolving Selector 7pc set                                                                                           |
-|          | 3165.6z     |          |                 | (K-i-N) Pen 6x0/.13                                                                                                                   |
-|          | 3165.4z     |          |                 | (K-i-N) Pen 4x0/.18                                                                                                                   |
-|          | 3165.zzz    |          |                 | (K-i-N) Pen 3x0/.25                                                                                                                   |
-|          | 3165.zz     |          |                 | (K-i-N) Pen 00/.30                                                                                                                    |
-|          | 3165.z      |          |                 | (K-i-N) Pen 0/.35                                                                                                                     |
-|          | 3165.1      |          |                 | (K-i-N) Pen 1/.50                                                                                                                     |
-|          | 3165.2      |          |                 | (K-i-N) Pen 2/.60                                                                                                                     |
-|          | 3165.25     |          |                 | (K-i-N) Pen 2.5/.70                                                                                                                   |
-|          | 3165.3      |          |                 | (K-i-N) Pen 3/.80                                                                                                                     |
-|          | 3165.4      |          |                 | (K-i-N) Pen 4/.1.2                                                                                                                    |
+|          | 3165SP3     |          | 0 14173 27681 0 | (K-i-N) 3 Pen set, slim pack                                                                                                          |
+|          | 3165SP4     |          | 0 14173 27683 4 | (K-i-N) 4 Pen set 0.3 0.35 0.5 0.6                                                                                                    |
+|          | 3165SP7     |          | 0 14173 27686 5 | (K-i-N) 7 Pen Slim set sizes ???3x0 00, 0, 1, 2, 3, 4??? (inconsistent information which pens sets SP7 and SP7A contain)              |
+|          | 3165SP7A    |          | 0 14173 30231 1 | (K-i-N) 7 Pen Artist set 6x0, 4x0, 3x0 2x0, 0, 1, 2                                                                                   |
+|          | 3165SP7P    |          | 0 14173 27692 6 | (K-i-N) 7 Pen Rapidograph set 000, 00, 0, 1, 2, 2.5, 3, 4                                                                             |
+|          | 3165BX.ZZZ  |          | 0 14173 27662 9 | (K-i-N) Pen and ink Pen set, size 3x0 Nib                                                                                             |
+|          | 3165BX.ZZ   |          | 0 14173 27661 2 | (K-i-N) Pen and ink Pen set, size 00 Nib                                                                                              |
+|          | 3165BX.Z    |          | 0 14173 27660 5 | (K-i-N) Pen and ink Pen set, size 0  Nib                                                                                              |
+|          | 3165BX.1    |          | 0 14173 27663 6 | (K-i-N) Pen and ink Pen set, size 1 Nib                                                                                               |
+|          | 3165BX.2    |          | 0 14173 27664 3 | (K-i-N) Pen and ink Pen set, size 2 Nib                                                                                               |
+|          | 31657.HRS   |          | 0 14173 27696 4 | (K-i-N) Humified Revolving Selector 7pc set                                                                                           |
+|          | 316512.HRS  |          | 0 14173 27695 7 | (K-i-N) Humified Revolving Selector 12pc set                                                                                          |
+|          | 3165HRS.MTY |          | 0 14173 27667 4 | (K-i-N) Humified Revolving Selector empty                                                                                             |
+|          | 3165.6z     |          | 0 14173 27656 8 | (K-i-N) Pen 6x0/.13                                                                                                                   |
+|          | 3165.4z     |          | 0 14173 27654 4 | (K-i-N) Pen 4x0/.18                                                                                                                   |
+|          | 3165.zzz    |          | 0 14173 27647 6 | (K-i-N) Pen 3x0/.25                                                                                                                   |
+|          | 3165.zz     |          | 0 14173 27646 9 | (K-i-N) Pen 00/.30                                                                                                                    |
+|          | 3165.z      |          | 0 14173 27645 2 | (K-i-N) Pen 0/.35                                                                                                                     |
+|          | 3165.1      |          | 0 14173 27648 3 | (K-i-N) Pen 1/.50                                                                                                                     |
+|          | 3165.2      |          | 0 14173 27649 0 | (K-i-N) Pen 2/.60                                                                                                                     |
+|          | 3165.25     |          | 0 14173 27650 6 | (K-i-N) Pen 2.5/.70                                                                                                                   |
+|          | 3165.3      |          | 0 14173 27651 3 | (K-i-N) Pen 3/.80                                                                                                                     |
+|          | 3165.35     |          | 0 14173 27651 3 | (K-i-N) Pen 3.5/1.00                                                                                                                  |
+|          | 3165.4      |          | 0 14173 27653 7 | (K-i-N) Pen 4/1.20                                                                                                                    |
+|          | 3165.6      |          | 0 14173 27655 1 | (K-i-N) Pen 6/1.40                                                                                                                    |
+|          | 3165.7      |          | 0 14173 27657 5 | (K-i-N) Pen 7/2.00                                                                                                                    |
 |          | 6401-01F    |          |                 | rapidoplot Fiber-tip plotter pen 0.3mm black, HP direct fit                                                                           |
 |          | 6401-0AF    |          |                 | rapidoplot Fiber-tip plotter pen 0.3mm black, blue, red green, yellow, HP direct fit                                                  |
 |          | 6401-0BF    |          |                 | rapidoplot Fiber-tip plotter pen 0.3mm black, green, aqua, blue, violet, HP direct fit                                                |
@@ -152,42 +172,96 @@ Pens
 | 742317   | 64NDS.01F   |          | 0 1473 28154 8  | (K-i-N) rapidoplot Archival DPP, Black 0.35mm, S-Style, HP74xx & similar direct fit                                                   |
 |          | 64NDH 01B   |          | 0 85857 05188 7 | (K-i-N a rot c) cardboard box, Disposable plotter pen, Black 0.7mm, H-Style DPP, 75xx & similar needs adapter                         |
 |          | 64NDH-0MM   |          | 0 85857 05181 8 | (K-i-N) Archival DPP, Magenta 0.5mm, H-Style HP drafting & similar needs adapter                                                      |
+|          | 64MAW0.51B  |          | 0 14173 27956 9 | DN U83754F-01X-04 (pack)                                                                                                              |
+|          | 64MAW0.51M  |          | 0 14173 27956 9 | DN U82754F-01X-04 (pack)                                                                                                              |
+|          | 64MDNC.51M  |          | 0 14173 27990 3 | CAL CLA 19590-2119 (pack)                                                                                                             |
+|          | 64MDXB.41B  |          | 0 14173 28023 7 | OCE 292032043 (pack)                                                                                                                  |
+|          | 64MDXB.41F  |          | 0 14173 28025 1 | OCE 292032041 (pack)                                                                                                                  |
+|          | 64MDXB.41M  |          | 0 14173 28026 8 | OCE 292032042 (pack)                                                                                                                  |
 |          | 64MDH 51E   |          |                 | (K-i-N a rot c) cardboard box, Disposable plotter pen, Black 0.25mm, H-Style DPP, 75xx & similar needs adapter                        |
 |          | 64MDH-51E   |          | 0 85857 04815 3 | (K-i-N) rapidoplot Archival DPP, Black 0.25mm, H-Style HP Drafting and similar, needs adapter                                         |
 |          | 64MDH-51B   |          | 0 85857 04814 6 | (K-i-N) rapidoplot Archival DPP, Black 0.7mm, H-Style HP Drafting and similar, needs adapter                                          |
 |          | 64NDH0 01B  |          |                 | (K-i-N a rot c) paper blister, Disposable plotter pen Black 0.7mm                                                                     |
-|          | 64NDW-01E   |          |                 | (K-i-N) rapidoplot Archival DPP, Black 0.25mm W-Style, Calcomp 102x 104x Artisan 102x, Pacesetter 3024, Designmate 4024 direct fit    |
-|          | 64NDW-01F   |          |                 | (K-i-N) rapidoplot Archival DPP, Black 0.35mm W-Style, Calcomp 102x 104x Artisan 102x, Pacesetter 3024, Designmate 4024 direct fit    |
-|          | 64NDW-01M   |          |                 | (K-i-N) rapidoplot Archival DPP, Black 0.50mm W-Style, Calcomp 102x 104x Artisan 102x, Pacesetter 3024, Designmate 4024 direct fit    |
-|          | 64NDW-03F   |          |                 | (K-i-N) rapidoplot Archival DPP, Green 0.35mm W-Style 9P, Calcomp 102x 104x Artisan 102x, Pacesetter 3024, Designmate 4024 direct fit |
-|          | 64NDW-04F   |          | 0 8585705769 8  | (K-i-N) rapidoplot Archival DPP, Red   0.35mm W-Style 9P, Calcomp 102x 104x Artisan 102x, Pacesetter 3024, Designmate 4024 direct fit |
-|          | 64NDK-01E   |          |                 | (K-i-N) rapidoplot Archival DPP, Black 0.25mm K-Style,  Houston instrument DMP, needs adapter                                         |
-|          | 64NDK-01F   |          |                 | (K-i-N) rapidoplot Archival DPP, Black 0.35mm K-Style,  Houston instrument DMP, needs adapter                                         |
-|          | 64NDK-01M   |          |                 | (K-i-N) rapidoplot Archival DPP, Black 0.50mm K-Style,  Houston instrument DMP, needs adapter                                         |
-|          | 64NDK-03B   |          |                 | (K-i-N) rapidoplot Archival DPP, Green 0.70mm K-Style,  Houston instrument DMP, needs adapter                                         |
-|          | 64NDK-04M   |          |                 | (K-i-N) rapidoplot Archival DPP, Red   0.50mm K-Style,  Houston instrument DMP, needs adapter                                         |
-|          | 64NDK-05M   |          |                 | (K-i-N) rapidoplot Archival DPP, Yellow0.50mm K-Style,  Houston instrument DMP, needs adapter                                         |
-|          | 64NDK-07M   |          |                 | (K-i-N) rapidoplot Archival DPP, Turq  0.50mm K-Style,  Houston instrument DMP, needs adapter                                         |
+|          | 64NAW0.01B  |          | 0 14173 28043 5 | DN U83754P-01X-04 (pack)                                                                                                              |
+|          | 64NAW0.01E  |          | 0 14173 28044 2 | DN U80754P-01X-04 (pack)                                                                                                              |
+|          | 64NAW0.01F  |          | 0 14173 28045 9 | DN U81754P-01X-04 (pack)                                                                                                              |
+|          | 64NAW0.01M  |          | 0 14173 28046 6 | DN U82754P-01X-04 (pack)                                                                                                              |
+|          | 64NDBB.01B  |          | 0 14173 28059 6 | OCE 292218694                                                                                                                         |
+|          | 64NDBB.01E  |          | 0 14173 28060 2 | OCE 292218691                                                                                                                         |
+|          | 64NDBB.01F  |          | 0 14173 28061 9 | OCE 292218692                                                                                                                         |
+|          | 64NDBB.01M  |          | 0 14173 28062 6 | OCE 292218693                                                                                                                         |
+|          | 64NDW.01E   |          |                 | (K-i-N) rapidoplot Archival DPP, Black 0.25mm W-Style, Calcomp 102x 104x Artisan 102x, Pacesetter 3024, Designmate 4024 direct fit    |
+|          | 64NDW.01F   |          |                 | (K-i-N) rapidoplot Archival DPP, Black 0.35mm W-Style, Calcomp 102x 104x Artisan 102x, Pacesetter 3024, Designmate 4024 direct fit    |
+|          | 64NDW.01M   |          |                 | (K-i-N) rapidoplot Archival DPP, Black 0.50mm W-Style, Calcomp 102x 104x Artisan 102x, Pacesetter 3024, Designmate 4024 direct fit    |
+|          | 64NDW.03F   |          |                 | (K-i-N) rapidoplot Archival DPP, Green 0.35mm W-Style 9P, Calcomp 102x 104x Artisan 102x, Pacesetter 3024, Designmate 4024 direct fit |
+|          | 64NDW.04F   |          | 0 8585705769 8  | (K-i-N) rapidoplot Archival DPP, Red   0.35mm W-Style 9P, Calcomp 102x 104x Artisan 102x, Pacesetter 3024, Designmate 4024 direct fit |
+|          | 64NDK.01B   |          | 0 14173 28095 4 | KIN DPP K BLACK PAPER B                                                                                                               |
+|          | 64NDK.01E   |          | 0 14173 28096 1 | (K-i-N) rapidoplot Archival DPP, Black 0.25mm K-Style, Paper,  Houston instrument DMP, needs adapter                                  |
+|          | 64NDK.01F   |          | 0 14173 28097 8 | (K-i-N) rapidoplot Archival DPP, Black 0.35mm K-Style, Paper, Houston instrument DMP, needs adapter                                   |
+|          | 64NDK.01M   |          | 0 14173 28098 5 | (K-i-N) rapidoplot Archival DPP, Black 0.50mm K-Style, Paper, Houston instrument DMP, needs adapter                                   |
+|          | 64NDK.02B   |          | 0 14173 28099 2 | KIN DPP K BLUE PAPER B                                                                                                                |
+|          | 64NDK.02E   |          | 0 14173 28100 5 | KIN DPP K BLUE PAPER E                                                                                                                |
+|          | 64NDK.02F   |          | 0 14173 28101 2 | KIN DPP K BLUE PAPER F                                                                                                                |
+|          | 64NDK.02M   |          | 0 14173 28102 9 | KIN DPP K BLUE PAPER M                                                                                                                |
+|          | 64NDK.03B   |          | 0 14173 28103 6 | (K-i-N) rapidoplot Archival DPP, Green 0.70mm K-Style, Paper Houston instrument DMP, needs adapter                                    |
+|          | 64NDK.03E   |          | 0 14173 28104 3 | KIN DPP K GREEN PAPER E                                                                                                               |
+|          | 64NDK.03F   |          | 0 14173 28105 0 | KIN DPP K GREEN PAPER F                                                                                                               |
+|          | 64NDK.03M   |          | 0 14173 28106 7 | KIN DPP K GREEN PAPER M                                                                                                               |
+|          | 64NDK.04B   |          | 0 14173 28107 4 | KIN DPP K RED PAPER B                                                                                                                 |
+|          | 64NDK.04E   |          | 0 14173 28108 1 | KIN DPP K RED PAPER E                                                                                                                 |
+|          | 64NDK.04F   |          | 0 14173 28109 8 | KIN DPP K RED PAPER F                                                                                                                 |
+|          | 64NDK.04M   |          | 0 14173 28110 4 | (K-i-N) rapidoplot Archival DPP, Red   0.50mm K-Style,  Houston instrument DMP, needs adapter                                         |
+|          | 64NDK.05M   |          | 0 14173 28111 1 | (K-i-N) rapidoplot Archival DPP, Yellow0.50mm K-Style,  Houston instrument DMP, needs adapter                                         |
+|          | 64NDK.06F   |          | 0 14173 28112 8 | KIN DPP K VIOLET PAPER F                                                                                                              |
+|          | 64NDK.07M   |          |                 | (K-i-N) rapidoplot Archival DPP, Turq  0.50mm K-Style,  Houston instrument DMP, needs adapter                                         |
+|          | 64NDK.0MF   |          | 0 14173 28093 0 | KIN DPP K MAGENTA PAPER F                                                                                                             |
+|          | 64NDK.0TF   |          | 0 14173 28094 7 | KIN DPP K TURQ PAPER F                                                                                                                |
 |          | 6720-31E    |          | 0 85857 18140 9 | rapidoplot Easyplot plus Black 0.25mm, E style, HP direct fit                                                                         |
 | 741521   | 6810.01M    |          | 0 14173 28660 4 | (K-i-N) rapidoplot Archival DPP, Black 0.5mm, A-Style/1P, universal needs adapters                                                    |
 | 741221   | 6810-01E    |          | 0 14173 28658 1 | (K-i-N) rapidoplot Archival DPP, Black 0.25mm, A-Style/1P, universal needs adapter                                                    |
+|          | 6810.01F    |          | 0 14173 28659 8 | (K-i-N) rapidoplot Archival DPP, Black 0.35mm, A-Style/1P, universal needs adapter                                                    |
+|          | 6810.01B    |          | 0 14173 28657 4 | (K-i-N) rapidoplot Archival DPP, Black 0.7mm, A-Style/1P, universal needs adapters                                                    |
+|          | 6810.0MF    |          | 0 14173 28656 7 | (K-i-N) rapidoplot Archival DPP, Magenta 0.35mm, A-Style/1P                                                                           |
+|          | 6810.02E    |          | 0 14173 28661 1 | (K-i-N) rapidoplot Archival DPP, Blue 0.25mm, A-Style/1P, universal needs adapter                                                     |
+|          | 6810.02F    |          | 0 14173 28662 8 | (K-i-N) rapidoplot Archival DPP, Blue 0.35mm, A-Style/1P, universal needs adapter                                                     |
+|          | 6810.03E    |          | 0 14173 28664 2 | (K-i-N) rapidoplot Archival DPP, Green 0.25mm, A-Style/1P, universal needs adapter                                                    |
+|          | 6810.03F    |          | 0 14173 28665 9 | (K-i-N) rapidoplot Archival DPP, Green 0.35mm, A-Style/1P, universal needs adapter                                                    |
+|          | 6810.04E    |          | 0 14173 28666 6 | (K-i-N) rapidoplot Archival DPP, Red 0.25mm, A-Style/1P, universal needs adapter                                                      |
+|          | 6810.04F    |          | 0 14173 28667 3 | (K-i-N) rapidoplot Archival DPP, Red 0.35mm, A-Style/1P, universal needs adapter                                                      |
+|          | 6810.05F    |          | 0 14173 28669 7 | (K-i-N) rapidoplot Archival DPP, Yellow 0.35mm, A-Style/1P, universal needs adapter                                                   |
+|          | 6810.07F    |          | 0 14173 28670 3 | (K-i-N) rapidoplot Archival DPP, Turquoise 0.35mm, A-Style/1P, universal needs adapter                                                |
+|          | 6810.08F    |          | 0 14173 28671 0 | (K-i-N) rapidoplot Archival DPP, Orange 0.35mm, A-Style/1P, universal needs adapter                                                   |
+|          | 6810.09F    |          | 0 14173 28672 7 | (K-i-N) rapidoplot Archival DPP, Brown 0.35mm, A-Style/1P, universal needs adapter                                                    |
 |          | 6820-01E    |          |                 | (K-i-n) rapidoplot Archival DPP, Black 0.25 E-Style, HP direct fit                                                                    |
 |          | 6820-01F    |          |                 | (K-i-n) rapidoplot Archival DPP, Black 0.35 E-Style, HP direct fit                                                                    |
 |          | 6820-01M    |          |                 | (K-i-n) rapidoplot Archival DPP, Black 0.50 E-Style, HP direct fit                                                                    |
 |          | 6820.02M    |          | 0 14173 28693 2 | (K-i-N) rapidoplot Archival DPP, Blue ??? DPP E PPR BLU M , direct fit                                                                |
 | 740322   | 6820.04F    |          | 0 14173 28700 7 | (K-i-N) rapidoplot Archival DPP, Red 0.35 DPP E PPR RED F, E-Style , direct fit                                                       |
-|          | 7008WOP     |          |                 | (K-i-N) refillable plotter nib adapter, for use with 63 plotter nibs,  E-style                                                        |
+|          | 6910.51B    |          | 0 14173 28722 9 | (K-i-N) rapidoplot  DPP A-style film black 0.7mm                                                                                      |
+|          | 6910.51M    |          | 0 14173 28725 0 | (K-i-N) rapidoplot  DPP A-style film black 0.5mm                                                                                      |
+|          | 6910.52F    |          | 0 14173 28727 4 | (K-i-N) rapidoplot  DPP A-style film blue 0.35mm                                                                                      |
+|          | 6300CAP     |          |                 | Cap for 6300WOP, 7001WOP,7OO2WOP, 7003WOP, 7005WOP, 7011WOP, 7012WOP, 7019WOP                                                         |
+|          | 7006CAP     |          |                 | Cap for 7006WOP, 7007WOP                                                                                                              |
+|          | 7008CAP     |          | 0 14173 28754 0 | Cap for 7008WOP                                                                                                                       |
+|          | 6300WOP     |          |                 | (K-i-N) refillable plotter nib adapter Alphamerics Alpha Plot I II Nicolet Zeta 1553 HI DMP 2, 3, 4, 5, 7, 8, 9                       |
 |          | 7006WOP     |          |                 | (K-i-N) refillable plotter nib adapter, for use with 63 plotter nibs, CalComp 81,84, Goerz 780, HI DMP                                |
+|          | 7008WOP     |          | 0 14173 28755 7 | (K-i-N) refillable plotter nib adapter, for use with 63 plotter nibs,  E-style HP long                                                |
+| 741920   | 7009WOP     |          |                 | (K-i-N) refillable plotter nib adapter, S-style, HP short                                                                             |
 |          | 7010WOP     |          |                 | (K-i-N) refillable plotter nib adapter, for use with 63 plotter nibs, Calcomp 1040 series; Artisan & Artisan Plus 10 series           |
+| 741904   | 7011WOP     |          |                 | (K-i-N) refillable plotter nib adapter Type 6, Calcomp 103x, 105x, 106x, 107x                                                         |
+|          | 7012WOP     |          | 0 141732 8760 1 | (K-i-N) refillable plotter nib adapter Type 8, Bruning 912 924 Zeta 9467 Nicolet                                                      |
+|          | 7015WOP     |          |                 | (K-i-N) refillable plotter nib adapter Graphtec DA, FD FP, MP, Numonics 54xx, 56xx                                                    |
+| 741910   | 7019WOP     |          |                 | (K-i-N) refillable plotter nib adapter Benson Digigraph                                                                               |
+|          | 7101WOP     |          | 0 141732 8768 7 | (K-i-N) refillable plotter nib adapter "A" style                                                                                      |
 |          | 7052SLV     |          |                 | (K-i-N) ??? adapter -> HI DMP,  Calcomp 81, 84, Goerz 780, 81, 281, 283, 284                                                          |
-|          | 7053SLV     |          | 0 14173 28763 2 | (K-i-N) H-style adapter -> HP                                                                                                         |
+| 741926   | 7053SLV     |          | 0 14173 28763 2 | (K-i-N) 5061-7578 DPP H-style adapter -> HP E-style (long)                                                                            |
 |          | 7152SLV     |          |                 | (K-i-N) A-style adapter -> HI DMP                                                                                                     |
-|          | 7153SLV     |          | 0 14173 28771 7 | (K-i-N) A-style adapter -> HP                                                                                                         |
+|          | 7153SLV     |          | 0 14173 28771 7 | (K-i-N) A-style adapter -> HP E-style                                                                                                 |
 |          | 7154SLV     |          |                 | (K-i-N) A-style adapter -> Calcomp 102x/104x/20xx                                                                                     |
-|          | 7155SLV     |          | 0 141732 8774 8 | (K-i-N) A-style adapter ->  Graphtec                                                                                                  |
+| 741986   | 7155SLV     |          | 0 14173 28774 8 | (K-i-N) A-style adapter ->  Graphtec                                                                                                  |
 |          | 7162SLV     |          |                 | (K-i-N) A-style adapter ->  Mutoh IP/xP                                                                                               |
 |          | 7163SLV     |          |                 | (K-i-N) A-style adapter ->  Mutoh F                                                                                                   |
-|          | 7164SLV     |          | 0 141732 8779 3 | (K-i-N) A-style adapter ->  Calcomp 9xx/107x                                                                                          |
+| 741900   | 7164SLV     |          | 0 14173 28779 3 | (K-i-N) A-style adapter ->  Calcomp 9xx/107x                                                                                          |
 | 110903   |             |          |                 | rotring variant 8pen set, 0.1-1.2                                                                                                     |
 | 110943   |             |          |                 | rotring variant rapidomat 8 pen set, fancy version with humidiy meter                                                                 |
 | 110743   |             |          |                 | rotring variant 4 pen set, 0.2-0.5                                                                                                    |
@@ -243,6 +317,11 @@ Pens
 | 151100   |             |          |                 | rotring 2000 isograph pen                                                                                                             |
 | 151140   |             |          |                 | rotring 2000 isograph pen                                                                                                             |
 | 151200   |             |          |                 | rotring 2000 isograph pen                                                                                                             |
+| 151020   |             | S0202070 | 4 006856 151046 | rotring isogrpah pen 0.2mm                                                                                                            |
+| 151030   |             |          | 4 006856 151060 | rotring isogrpah pen 0.3mm                                                                                                            |
+| 151060   |             |          | 4 006856 151121 | rotring isograph pen 0.6mm                                                                                                            |
+| 155060   |             |          |                 | rotring rapidograph pen 0.6mm                                                                                                         |
+| 155140   |             |          |                 | rotring rapidograph pen 1.4mm                                                                                                         |
 | 158013   |             |          |                 | rotring isograph "F" pen                                                                                                              |
 | 158018   |             |          |                 | rotring isograph "F" pen                                                                                                              |
 | 158025   |             |          |                 | rotring isograph "F" pen                                                                                                              |
@@ -256,6 +335,7 @@ Pens
 | 151546   |             |          |                 | Isograph 4 pen set,sec-o-mat, 0.25-0.7                                                                                                |
 | 151586   |             |          |                 | Isogrpah 8 pen set, sec-o-mat, 0.18-2.0                                                                                               |
 | 151722   |             |          |                 | Isograph 3 pen set, 0.35 0.5 0.7                                                                                                      |
+|          |             | S0699380 | 3 501170 699386 | Isograph 3 pen set+1, 0.25 0.35 0.5                                                                                                   |
 | 151853   |             |          |                 | Isograph 4 pen set, rapidomat 0.25-0.7, (vertical stand with sponge)                                                                  |
 | 151903   |             |          |                 | Isograph 8 pen set, ISO sizes 0.18-2.0, ink, 2 accessories                                                                            |
 | 180013   |             |          |                 | rotring foliograph pen                                                                                                                |
@@ -281,6 +361,7 @@ Pens
 | 515201   |             |          |                 |                                                                                                                                       |
 | 515210   |             |          |                 | rotring foliograph barrel                                                                                                             |
 | 515270   |             |          |                 | articulated handle adapter                                                                                                            |
+| 590117   |             |          |                 | rotring variograph ink, round bottle 12mm                                                                                             |
 | 590217   |             |          | 4 006856 590272 | isograph cartridge, black, box of 5                                                                                                   |
 | 590503   |             | S0215710 |                 | rapidograph capillary cartridge, red, box of 3                                                                                        |
 | 590509   |             | S0215870 |                 | rapidograph capillary cartridge, blue, box of 3                                                                                       |
@@ -289,30 +370,43 @@ Pens
 | 710040   |             |          |                 | rotring rap+variant nib 0.4mm, newer version of variant nibs with plastic end cover                                                   |
 | 710060   |             |          |                 | rotring rap+variant nib 0.6mm                                                                                                         |
 | 710100   |             |          |                 | rotring rap+variant nib 1.0mm                                                                                                         |
+| 711010   |             |          |                 | "rotring 2000" nib, 0.1mm (non iso)                                                                                                   |
+| 711015   |             |          |                 | "rotring 2000" nib, 0.15mm (non iso)                                                                                                  |
+| 711020   |             |          |                 | "rotring 2000" nib, 0.2mm (non iso)                                                                                                   |
+| 711030   |             |          |                 | "rotring 2000" nib, 0.3mm (non iso)                                                                                                   |
+| 711040   |             |          |                 | "rotring 2000" nib, 0.4mm (non iso)                                                                                                   |
+| 711050   |             |          |                 | "rotring 2000" nib, 0.5mm (non iso)                                                                                                   |
+| 711060   |             |          |                 | "rotring 2000" nib, 0.6mm (non iso)                                                                                                   |
+| 711080   |             |          |                 | "rotring 2000" nib, 0.8mm (non iso)                                                                                                   |
+| 711100   |             |          |                 | "rotring 2000" nib, 1.0mm (non iso)                                                                                                   |
+| 711120   |             |          |                 | "rotring 2000" nib, 1.2mm (non iso)                                                                                                   |
 | 712030   |             |          |                 | variant B nib, 0.3mm                                                                                                                  |
 | 712050   |             |          |                 | variant B nib 0.5mm                                                                                                                   |
 | 741900   |             |          | 4 006856 741742 | rotring rapidoplot adapter Type 1/Style-A -> Calcomp 8xx, 9xx, 103x, 105x, 106x, 107x                                                 |
-| 741904   |             |          |                 | rotring rapidoplot adapter Type 6 Calcomp standard (Nib->type 6?)                                                                     |
+| 741903   |             |          |                 | rapidoplot ADAPTER, rotring standard, drawing pen holder, (Nib ->??)                                                                  |
+| 741904   |             |          |                 | rotring rapidoplot adapter Type 6 Calcomp standard (Nib->type 6)                                                                      |
 | 741906   |             |          |                 | rotring rapidoplot adapter Type 1? HP75xx, Roland, Graphtec, Numonics, Calcomp, Rika                                                  |
-| 741908   |             |          |                 | rotring rapidoplot adapter Type 3 HP                                                                                                  |
-| 741909   |             |          |                 | rotring rapidoplot Adapter Type 5                                                                                                     |
-| 741910   |             |          |                 | rotring rapidoplot Adapter Benson, Digigraph, Kngsberg                                                                                |
+| 741908   |             |          |                 | rotring rapidoplot adapter nib ->Type 3 HP                                                                                            |
+| 741909   |             |          |                 | rotring rapidoplot Adapter nib -> Type 5                                                                                              |
+| 741910   |             |          |                 | rotring rapidoplot Adapter nib -> Type 7 Benson, Digigraph, Kngsberg                                                                  |
 | 741911   |             |          |                 | rotring rapidoplot tube for adapter 741910                                                                                            |
-| 741919   |             |          |                 | rotring plotter adapter Kongsberg                                                                                                     |
-| 741920   |             |          |                 | rotring rapidoplot, refillable adapter for nibs, HP                                                                                   |
+| 741919   |             |          |                 | rotring plotter adapter ??? -> Kongsberg                                                                                              |
+| 741920   |             |          |                 | rotring rapidoplot, refillable adapter for nib -> S-style, HP                                                                         |
 | 741924   |             |          |                 | rotring rapidoplot Type 1? HP75xx, Roland DXY, DPX, Sekonic SPL440-900,                                                               |
-| 741926   |             |          |                 | rotring rapidoplot Adapter Type 3, HP 75xx, Roland DXY, Sekonic SPL 440-9000                                                          |
-| 741936   |             |          |                 | rotring plotter adapter Type 5 BBC/Goerz 293, Philips PM 8153, Siemens C 1603                                                         |
+| 741926   |             |          |                 | rotring rapidoplot Adapter Type 3 -> E-style HP 75xx, Roland DXY, Sekonic SPL 440-9000                                                |
+| 741933   |             |          |                 | rotring rapidoplot adapter ???                                                                                                        |
+| 741936   |             |          |                 | rotring plotter adapter Type 5 -> BBC/Goerz 293, Philips PM 8153, Siemens C 1603                                                      |
 | 741939   |             |          |                 | rotring plotter adapter Type 1? ABB, Goerz 273, 274, 292, 293                                                                         |
-| 741940   |             |          |                 | roting plotter adapter Tektronix 4662                                                                                                 |
-| 741950   |             |          |                 | rotring plotter adapter System Aristo                                                                                                 |
-| 741951   |             |          |                 | rotring plotter adapter Type 6 System rotring NC-Module S20                                                                           |
-| 741956   |             |          |                 | rotring plotter adapter Type 6 Sekonic 400, 410                                                                                       |
-| 741966   |             |          |                 | rotring plotter adapter Type 3 Roland DXY, DPX                                                                                        |
-| 7419576? |             |          | 4 006856 970432 | rotring rapidoplot Adapter Sekonic PL400, 410                                                                                         |
-| 741984   |             |          |                 | rotring plotter adapter Type 1?  Graphtec FC, FD, FP, FX, GP, PD, DA-6xx MP200x-MP440x, Numonics 5460, 5624, 5860, 7190, 7191         |
-| 741986   |             |          |                 | rotring rapidoplot SLEEVE TYPE 3 Graphtec, Numonics                                                                                   |
-| 741996   |             |          |                 | rotring rapidoplot adapter Type 6, Hitachi 671, 672, 673                                                                              |
+| 741940   |             |          |                 | roting plotter adapter nib -> Tektronix 4662                                                                                          |
+| 741945   |             |          |                 | rotring plotter adapter nib -> Tektronix 4663 |
+| 741950   |             |          |                 | rotring plotter adapter nib -> System Aristo                                                                                          |
+| 741951   |             |          |                 | rotring plotter adapter Type 6 -> System rotring NC-Module S20                                                                        |
+| 741956   |             |          |                 | rotring plotter adapter Type 6 -> Sekonic 400, 410                                                                                    |
+| 7419576? |             |          | 4 006856 970432 | rotring rapidoplot Adapter Type 1(A) -> Sekonic PL400, 410                                                                            |
+| 741966   |             |          |                 | rotring plotter adapter Type 3 -> Roland DXY, DPX                                                                                     |
+| 741984   |             |          |                 | rotring plotter adapter Type 1(A) -> Graphtec FC, FD, FP, FX, GP, PD, DA-6xx MP200x-MP440x, Numonics 5460, 5624, 5860, 7190, 7191     |
+| 741986   |             |          |                 | rotring rapidoplot SLEEVE TYPE 3  -> Graphtec, Numonics                                                                               |
+| 741996   |             |          |                 | rotring rapidoplot adapter Type 6 -> Hitachi 671, 672, 673                                                                            |
 | 745859   |             |          |                 | rotring rapidoplot MPP 0.7 blue 5P paper, BBC/Goerz 28x, 29x,  Houston instrument DMP-xx, Gould 63xx,                                 |
 | 746000   |             |          |                 | rotring rapidoplot MPP 0.25+0.35+0.5+0.7mm black 6P, Calcomp 5xx, 6xx, ..., needs adapter                                             |
 | 746217   |             |          |                 | rotring rapidoplot MPP 4x0.25mm black 6P/M paper, Calcomp 1040                                                                        |
@@ -418,29 +512,44 @@ Nib design changes:
 * end caps metal strip -> plastic cap
 * plastic endcap hole square, rhombus (unknown order)
 
+Pen changes:
+* metal clip text "rotring germany", "rotring"
+* (isogrpah) barrel text "rotring 2000"  "rotring 2000 isograph" "rotring isogrpah"
+
 Years:
-| Date | Product id | source               | Unique features                                                                     ||
-| ---- | ---------- | -------------------- | ----------------------------------------------------------------------------------- |--|
-| 9-62 | 3060       |                      |                                                                                     |
-| 2003 | 3165       |                      | White.                                                                              |
-| 1983 |            | rotring history      | new rapidograph launched                                                            |
-| 1990 | 155xx      | rotring 1990 catalog | "rotring rapidograph", brown barrel, red stripe, 3 stripes on body                  |
-| ???  | 155xx      | ebay                 | "rotring rapidograph", brown barrel, red stripe                                     |
-| ???  |            | ebay                 | "rotring rapidogrpah iso", brown barel, red stripe, L shapes on body                |
-| ???  | 115120 !   | reddit               | "rotring rapidograph", black barel, red stripe, L shapes on body | https://www.reddit.com/r/rOtring/comments/1ls8twx/help_me_determine_the_year/ |
-| ???  | 155xx      | ebay                 | "rotring rapidograph", black barrel red stripe                                      |
-| 1976 | 751xxx     | rotring history      | isograph launched                                                                   |
-| 1980 | 751xxx     | rotring catalog 1980 | "rotring 2000 isograph", 3+5mm metal bushing                                        |
-| 1980 | 71(5)1xxx  | rotring catalog 1980 | "rotring 2000", 3+5mm metal bushing                                                 |
-| 1990 | 151xxx     | rotring catalog 1990 | "rotring isograph", non iso sizes labeled as isograph, brown barell with red stripe |
-| 2006 | 751xxx     | rotring catalog 2006 | 5mm plastic + conical glue spot                                                     |
-| 2006 | 151xxx     | rotring catalog 2006 | "rotring isograph", non iso sizes labeled as isograph                               |
-|      | 751xx      |                      | isograph, 5mm plastic almost no glue cone                                           |
-| 1968 | 750xx      | rotring history      | micronorm launched                                                                  |
-| 1959 |            | rotring history      | varant and varioscript launched                                                     |
-| 1990 | 112xx      | rotring catalog 1990 | "rotring variant", black body, variant B nib                                        |
+| Date  | Product id | source               | Unique features                                                                                                     |                                                                               |
+| ----- | ---------- | -------------------- | ------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| 9-62  | 3060       |                      |                                                                                                                     |                                                                               |
+| 2003  | 3165       |                      | White.                                                                                                              |                                                                               |
+| 1983  |            | rotring history      | new rapidograph launched                                                                                            |                                                                               |
+| ???   |            |                      |                                                                                                                     |                                                                               |
+| ???   |            | ebay                 | "rotring rapidogrpah iso", brown barel, red stripe, L shapes on body                                                |                                                                               |
+| ???   |            | ebay                 | rapidograph, L shapes, brown barrel, red stripe, "rotring" on metal clip                                            |                                                                               |
+| ???   |            | ebay                 | "rotring rapidograph", brown barrel, red stripe, 3 stripes on body, "rotring germany" on metal clip,                |                                                                               |
+| 1990  | 155xx      | rotring 1990 catalog | "rotring rapidograph", brown barrel, red stripe, 3 stripes on body                                                  |                                                                               |
+| 1994  | 155xx      | 1994 catalog         | "rotring rapidograph", brown barrel, 3 stripes, "rotring germany" on clip                                           |                                                                               |
+| ???   | 155xx      | ebay                 | "rotring rapidograph", brown barrel, red stripe                                                                     |                                                                               |
+| ???   | 115120 !   | reddit               | "rotring rapidograph", black barel, red stripe, L shapes on body                                                    | https://www.reddit.com/r/rOtring/comments/1ls8twx/help_me_determine_the_year/ |
+| ???   | 155xx      | ebay                 | "rotring rapidograph", black barrel red stripe                                                                      |                                                                               |
+| 1976  | 751xxx     | rotring history      | isograph launched                                                                                                   |                                                                               |
+| 1983  | 111 020    | catalog 1983 jp      | "rotring 2000", 3+5metal bushing, brown barrel                                                                      |                                                                               |
+| 1983  | 151 018    | catalog 1983 jp      | "rotring 2000 isograph", 3+5metal bushing, brown barrel                                                             |                                                                               |
+| 1980  | 751xxx     | rotring catalog 1980 | "rotring 2000 isograph", 3+5mm metal bushing                                                                        |                                                                               |
+| 1980  | 71(5)1xxx  | rotring catalog 1980 | "rotring 2000", 3+5mm metal bushing                                                                                 |                                                                               |
+| 1990  | 151xxx     | rotring catalog 1990 | "rotring isograph", unified (non)iso line, brown barrel with red stripe                                 |                                                                               |
+| 1994  | 151xxx     | rotring catalog 1994 | "rotring isograph", unified (non)iso line, brown barrel, "rotring germany" on clip, 3+5mm metal bushing             |                                                                               |
+| >1998 | R151060    | ebay                 | "rotring isograph", brown barrel, red ring, plastic glue cone, white box, "sanford rotring GmbH"                    |                                                                               |
+| >1998 | R151020    | ebay                 | "rotring isogrpah", brown barrel, red ring, plastic glue cone, white box, "sanford GmbH", "rotring germany' on clip |                                                                               |
+| 2006  | 751xxx     | rotring catalog 2006 | 5mm plastic + conical glue spot                                                                                     |                                                                               |
+| 2006  | 151xxx     | rotring catalog 2006 | "rotring isograph", non iso sizes labeled as isograph                                                               |                                                                               |
+|       | 751xx      |                      | isograph, 5mm plastic almost no glue cone                                                                           |                                                                               |
+| >2022 | ???        | ebay                 | isograph, black box, "germany 1928", made in india, 3 501179 03394 5, black? barrel                                 |                                                                               |
+| 1968  | 750xx      | rotring history      | micronorm launched                                                                                                  |                                                                               |
+| 1959  |            | rotring history      | varant and varioscript launched                                                                                     |                                                                               |
+| 1990  | 112xx      | rotring catalog 1990 | "rotring variant", black body, variant B nib                                                                        |                                                                               |
 
-
+https://web.archive.org/web/20101206004905/https://www.kohinoorusa.com/products/pens/plotter/index.php
+https://web.archive.org/web/20250524135533/https://www.ebottega.it/catalogo.asp?sito=gbc&Cat=1000820&Desc=Penne%A0per%A0plotter%A0e%A0disegno%A0tecnico%A0Rotring
 
 
 # staedtler
@@ -488,7 +597,8 @@ Nib design revisions
 | 750 PL4 CF | 4 007817 734582 |     |
 | 757 PL2 CS | 4 007817 735343 |     |
 |            |                 |     |
-
+| 700 S3 M05 |                 | Technical Pen set ELEKTROTECHNICAL ISO, 0.25 0.35 0.5mm |
+|            |                 |     |
 
 Newer ISO sizes use M018 instead of 018 style code.
 
@@ -505,3 +615,15 @@ Newer ISO sizes use M018 instead of 018 style code.
 | 5 907548 90008 1 | 0.5mm nib Rystor    |
 | 5 907548 90009 8 | 0.7mm nib Rystor    |
 |                  |                     |
+
+Body revisions
+| Year        | Description                                                                                                     | Labelling body clip other                                                                                                             |
+| ----------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| <2025 - ??? | Black, 2 collor accents, number on endcap, white clip, humidity sponge                                          | (white) rapidograf super professional rystor, "___ 0.70", "0.70"                                                                      |
+|             | Transparent barrel otherwise blue, 2 color accents, white clip,                                                 | (green) rystor super logo profesional, (red) POLAND logo                                                                              |
+| ????        | Blue, 2 color accents, white clip , red humidity sponge transparent w                                           | (white) rystor super logo professsional, (blue) POLAND logo                                                                           |
+|             | Blue, 1 color accent, blue clip                                                                                 | TECHNIC rystor log, logo dotted gradient                                                                                              |
+|             | Black, 1 color accent, black clip, end of cap black textured, vertical lines on body ring                       | ???,(red) logo red/white gradient, (body ring)(red with box) 0.70 ISO m |
+|             | Black, 1 color accent, ?? clip,  end of cap white                                                               | (white) rystor profesional logo MADE IN POLAND, 0.70 ISO/m rystor logo profesional                                                    |
+|             | Black, 1 color accent, smooth body ring, older nib unscrew triwing, green humidity sponge trw, end of cap black | (red) Q rystor profesional logo MADE IN POLAND,  red logo red/white gradient, (body ring) (white) 0.7 ISO/m  rystor proefesional logo |
+
