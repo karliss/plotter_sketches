@@ -1,15 +1,24 @@
-// You can find the Turtle API reference here: https://turtletoy.net/syntax
-//
-let a1 = 15; // min = -720, max=720, step=1
-let a2 = 30; // min = -90, max=90, step=1
-let cd = 40; // min = 0, max=360, step=0.1
+// https://turtletoy.net/turtle/9be13ee183
+let seed = 85398024; // min=1, max=999999999, step=1
+let quick_preview = 0;// min=0, max=1, step=1, (off, on)
+let pipe_grid = 12; // min=2, max=500, step=1
+let pipe_r = 3; // min=0.1, max=50, step=0.1
+let segment_l = 15; // min=0.1, max=100, step=0.1
+let p_bend = 0.23; // min=0, max=1, step=0.001
+let p_stop = 0.03; // min=0.0, max=1, step=0.001
+let p_balls = 0.2; // min=0.0, max=1, step=0.001
+let total_segments = 300; // min=1, max=10000, step=1
+
+let a1 = 3; // min = -720, max=720, step=1
+let a2 = 26; // min = -90, max=90, step=1
+let cd = 197; // min = 0, max=360, step=0.1
 let perspective = 1; // min=0, max=1, step=1,  (off, on)
 let viewSize = 200; // DIS min=10, max=600, step=1
 let fov = 90; // min=10, max=160, step=0.1
 let subdiv = 16; // DIS min=1, max=1024, step=1
-let subdiv_target = 0.5; // min=0.01, max=50, step=0.01
+let subdiv_target = 1.5; // min=0.01, max=50, step=0.01
 const subdivExtra = 1; // DIS min=0, max=1, step=1
-let grid_size = 0.2; // min = 0.05, max=20, step=0.05
+let grid_size = 0.2; // DIS min = 0.05, max=20, step=0.05
 
 let aob1 = 0; // DIS min=0, max=4, step=0.01
 let aob2 = 0; // DIS min=0, max=4, step=0.01
@@ -19,11 +28,26 @@ let turtle = null;
 
 let circleSubdiv = 16; // min=3, max=256, step=1
 
-let useGrid = 1; // min=0, max=2, step=1
+let useGrid = 0; // DIS min=0, max=2, step=1
 
 const DEBUG_N_ON_SURFACE = true;
 const INCREMENTAL = true;
 let sceneGen = null;
+
+class Psdr {
+    constructor(seed = 1) {
+        this.s = seed;
+    }
+    getInt() {
+        this.s = ((this.s|0) * 48271) % 2147483647;
+        return this.s;
+    }
+    coin(p) {
+        let v = this.getInt()*1.0 / 2147483647;
+        return v < p;
+    }
+}
+let psdr = new Psdr(seed);
 
 function init2() {
     // Global code will be evaluated once.
@@ -37,98 +61,118 @@ function init2() {
     } else {
         scene.setOrthographic(100 / cd, new V3(0, 0, 0), new V3(0, 0, 0));
     }
-    scene.camera_pos = Scene.worldCameraOrbit(new V3(0, 0, 0), cd, a1, a2);
+    let pipe_region =  pipe_grid * segment_l;
+    let camera_target = new V3(0.5*pipe_region, 0.5*pipe_region, 0.5*pipe_region);
+    scene.camera_pos = Scene.worldCameraOrbit(camera_target, cd, a1, a2);
 
 
     let sdf2 = new SDF2();
+    sdf2.MAX_STEPS = 160;
+    sdf2.TANGENT_HACK = 0.1;
     sdf2.SUBDIV_TARGET = subdiv_target;
     sdf2.enableGrid = useGrid;
     sdf2.grid_step = grid_size;
-    let p = new SDF2.Box(V(5, 5, 5));
 
-    let x = new SDF2.Box(V(5, 15, 10))
-        .sub(new SDF2.Box(V(6, 6, 5),
-            {
-                textures: [
-                    { id: "slice_local", step: 1, dir: V(0, 0, 1) }
-                ]
-            }).tr(M4.translate(-5, 0, 10)))
-        .format({
-            textures: [
-                { id: "slice_local", step: 1, dir: V(0, 0, 1) }
-            ]
-        })
-        .sub(new SDF2.Sphere(4, {
-            textures: [
-                {
-                    id: "slice_local", step: 1, dir: V(0, 1, 0),
-                    line_style: 1,
-                    invisible_style: null
-                }
-            ]
-        }).tr(M4.translate(-5, 15, 10)))
-        .sub(new SDF2.Cylinder(2, 8)
-            .tr(M4.euler(0, Math.PI / 2, 0))
-            .format({ textures: [{ id: "slice_local", step: 1, dir: V(0, 0, 1) }] }))
-        x.format({ line_style: null , detect_edges: 17})
-        ;
-
-    sdf2.addObj(x);
-    //sdf2.addObj((new SDF2.Box(V(1, 1, 1))).tr(M4.translate(10, 0, 0)));
-
-    sdf2.addObj(new SDF2.Cylinder(4, 5, {
-        //textures: [{ id: "slice_local", step: 1, dir: V(0, 0, 1) }]
-    }).tr(M4.translate(0, 0, 1).mul(M4.euler(aob1, aob2, 0))));
-    /*sdf2.addObj(new SDF2.Cylinder(4, 8)
-         .tr(M4.translate(-4, -5, 10))
-         .format({
-             line_style: 1,
-             textures: [{ id: "slice_local", step: 1, dir: V(0, 0, 1) }]
-         }));*/
-
-    sdf2.addObj(
-        //new SDF2.Sphere(5)
-        new SDF2.Intersection(
-            new SDF2.Sphere(5),
-            new SDF2.Box(new V3(4.01, 4.01, 4.01)),
-            {
-                textures: [
-                    { id: "slice_local", step: 1, dir: V(0, 0, 1) },
-                    { id: "slice_local", step: 1, dir: V(0, 1, 0) },
-                    { id: "slice_local", step: 1, dir: V(1, 0, 0) }
-                ]
-            }
-        )
-            .sub(new SDF2.Cylinder(2, 10, {
-                textures: [{ id: "slice_local", step: 1, dir: V(0, 0, 1) }
-                ]
-            }))
-            .sub(new SDF2.Cylinder(2, 10, {
-                textures: [{ id: "slice_local", step: 1, dir: V(0, 0, 1) }
-                ]
-            })
-                .tr(M4.euler(Math.PI / 2, 0, 0)))
-            .sub(new SDF2.Cylinder(2, 10, {
-                textures: [{ id: "slice_local", step: 1, dir: V(0, 0, 1) }
-                ]
-            }).tr(M4.euler(0, Math.PI / 2, 0)))
-
-            .tr(M4.translate(0, 0, -20))
-    );
-
-    let t0 = Date.now();
-    let t1 = t0;
-    let tim = function () {
-        let t2 = Date.now();
-        console.log(`time ${t2 - t1} ${t2 - t0}`);
-        t1 = t2;
+    let grid = [];
+    for (let i=0; i<pipe_grid; i++) {
+        grid[i] = [];
+        for (let j=0; j<pipe_grid; j++) {
+            grid[i][j] = new Uint8Array(pipe_grid).fill(0);
+        }
     }
+
+    /**  @type {V3} */
+    let pos = null;
+    /**  @type {V3} */
+    let start = null;
+    /**  @type {V3} */
+    let dir = null;
+    let total = 0;
+    let empty = function(p) {
+        if (p.x < 0 || p.x >= pipe_grid ||
+            p.y < 0 || p.y >= pipe_grid ||
+            p.z < 0 || p.z >= pipe_grid) {
+                return false;
+        }
+        return grid[p.x][p.y][p.z] == 0;
+    }
+    while (total < total_segments) {
+        total++;
+        console.log(pos);
+        if (pos == null) {
+            pos = null;
+            let attempts = 50;
+            while (!pos && attempts > 0) {
+                let p = V(psdr.getInt() % pipe_grid, psdr.getInt() % pipe_grid, psdr.getInt() % pipe_grid);
+                if (!grid[p.x][p.y][p.z]) {
+                    pos = p;
+                    start = pos.copy()
+                    dir = V3.D3_6[psdr.getInt() % 6];
+                    break;
+                }
+                attempts--;
+            }
+            if (attempts <= 0) {
+                break;
+            }
+            grid[pos.x][pos.y][pos.z] = 1;
+        }
+        let end_of_pipe = total >= total_segments || psdr.coin(p_stop);
+        let next = pos.add(dir);
+        if (!empty(next) || psdr.coin(p_bend) || end_of_pipe) {
+            let d0 = psdr.getInt() % 6;
+            let next_dir = null;
+            for (let i=0; i<6; i++) {
+                let d = V3.D3_6[(d0 + i) % 6];
+                if (d == dir) {
+                    continue;
+                }
+                if (empty(pos.add(d))) {
+                    next_dir = d;
+                    break;
+                }
+            }
+            let len = pos.sub(start).magnitude();
+            if (len > 0) {
+                let l = len * segment_l;
+                let p0 = start.mul(segment_l)
+                let ball_r = pipe_r * (psdr.coin(p_balls) ? 1.5 : 1.01);
+                if (quick_preview) {
+                    scene.addLine(p0, p0.add(dir.mul(l)));
+                } else {
+                    let pipe = new SDF2.Cylinder(pipe_r, l*0.5);
+                    let tr = M4.fromDirZ(dir);
+                    tr.setTranslate(p0.add(dir.mul(l* 0.5)));
+                    pipe = pipe.tr(tr);
+                    sdf2.addObj(pipe);
+                    sdf2.addObj(
+                        new SDF2.Sphere(ball_r).tr(M4.translate(p0))
+                    );
+                }
+            }
+            if (!next_dir) {
+                end_of_pipe = true;
+            }
+            dir = next_dir;
+            start = pos;
+        }
+        if (end_of_pipe) {
+            pos = null;
+            continue;
+        }
+        pos = pos.add(dir);
+        grid[pos.x][pos.y][pos.z] = 1;
+    }
+
+    /*let p = new SDF2.Box(V(1, 1, 1));
+    sdf2.addObj(p);*/
 
     sdf2.process(scene);
     if (!INCREMENTAL) {
         sdf2.draw_to_scene(scene);
         scene.draw();
     } else {
+        scene.draw(); // fixed non SDF objects
         sceneGen = sdf2.drawIncremental(scene);
     }
 }
