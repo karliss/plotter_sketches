@@ -1,23 +1,30 @@
-// You can find the Turtle API reference here: https://turtletoy.net/syntax
-//
-let a1 = 15; // min = -720, max=720, step=1
-let a2 = 30; // min = -90, max=90, step=1
-let cd = 40; // min = 0, max=360, step=0.1
-let perspective = 1; // min=0, max=1, step=1,  (off, on)
+//https://turtletoy.net/turtle/9304984478
+let a = 37.9; // min = 0, max=50, step=0.1
+let exp_limit = 0.85;// min=0.1, max=2, step=0.001
+let steps = 16; // min=1, max=25, step=1
+let flip = 0; // min=0, max=7, step=1
+let angle = 92; // min=1, max=359, step=1
+let twist = 10;// min=-360, max=360, step=1
+let connect=1;//min=0, max=1, step=1
+let box_scale = 0;// min=0, max=2, step=0.001
+
+let a1 = 13; // min = -720, max=720, step=1
+let a2 = 32; // min = -90, max=90, step=1
+let cd = 25; // min = 0, max=360, step=0.1
+let target_h = 6.4; // min=-10, max=100, step=0.1
+let perspective = 0; // min=0, max=1, step=1,  (off, on)
 let viewSize = 200; // DIS min=10, max=600, step=1
-let fov = 90; // min=10, max=160, step=0.1
+let fov = 60; // min=10, max=160, step=0.1
 let subdiv = 16; // DIS min=1, max=1024, step=1
 let subdiv_target = 0.5; // min=0.01, max=50, step=0.01
 const subdivExtra = 1; // DIS min=0, max=1, step=1
-let grid_size = 0.2; // min = 0.05, max=20, step=0.05
+let grid_size = 1.5; // min = 0.05, max=20, step=0.05
 
-let aob1 = 0; // DIS min=0, max=4, step=0.01
-let aob2 = 0; // DIS min=0, max=4, step=0.01
 
 let scene = null;
 let turtle = null;
 
-let circleSubdiv = 16; // min=3, max=256, step=1
+let circleSubdiv = 64; // min=3, max=256, step=1
 
 let useGrid = 1; // min=0, max=2, step=1
 
@@ -37,100 +44,69 @@ function init2() {
     } else {
         scene.setOrthographic(100 / cd, new V3(0, 0, 0), new V3(0, 0, 0));
     }
-    scene.camera_pos = Scene.worldCameraOrbit(new V3(0, 0, 0), cd, a1, a2);
+    scene.camera_pos = Scene.worldCameraOrbit(new V3(0, 0, target_h), cd, a1, a2);
 
 
-    let sdf2 = new SDF2();
-    sdf2.SUBDIV_TARGET = subdiv_target;
-    sdf2.enableGrid = useGrid;
-    sdf2.grid_step = grid_size;
-    let p = new SDF2.Box(V(5, 5, 5));
+    let m = new M4();
+    let sq2 = Math.SQRT2 / 2;
+    let angle1 = Math.PI * (0.5 * angle) / 180;
+    let angle2 = (0.5 * Math.PI - angle1);
+    let lk = 0.5 / Math.cos(angle2);
+    let lk2 = lk < exp_limit ? 1 : exp_limit/lk;
+    
+    let mb = M4.scale3(lk, lk, lk)
+        .mul(M4.euler(0, 0, angle2));
+    let ms2 = M4.scale3(lk2, lk2, lk2);
 
-    let x = new SDF2.Box(V(5, 15, 10))
-        .sub(new SDF2.Box(V(6, 6, 5),
-            {
-                textures: [
-                    { id: "slice_local", step: 1, dir: V(0, 0, 1) }
-                ]
-            }).tr(M4.translate(-5, 0, 10)))
-        .format({
-            textures: [
-                { id: "slice_local", step: 1, dir: V(0, 0, 1) }
-            ]
-        })
-        .sub(new SDF2.Sphere(4, {
-            textures: [
-                {
-                    id: "slice_local", step: 1, dir: V(0, 1, 0),
-                    line_style: 1,
-                    invisible_style: null
-                }
-            ]
-        }).tr(M4.translate(-5, 15, 10)))
-        .sub(new SDF2.Cylinder(2, 8)
-            .tr(M4.euler(0, Math.PI / 2, 0))
-            .format({ textures: [{ id: "slice_local", step: 1, dir: V(0, 0, 1) }] }))
-        x.format({ line_style: null , detect_edges: 17})
-        ;
-
-    sdf2.addObj(x);
-    //sdf2.addObj((new SDF2.Box(V(1, 1, 1))).tr(M4.translate(10, 0, 0)));
-
-    sdf2.addObj(new SDF2.Cylinder(4, 5, {
-        //textures: [{ id: "slice_local", step: 1, dir: V(0, 0, 1) }]
-    }).tr(M4.translate(0, 0, 1).mul(M4.euler(aob1, aob2, 0))));
-    /*sdf2.addObj(new SDF2.Cylinder(4, 8)
-         .tr(M4.translate(-4, -5, 10))
-         .format({
-             line_style: 1,
-             textures: [{ id: "slice_local", step: 1, dir: V(0, 0, 1) }]
-         }));*/
-
-    sdf2.addObj(
-        //new SDF2.Sphere(5)
-        new SDF2.Intersection(
-            new SDF2.Sphere(5),
-            new SDF2.Box(new V3(4.01, 4.01, 4.01)),
-            {
-                textures: [
-                    { id: "slice_local", step: 1, dir: V(0, 0, 1) },
-                    { id: "slice_local", step: 1, dir: V(0, 1, 0) },
-                    { id: "slice_local", step: 1, dir: V(1, 0, 0) }
-                ]
+    let sc = M4.scale3((flip&1)?1:-1, (flip&2)?1:-1, (flip&4)?1:-1);
+    if (((flip & 1) == 0)) {
+        sc = M4.translate(1, 0, 0).mul(sc);
+    }
+    let mc = M4.translate(1, 0, 0)
+        .mul(M4.euler(0, 0, -angle2*2))
+        .mul(sc)
+        .mul(M4.euler(twist*Math.PI / 180, 0, 0));
+    
+    let proc = function(m, out, d) {
+        if (d >= steps) {
+            if (connect){ 
+                out.push(m.mulv(V(0, 0, 0)));
             }
-        )
-            .sub(new SDF2.Cylinder(2, 10, {
-                textures: [{ id: "slice_local", step: 1, dir: V(0, 0, 1) }
-                ]
-            }))
-            .sub(new SDF2.Cylinder(2, 10, {
-                textures: [{ id: "slice_local", step: 1, dir: V(0, 0, 1) }
-                ]
-            })
-                .tr(M4.euler(Math.PI / 2, 0, 0)))
-            .sub(new SDF2.Cylinder(2, 10, {
-                textures: [{ id: "slice_local", step: 1, dir: V(0, 0, 1) }
-                ]
-            }).tr(M4.euler(0, Math.PI / 2, 0)))
+            out.push(m.mulv(V(1, 0, 0)));
+            return;
+        }
+        let ma = ms2.mul(m).mul(mb);
+        proc(ma, out, d+1);
+        proc(ma.mul(mc), out, d+1);
+    }
+    let points = [];
+    if (!connect) {
+        points.push(V(0, 0, 0));
+    }
+    proc(m, points, 1);
+    let ob = connect ? Ob.fromLinesFlat(points) : Ob.fromChain(points);
+    ob.transform(M4.scale(a));
+    scene.addOb(ob);
 
-            .tr(M4.translate(0, 0, -20))
-    );
-
-    let t0 = Date.now();
-    let t1 = t0;
-    let tim = function () {
-        let t2 = Date.now();
-        console.log(`time ${t2 - t1} ${t2 - t0}`);
-        t1 = t2;
+    let cube = new Ob();
+    for (let i=0; i<2; i++) {
+        cube.addOb(Ob.fromLoop([V(0,0,i), V(1, 0, i), V(1, 1, i), V(0, 1, i)]));
+    }
+    for (let i=0; i<4; i++) {
+        cube.addLine(V(i&1, (i>>1)&1, 0), V(i&1, (i>>1)&1, 1));    
+    }
+    if (box_scale > 0.01) {
+        cube.transform(
+                    M4.scale(a * box_scale)
+                    .mul(M4.scale3(3, 3, 0.8))
+                    .mul(M4.euler(0, 0, Math.PI/4))
+                    .mul(M4.translate(-0.5, -0.5, -0.25)
+        ));
+        scene.addOb(cube);
     }
 
-    sdf2.process(scene);
-    if (!INCREMENTAL) {
-        sdf2.draw_to_scene(scene);
-        scene.draw();
-    } else {
-        sceneGen = sdf2.drawIncremental(scene);
-    }
+    scene.draw();
+    
 }
 // The walk function will be called until it returns false.
 function walk(i) {
@@ -138,10 +114,8 @@ function walk(i) {
         return false;
     }
     let r = sceneGen.next();
-    let r2 = r.value;
     if (r.value) {
-        let ob = r.value;
-        scene.drawincremental(ob);
+        scene.drawincremental(r.value);
     }
     return !r.done;
 }
@@ -197,14 +171,15 @@ class V3 {
         const a = deg * Math.PI / 180;
         const s = Math.sin(a);
         const c = Math.cos(a);
-        return new V2(this.x * c - this.y * s, this.x * s + this.y * c);
+        return new V3(this.x * c - this.y * s, this.x * s + this.y * c);
     }
 }
 class M4 {
     constructor(d = null) {
         this.d = d;
         if (!d) {
-            this.d = [[1, 0, 0, 0],
+            this.d = [
+            [1, 0, 0, 0],
             [0, 1, 0, 0],
             [0, 0, 1, 0],
             [0, 0, 0, 1]];
@@ -1963,8 +1938,9 @@ class SDF2 {
                 let rayResult = this.runRay(worldP, f, this.MAX_DISTANCE, null);
                 res[i][j] = rayResult;
             }
-            //console.log(`${i}/${n}`);
+            console.log(`${i}/${n}`);
             yield null;
+            
         }
         //camera_info.drawincremental(ob);
     }
