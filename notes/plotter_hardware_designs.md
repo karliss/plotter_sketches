@@ -264,7 +264,14 @@ Some examples
 
 *  https://github.com/bdring/Polar-Coaster
 
-### Rolling plotter
+### Turtle
+
+There is a long history of various educational graphic libraries and robots based on the idea of "turtle" driving around controlled by comands like forward, left, right, pen up, pen down.
+
+* https://www.niklasroy.com/robotfactory/
+* https://www.instructables.com/OSTR/
+
+### Rolling gantry plotter
 
 * https://builds.openbuilds.com/builds/a-rolling-plotter.9207/
 

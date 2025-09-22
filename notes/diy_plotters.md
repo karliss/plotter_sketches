@@ -102,6 +102,7 @@ All kind of DIY projects:
 * https://github.com/DanniDesign/Ploxy/tree/main
 * https://github.com/jamescarruthers/PlotteRXY
 * https://www.thingiverse.com/thing:6841321
+* https://www.niklasroy.com/robotfactory/
 
 # Pen changer builds
 

@@ -4,6 +4,7 @@
 * DXY-1150 https://martianwabbit.com/2019/10/25/notes-on-a-roland-dxy-1150.html 
 * https://hackaday.io/project/12276-roland-dg-dxy-990   
 * roland DXY-1200 https://www.elektroda.pl/rtvforum/topic1192751.html
+* https://www.flickr.com/photos/anachrocomputer/albums/72157633082493407/ (roland dpx-3300 teardown pictures)
 
 * https://plotterstation.osp.kitchen/catalogue.html
 * (a lot of info about most HP plotters) https://www.hpmuseum.net/exhibit.php?class=4&cat=24

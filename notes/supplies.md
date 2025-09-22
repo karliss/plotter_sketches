@@ -179,8 +179,13 @@ In case of long mounting thread, any air grove usually overlaps with mounting th
 # Plotter pens
 
 * Benson Speedypen
-* Calcomp
+* Calcomp Maxplot
 * rotring/koh-i-noor rapidoplot
+* eczel
+* HP (fiber tip e-style)
+* steadtler
+    - mars plot
+    - sprint pen
 
 rapidoplot Koh-I-Noor naming scheme
 
@@ -220,6 +225,7 @@ Examples 64NDW-01E, 6810.01M
 | 6910  | A-style film                        |
 | 6920  | E-Style film direct fit             |
 
+Type code pattern 1
 | 6   | 4                | 01                                        |
 | --- | ---------------- | ----------------------------------------- |
 |     | tip              | shape                                     |
@@ -233,12 +239,12 @@ Examples 64NDW-01E, 6810.01M
 |     |                  | 10 - A-style                              |
 |     |                  | 20 - E-style                              |
 
-Type code pattern
+Type code pattern 2
 | 6   | 4            | -   | N        | D    | K           | 0          |
 | --- | ------------ | --- | -------- | ---- | ----------- | ---------- |
 |     |              |     | material |      | style       | (optional) |
 | --- | ---          |     | -------  | ---- | ----        | ---        |
-|     | 4 fiber tip  |     | M film   | D    | B - B style | 0          |
+|     | 4 fiber tip  |     | M film   | D    | B -         | 0          |
 |     | 6 rollerball |     | N paper  | A    | W - W style | B          |
 |     |              |     |          |      | K - K style | C          |
 |     |              |     |          |      | X -         | K          |

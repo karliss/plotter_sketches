@@ -382,6 +382,7 @@ Pens
 | 711120   |             |          |                 | "rotring 2000" nib, 1.2mm (non iso)                                                                                                   |
 | 712030   |             |          |                 | variant B nib, 0.3mm                                                                                                                  |
 | 712050   |             |          |                 | variant B nib 0.5mm                                                                                                                   |
+| 741257   |             |          | 4 006856 741605 | rapidoplot pen, type 1, 0.25mm green                                                                                                  |
 | 741900   |             |          | 4 006856 741742 | rotring rapidoplot adapter Type 1/Style-A -> Calcomp 8xx, 9xx, 103x, 105x, 106x, 107x                                                 |
 | 741903   |             |          |                 | rapidoplot ADAPTER, rotring standard, drawing pen holder, (Nib ->??)                                                                  |
 | 741904   |             |          |                 | rotring rapidoplot adapter Type 6 Calcomp standard (Nib->type 6)                                                                      |
@@ -398,7 +399,7 @@ Pens
 | 741936   |             |          |                 | rotring plotter adapter Type 5 -> BBC/Goerz 293, Philips PM 8153, Siemens C 1603                                                      |
 | 741939   |             |          |                 | rotring plotter adapter Type 1? ABB, Goerz 273, 274, 292, 293                                                                         |
 | 741940   |             |          |                 | roting plotter adapter nib -> Tektronix 4662                                                                                          |
-| 741945   |             |          |                 | rotring plotter adapter nib -> Tektronix 4663 |
+| 741945   |             |          |                 | rotring plotter adapter nib -> Tektronix 4663                                                                                         |
 | 741950   |             |          |                 | rotring plotter adapter nib -> System Aristo                                                                                          |
 | 741951   |             |          |                 | rotring plotter adapter Type 6 -> System rotring NC-Module S20                                                                        |
 | 741956   |             |          |                 | rotring plotter adapter Type 6 -> Sekonic 400, 410                                                                                    |
