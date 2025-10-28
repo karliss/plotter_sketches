@@ -16,8 +16,9 @@
 # Blogs
 
 * https://newsletter.revdancatt.com/
+* https://lostpixels.io/writings
 * https://penplotter.art/
-* https://lostpixels.io/
+* https://blog.nexp.pt/
 
 # Software
 

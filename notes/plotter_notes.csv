@@ -1,34 +1,41 @@
-model,manufacturer,type,protocols,connection,speed,accel,max size,scale,axis,pens,screen,force adjustment,paper holding,paper autoload,notes,
-HP7221,HP,flatbed,custom binary,RS232 serial,,,,,,*,,,,*,"S and T have roller feed, C and T 8 pens",
-HP7220,HP,flatbed,HPGL,,,,,,,,,,,,,
-HP7475A,HP,roller,HPGL,,,,"A3, ANSI A",0.02488mm,XRYU(A4) / XDYR(A3),,,,,,Paper size chosen with switches in back and front. Axis direction changes depending on if it's A4 or A3,
-HP7550A,,roller,HPGL,HP-IB+2xRS232 serial with passthrough,800mm/s,6G,A3,,,,,,,tray,,paper sheet tray/feed
-HP7470A,HP,roller,HPGL,,,,"A4, Letter",0.025mm,XDYR,,,,,,,
-HP7585B,HP,roller,HPGL,,,,A4/A - A0/E 927x1190mm,0.025mm,,,,,,,,
-DMP-40V,HI,roller,DMPL,,,,400-420mmx2000mm,"0.1mm, 0.001in, 0.005in",,,,,,,Has motorized blade rotation,
-DMP-61,HI,roller,"DMPL,HPGL",,,,"A-D,A4-A1",0.001in 0.005in 0.1mm 0.025mm,related to small/large chart option,,,,,,,
-DMP-62,HI,roller,"DMPL,HPGL",,,,"A-F,A4-A0,B1",0.001in 0.005in 0.1mm 0.025mm,varies,,,,,,Axis direction depends on small chart/large chart option. Origin and axis direction in HPGL mode differs from DMPL. HPGL origin in center.,
-DMP-161,HI,roller,"DMPL,HPGL,HP-GL/2",serial,800mm/s,4G,<=24in (specific widths),0.001in 0.005in 0.1mm 0.025mm,varies,8,LCD,,,,"axis direction varies depending on size, but might be possible to configure fixed corner.",
-DMP-162,HI,roller,"DMPL,HPGL,HP-GL/2",serial,"800,600 mm/s",4G/2G(paper),36in,0.001in 0.005in 0.1mm 0.025mm,varies,8,LCD,,,,,
-DMP-162R,HI,roller,"DMPL,HPGL,HP-GL/2",serial,"800,600mm/s",4G/2G(paper),36in +rolls,0.001in 0.005in 0.1mm 0.025mm,varies,8,LCD,,,paper roll,,
-DXY-1350A,Roland,flatbed,"RD-GL II, RD-GL I,DXY-GL",parallel(centronics)+serial(db25),600mm/s,,,,,,,,electrostatic,,Electrostatic paper holder+replot Otherwise same as 1150A.,
-DXY-1150A,Roland,flatbed,"RD-GL II, RD-GL I,DXY-GL",parallel(centronics)+serial(db25),600mm/s,,"A3,B,431.8x297mm","0.025mm,0.1mm","TODO, centered 0 in RD-GL II mode",8,,,magnetic,,"round buttons, holes for pen storage",
-DXY-1350,Roland,flatbed,,,,,,,,,7-segment LED,,electrostatic,,"round buttons, holes for pen storage, replot",
-DXY-1250,Roland,flatbed,,,,,,,,,7-segment LED,,electrostatic,,"round buttons, holes for pen storage",
-DXY-1150,Roland,flatbed,,,,,,,,,,,,,"round buttons, holes for pen storage",
-DXY-1300,Roland,flatbed,"RD-GL I, DXG-GL",parallel(centronics)+serial(db25),,,,"DXY-GL(0.025mm, 0.1mm), RD-GL I(0.025mm)",XRYU,,7-segment LED,,electrostatic,,"square buttons, replot",
-DXY-1200,Roland,flatbed,"RD-GL I, DXG-GL",parallel(centronics)+serial(db25),,,,"DXY-GL(0.025mm, 0.1mm), RD-GL I(0.025mm)",XRYU,,7-segment LED,,electrostatic,,square buttons,
-DXY-1100,Roland,flatbed,"RD-GL I, DXG-GL",parallel(centronics)+serial(db25),,,,"DXY-GL(0.025mm, 0.1mm), RD-GL I(0.025mm)",XRYU,,,,magnetic,,square buttons,
-DXY-980A,Roland,flatbed,,,,,,,,,7-segment LED,,electrostatic,,,
-DXY-880A,Roland,flatbed,,,,,,,,,,,magnetic,,,
-DXY-880,Roland,flatbed,"DXY-GL,RD_GL",parallel(centronics)+serial(db25),,,"A3 (with unreachable padding),380x270mm","0.1mm DXY, 0.025mm RD-GL",XRYU,,,,magnetic,,,
-DXY-980,Roland,flatbed,"DXY-GL,RD_GL",parallel(centronics)+serial(db25),,,"A3 (with unreachable padding),380x270mm","1) 0.1mm DXY, 0.025mm RD-GL",XRYU,,7-segment LED,,electrostatic,,,
-DXY-990,Roland,flatbed,RD-GL I,parallel(centronics)+serial(db25),300mm/s,,"A3, B (unreachable padding)",,,,7-segment LED,,electrostatic,,pen buttons,
-DXY-885,Roland,flatbed,RD-GL I,parallel(centronics)+serial(db25),300mm/s,,"416mmx259mm (ANSI B), 403mmx276mm (A3)",,,,,,magnetic,,,
-DXY-800,Roland,flatbed,DXY-GL,parallel(centronics)+serial(db25),180mm/s,,350x260mm,0.1mm,,8,,,,,,
-DXY-101,Roland,flatbed,DXY-GL,parallel(centronics)+serial(db25),180mm/s,,370x260mm,0.1mm,,1,,,,,,
-DPX-2000,Roland,flatbed,,,,,,,,,,,,,,
-DPX-2200,Roland,flatbed,,parallel(centronics)+serial(db25),450mm/s,,C/A2,,,,,,,,,
-DPX-3300,Roland,flatbed,,parallel(centronics)+serial(db25),450mm/s,,D/A1,,,,7-segment LED,yes,,,,
-DPX-2500,Roland,flatbed,,,,,,,,,LCD,,,,,
-DPX-3500,Roland,flatbed,,,,,,,,,LCD,,,,,
+model,manufacturer,type,protocols,connection,speed,accel,max size,scale,axis,pens,screen,force adjustment,paper holding,paper autoload,notes
+HP7221,HP,flatbed,custom binary,RS232 serial,,,,,,*,,,,*,"S and T have roller feed, C and T 8 pens"
+HP7220,HP,flatbed,HPGL,,,,,,,,,,,,
+HP 7440A (ColorPro),HP,roller,,"RS232, HP-IB (one)",400mm/s,1.2g,A4,,,8,,,,,
+HP7475A,HP,roller,HPGL,,,,"A3, ANSI A",0.02488mm,XRYU(A4) / XDYR(A3),6,,,,,Paper size chosen with switches in back and front. Axis direction changes depending on if it's A4 or A3
+HP7550A,HP,roller,HPGL,HP-IB+2xRS232 serial with passthrough,800mm/s,6g,A3,,,8,,,,tray,
+HP7550B,HP,roller,,,,,,,,,,,,,
+HP7550 Plus,HP,roller,,,800mm/s,6g,A3,,,,,yes,,,
+HP7470A,HP,roller,HPGL,"HP-IB, RS-232 (25 pin), HP-IL (one of 3)","381mm/s , 508mm/s (down up)",2g,"A4, Letter",0.025mm,XDYR,2,,,,,
+HP7475A,HP,roller,HPGL,"HP-IB, RS-232 (one)","381mm/s , 508mm/s (down up)",2g,"A3, B",,,6,,,,,
+HP7580,HP,roller,HPGL,,,,,,,,,,,,
+HP7585A,HP,roller,HPGL,,,,A0,,,,,,,,
+HP7585B,HP,roller,HPGL,HP-IB+RS232,,,A4/A - A0/E 927x1190mm,0.025mm,,8,3digit,yes,,,
+HP7595C,HP,roller,,,,,,,,,,,,,
+DMP-40V,HI,roller,DMPL,,,,400-420mmx2000mm,"0.1mm, 0.001in, 0.005in",,,,,,,Has motorized blade rotation
+DMP-61,HI,roller,"DMPL,HPGL",,,,"A-D,A4-A1",0.001in 0.005in 0.1mm 0.025mm,related to small/large chart option,,,,,,
+DMP-62,HI,roller,"DMPL,HPGL",,,,"A-F,A4-A0,B1",0.001in 0.005in 0.1mm 0.025mm,varies,,,,,,Axis direction depends on small chart/large chart option. Origin and axis direction in HPGL mode differs from DMPL. HPGL origin in center.
+DMP-161,HI,roller,"DMPL,HPGL,HP-GL/2",serial,800mm/s,4G,<=24in (specific widths),0.001in 0.005in 0.1mm 0.025mm,varies,8,LCD,,,,"axis direction varies depending on size, but might be possible to configure fixed corner."
+DMP-162,HI,roller,"DMPL,HPGL,HP-GL/2",serial,"800,600 mm/s (pen, paper)",4G/2G(paper),36in,0.001in 0.005in 0.1mm 0.025mm,varies,8,LCD,,,,
+DMP-162R,HI,roller,"DMPL,HPGL,HP-GL/2",serial,"800,600mm/s",4G/2G(paper),36in +rolls,0.001in 0.005in 0.1mm 0.025mm,varies,8,LCD,,,paper roll,
+DXY-1350A,Roland,flatbed,"RD-GL II, RD-GL I,DXY-GL",parallel(centronics)+serial(db25),600mm/s,,,,,,,,electrostatic,,Electrostatic paper holder+replot Otherwise same as 1150A.
+DXY-1150A,Roland,flatbed,"RD-GL II, RD-GL I,DXY-GL",parallel(centronics)+serial(db25),600mm/s,,"A3,B,431.8x297mm","0.025mm,0.1mm","TODO, centered 0 in RD-GL II mode",8,,,magnetic,,"round buttons, holes for pen storage"
+DXY-1350,Roland,flatbed,,,,,,,,,7-segment LED,,electrostatic,,"round buttons, holes for pen storage, replot"
+DXY-1250,Roland,flatbed,,,,,,,,,7-segment LED,,electrostatic,,"round buttons, holes for pen storage"
+DXY-1150,Roland,flatbed,,,,,,,,,,,,,"round buttons, holes for pen storage"
+DXY-1300,Roland,flatbed,"RD-GL I, DXG-GL",parallel(centronics)+serial(db25),,,,"DXY-GL(0.025mm, 0.1mm), RD-GL I(0.025mm)",XRYU,,7-segment LED,,electrostatic,,"square buttons, replot"
+DXY-1200,Roland,flatbed,"RD-GL I, DXG-GL",parallel(centronics)+serial(db25),,,,"DXY-GL(0.025mm, 0.1mm), RD-GL I(0.025mm)",XRYU,,7-segment LED,,electrostatic,,square buttons
+DXY-1100,Roland,flatbed,"RD-GL I, DXG-GL",parallel(centronics)+serial(db25),,,,"DXY-GL(0.025mm, 0.1mm), RD-GL I(0.025mm)",XRYU,,,,magnetic,,square buttons
+DXY-980A,Roland,flatbed,,,,,,,,,7-segment LED,,electrostatic,,
+DXY-880A,Roland,flatbed,,,,,,,,,,,magnetic,,
+DXY-880,Roland,flatbed,"DXY-GL,RD_GL",parallel(centronics)+serial(db25),,,"A3 (with unreachable padding),380x270mm","0.1mm DXY, 0.025mm RD-GL",XRYU,,,,magnetic,,
+DXY-980,Roland,flatbed,"DXY-GL,RD_GL",parallel(centronics)+serial(db25),,,"A3 (with unreachable padding),380x270mm","1) 0.1mm DXY, 0.025mm RD-GL",XRYU,,7-segment LED,,electrostatic,,
+DXY-990,Roland,flatbed,RD-GL I,parallel(centronics)+serial(db25),300mm/s,,"A3, B (unreachable padding)",,,,7-segment LED,,electrostatic,,pen buttons
+DXY-885,Roland,flatbed,RD-GL I,parallel(centronics)+serial(db25),300mm/s,,"416mmx259mm (ANSI B), 403mmx276mm (A3)",,,,,,magnetic,,
+DXY-800,Roland,flatbed,DXY-GL,parallel(centronics)+serial(db25),180mm/s,,350x260mm,0.1mm,,8,,,,,
+DXY-101,Roland,flatbed,DXY-GL,parallel(centronics)+serial(db25),180mm/s,,370x260mm,0.1mm,,1,,,,,
+DPX-2000,Roland,flatbed,,,,,,,,,,,,,
+DPX-2200,Roland,flatbed,,parallel(centronics)+serial(db25),450mm/s,,C/A2,,,,,,,,
+DPX-3300,Roland,flatbed,,parallel(centronics)+serial(db25),450mm/s,,D/A1,,,,7-segment LED,yes,,,
+DPX-2500,Roland,flatbed,,,,,,,,,LCD,,,,
+DPX-3500,Roland,flatbed,,,,,,,,,LCD,,,,

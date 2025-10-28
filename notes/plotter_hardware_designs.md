@@ -230,6 +230,7 @@ The precision and speed will likely not be very good.
 * [Polargrpah](https://www.instructables.com/Polargraph-Drawing-Machine/)
 * [Hetor](https://juerglehni.com/works/hektor)
 * [Makelangelo](http://www.makelangelo.com/)
+* [Mural](https://getmural.me/)
 
 ## SCARA/5-bar linkage
 Technically SCARA and 5-bar linkage mean slightly different things, but many of the plotters discussed are both, so it helps searching if you try both names. A serial SCARA robot wouldn't be using a 5-bar linkage.
@@ -259,6 +260,7 @@ Some examples
 * https://www.brachiograph.art/
 * https://www.youtube.com/watch?v=a46DMy_3xc4
 * [Mechpen](https://tinkerlog.com/2019/08/27/mechpen/) (large one)
+* https://www.thingiverse.com/thing:3096135
 
 ## Uncommon designs
 

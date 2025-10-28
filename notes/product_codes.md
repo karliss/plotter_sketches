@@ -486,8 +486,8 @@ Rotring nib revisions
 | 750xxx  | micronorm nib     | "micronorm m Art. 750025 - 0.25"             | Like 710xxx later variant, brown plastic, plastic cap, ~3 air grove turns left handed           |
 | 750xxx  | micronorm nib     | "micronorm m 1.00 mm Art. 750 100"           | Like 710xxx later variant, brown plastic, plastic cap, ~3 air grove turns left handed           |
 | 751xxx  | isograph nib      | "rotring 2000 isograph m 0.7mm Art. 751070 " | 3+5mm metal bushings, 5mm metal goes over the central plastic part                              |
-| 751xxx  | isograph nib      |                                              | 3 metal bushing, 5mm plastic with conical excess glue spot, 3mm metal glued into plastic        |
-| 751xxx  | isograph nib      |                                              | 3 metal bushing, 5mm plastic with, minimal amount of excess glue, almost flat surface           |
+| 751xxx  | isograph nib      |                                              | 3mm metal bushing, 5mm plastic with conical excess glue spot, 3mm metal glued into plastic        |
+| 751xxx  | isograph nib      |                                              | 3mm metal bushing, 5mm plastic with, minimal amount of excess glue, almost flat surface           |
 | 755xxx  | rapidograph nib   | white box                                    |                                                                                                 |
 | 756xxx  | rapidograph F nib |                                              | golden color metal part                                                                         |
 | 758xxx  | isograph F nib    |                                              | golden color metal parts                                                                        |
@@ -507,47 +507,77 @@ Rotring nib revisions
 
 
 Nib design changes:
-* no colored ring -> colored ring (initially flat painted on or multistage molding) -> separate plastic colored ring
+* no colored ring -> colored ring (initially flat painted on or multistage molding?) -> separate plastic colored ring
 * air path direction right handed -> left handed
 * 2->3 air path turns
 * end caps metal strip -> plastic cap
-* plastic endcap hole square, rhombus (unknown order)
+* plastic endcap hole: square, (unknown order) rhombus -> cross
+* weight: covered in plastic cone+flat shape at tip end rounded back, same as previously but with flat end and metal core visible
+
+Rapidograph (new) nib changes:
+* hole at the end: square, circle with flat sides
+* 3mm bushing: fully metal with chamfer, rounded metal tube with plastic insert
+* plasatic endcap: brown, black
+
+Isograph nib changes
+* 3/5mm bushings
+    - single metal sleeve over plastic, plastic visible around tip tube
+    - 3mm metal, 5mm plastic with large cone
+    - 3mm metal, 5mm plastic, minimal or no cone/fillet during transition
+* plasatic endcap: brown, black
+    - white - short, number on side, larger bowtie, semicircle cutout on side
+    - brown - long, 2injection molding circles on sides numbers inside on inner slopes
+    - black - long, 2injection molding circles on sides numbers inside on inner slopes
+* front cover 20->18 spines
+* wire weight: steeel pin with hole at the end 1 indent, steel pin with solid chamfered back end 3 indents holding wire
+
+wire sizes approximate:
+* 0.2mm -> 0.05mm (foliograph)
+* 0.35 -> 0.12mm (iso)
+* 0.40 -> 0.25mm (iso)
+* 0.50 -> 0.25mm (variant) 
+* 0.50 -> 0.25mm (iso) 
+
 
 Pen changes:
-* metal clip text "rotring germany", "rotring"
+* metal clip text "rOtring" centered, "rOtring w-germany" "rotring germany", "rotring" left
 * (isogrpah) barrel text "rotring 2000"  "rotring 2000 isograph" "rotring isogrpah"
 
 Years:
-| Date  | Product id | source               | Unique features                                                                                                     |                                                                               |
-| ----- | ---------- | -------------------- | ------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| 9-62  | 3060       |                      |                                                                                                                     |                                                                               |
-| 2003  | 3165       |                      | White.                                                                                                              |                                                                               |
-| 1983  |            | rotring history      | new rapidograph launched                                                                                            |                                                                               |
-| ???   |            |                      |                                                                                                                     |                                                                               |
-| ???   |            | ebay                 | "rotring rapidogrpah iso", brown barel, red stripe, L shapes on body                                                |                                                                               |
-| ???   |            | ebay                 | rapidograph, L shapes, brown barrel, red stripe, "rotring" on metal clip                                            |                                                                               |
-| ???   |            | ebay                 | "rotring rapidograph", brown barrel, red stripe, 3 stripes on body, "rotring germany" on metal clip,                |                                                                               |
-| 1990  | 155xx      | rotring 1990 catalog | "rotring rapidograph", brown barrel, red stripe, 3 stripes on body                                                  |                                                                               |
-| 1994  | 155xx      | 1994 catalog         | "rotring rapidograph", brown barrel, 3 stripes, "rotring germany" on clip                                           |                                                                               |
-| ???   | 155xx      | ebay                 | "rotring rapidograph", brown barrel, red stripe                                                                     |                                                                               |
-| ???   | 115120 !   | reddit               | "rotring rapidograph", black barel, red stripe, L shapes on body                                                    | https://www.reddit.com/r/rOtring/comments/1ls8twx/help_me_determine_the_year/ |
-| ???   | 155xx      | ebay                 | "rotring rapidograph", black barrel red stripe                                                                      |                                                                               |
-| 1976  | 751xxx     | rotring history      | isograph launched                                                                                                   |                                                                               |
-| 1983  | 111 020    | catalog 1983 jp      | "rotring 2000", 3+5metal bushing, brown barrel                                                                      |                                                                               |
-| 1983  | 151 018    | catalog 1983 jp      | "rotring 2000 isograph", 3+5metal bushing, brown barrel                                                             |                                                                               |
-| 1980  | 751xxx     | rotring catalog 1980 | "rotring 2000 isograph", 3+5mm metal bushing                                                                        |                                                                               |
-| 1980  | 71(5)1xxx  | rotring catalog 1980 | "rotring 2000", 3+5mm metal bushing                                                                                 |                                                                               |
-| 1990  | 151xxx     | rotring catalog 1990 | "rotring isograph", unified (non)iso line, brown barrel with red stripe                                 |                                                                               |
-| 1994  | 151xxx     | rotring catalog 1994 | "rotring isograph", unified (non)iso line, brown barrel, "rotring germany" on clip, 3+5mm metal bushing             |                                                                               |
-| >1998 | R151060    | ebay                 | "rotring isograph", brown barrel, red ring, plastic glue cone, white box, "sanford rotring GmbH"                    |                                                                               |
-| >1998 | R151020    | ebay                 | "rotring isogrpah", brown barrel, red ring, plastic glue cone, white box, "sanford GmbH", "rotring germany' on clip |                                                                               |
-| 2006  | 751xxx     | rotring catalog 2006 | 5mm plastic + conical glue spot                                                                                     |                                                                               |
-| 2006  | 151xxx     | rotring catalog 2006 | "rotring isograph", non iso sizes labeled as isograph                                                               |                                                                               |
-|       | 751xx      |                      | isograph, 5mm plastic almost no glue cone                                                                           |                                                                               |
-| >2022 | ???        | ebay                 | isograph, black box, "germany 1928", made in india, 3 501179 03394 5, black? barrel                                 |                                                                               |
-| 1968  | 750xx      | rotring history      | micronorm launched                                                                                                  |                                                                               |
-| 1959  |            | rotring history      | varant and varioscript launched                                                                                     |                                                                               |
-| 1990  | 112xx      | rotring catalog 1990 | "rotring variant", black body, variant B nib                                                                        |                                                                               |
+| Date  | Product id | source               | Unique features                                                                                                                                                     |                                                                               |
+| ----- | ---------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| 9-62  | 3060       |                      |                                                                                                                                                                     |                                                                               |
+| 2003  | 3165       |                      | White.                                                                                                                                                              |                                                                               |
+| 1983  |            | rotring history      | new rapidograph launched                                                                                                                                            |                                                                               |
+| ???   |            |                      |                                                                                                                                                                     |                                                                               |
+| ???   |            | ebay                 | "rotring rapidogrpah iso", brown barrel, red stripe, L shapes on body, rOtring on clip                                                                              |                                                                               |
+| ????? | 155070     | karliss              | "rotring rapidogrpah ISO", brown barell, red stipe, L shape on body, 4 stripes on barrel, centered "rOtring" on clip, rectangle box black techinical text D2000                                                |                                                                               |
+| ???   |            | ebay                 | rapidograph, L shapes, brown barrel, red stripe, "rotring" on metal clip                                                                                            |                                                                               |
+| ???   |            | ebay                 | "rotring rapidograph", brown barrel, red stripe, 3 stripes on body, "rotring germany" on metal clip,                                                                |                                                                               |
+| ???   |            | ebay                 | "rotring rapidograph", brown barrel, red/brown stripe, 3 stripes on body, "rOtring" on clip closer to left, triangle box, "designed in Germany, assembled in India" |                                                                               |
+| ???   |            | ebay                 | "rotring rapidograph", brown barrel, red stripe, 3 stripes on body, "rOtring w-Germany" on clip |                                                                               |
+| 1990  | 155xx      | rotring 1990 catalog | "rotring rapidograph", brown barrel, red stripe, 3 stripes on body                                                                                                  |                                                                               |
+| 1994  | 155xx      | 1994 catalog         | "rotring rapidograph", brown barrel, 3 stripes, "rotring germany" on clip                                                                                           |                                                                               |
+| ???   | 155xx      | ebay                 | "rotring rapidograph", brown barrel, red stripe                                                                                                                     |                                                                               |
+| ???   | 115120 !   | reddit               | "rotring rapidograph", black barel, red stripe, L shapes on body                                                                                                    | https://www.reddit.com/r/rOtring/comments/1ls8twx/help_me_determine_the_year/ |
+| ???   | 155xx      | ebay                 | "rotring rapidograph", black barrel red stripe                                                                                                                      |                                                                               |
+| ???   |            | ebay                 | "rotring rapidograph F", brown barrel, red stripe, 3 stripes on body, "rOtring w-germany", golden text and clip                                                     |                                                                               |
+| 1976  | 751xxx     | rotring history      | isograph launched                                                                                                                                                   |                                                                               |
+| 1983  | 111 020    | catalog 1983 jp      | "rotring 2000", 3+5metal bushing, brown barrel                                                                                                                      |                                                                               |
+| 1983  | 151 018    | catalog 1983 jp      | "rotring 2000 isograph", 3+5metal bushing, brown barrel                                                                                                             |                                                                               |
+| 1980  | 751xxx     | rotring catalog 1980 | "rotring 2000 isograph", 3+5mm metal bushing                                                                                                                        |                                                                               |
+| 1980  | 71(5)1xxx  | rotring catalog 1980 | "rotring 2000", 3+5mm metal bushing                                                                                                                                 |                                                                               |
+| 1990  | 151xxx     | rotring catalog 1990 | "rotring isograph", unified (non)iso line, brown barrel with red stripe                                                                                             |                                                                               |
+| 1994  | 151xxx     | rotring catalog 1994 | "rotring isograph", unified (non)iso line, brown barrel, "rotring germany" on clip, 3+5mm metal bushing                                                             |                                                                               |
+| >1998 | R151060    | ebay                 | "rotring isograph", brown barrel, red ring, plastic glue cone, white box, "sanford rotring GmbH"                                                                    |                                                                               |
+| >1998 | R151020    | ebay                 | "rotring isogrpah", brown barrel, red ring, plastic glue cone, white box, "sanford GmbH", "rotring germany' on clip                                                 |                                                                               |
+| 2006  | 751xxx     | rotring catalog 2006 | 5mm plastic + conical glue spot                                                                                                                                     |                                                                               |
+| 2006  | 151xxx     | rotring catalog 2006 | "rotring isograph", non iso sizes labeled as isograph                                                                                                               |                                                                               |
+|       | 751xx      |                      | isograph, 5mm plastic almost no glue cone                                                                                                                           |                                                                               |
+| >2022 | ???        | ebay                 | isograph, black box, "germany 1928", made in india, 3 501179 03394 5, black? barrel                                                                                 |                                                                               |
+| 1968  | 750xx      | rotring history      | micronorm launched                                                                                                                                                  |                                                                               |
+| 1959  |            | rotring history      | varant and varioscript launched                                                                                                                                     |                                                                               |
+| 1990  | 112xx      | rotring catalog 1990 | "rotring variant", black body, variant B nib                                                                                                                        |                                                                               |
 
 https://web.archive.org/web/20101206004905/https://www.kohinoorusa.com/products/pens/plotter/index.php
 https://web.archive.org/web/20250524135533/https://www.ebottega.it/catalogo.asp?sito=gbc&Cat=1000820&Desc=Penne%A0per%A0plotter%A0e%A0disegno%A0tecnico%A0Rotring
